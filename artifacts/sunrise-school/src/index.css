@@ -73,59 +73,59 @@
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
 
-  /* Warm off-white background */
-  --background: 40 33% 98%;
-  --foreground: 220 30% 15%;
+  /* Clean white background */
+  --background: 0 0% 100%;
+  --foreground: 217 50% 15%;
 
-  /* Soft border */
-  --border: 30 20% 90%;
+  /* Soft blue-tinted border */
+  --border: 215 30% 90%;
 
-  /* Cards slightly brighter */
+  /* Cards pure white */
   --card: 0 0% 100%;
-  --card-foreground: 220 30% 15%;
-  --card-border: 30 20% 90%;
+  --card-foreground: 217 50% 15%;
+  --card-border: 215 30% 90%;
 
   /* Sidebars */
-  --sidebar: 30 50% 96%;
-  --sidebar-foreground: 220 30% 15%;
-  --sidebar-border: 30 20% 90%;
-  --sidebar-primary: 24 95% 53%;
+  --sidebar: 210 60% 97%;
+  --sidebar-foreground: 217 50% 15%;
+  --sidebar-border: 215 30% 90%;
+  --sidebar-primary: 215 80% 42%;
   --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 45 93% 47%;
+  --sidebar-accent: 200 85% 55%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-ring: 24 95% 53%;
+  --sidebar-ring: 215 80% 42%;
 
   --popover: 0 0% 100%;
-  --popover-foreground: 220 30% 15%;
-  --popover-border: 30 20% 90%;
+  --popover-foreground: 217 50% 15%;
+  --popover-border: 215 30% 90%;
 
-  /* Primary: Sunrise Orange */
-  --primary: 24 95% 53%;
+  /* Primary: School Building Blue (deep) */
+  --primary: 215 80% 42%;
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Marigold Yellow */
-  --secondary: 45 93% 47%;
-  --secondary-foreground: 220 30% 15%;
+  /* Secondary: Bright Sky Blue (used as accent text on dark hero) */
+  --secondary: 200 95% 65%;
+  --secondary-foreground: 217 50% 15%;
 
-  /* Muted */
-  --muted: 30 20% 92%;
-  --muted-foreground: 220 20% 40%;
+  /* Muted: Soft cool gray */
+  --muted: 210 30% 95%;
+  --muted-foreground: 217 20% 40%;
 
-  /* Accent: Sky Blue */
-  --accent: 200 80% 50%;
+  /* Accent: Lighter Sky Blue */
+  --accent: 200 85% 55%;
   --accent-foreground: 0 0% 100%;
 
   --destructive: 0 84% 60%;
   --destructive-foreground: 0 0% 100%;
 
-  --input: 30 20% 90%;
-  --ring: 24 95% 53%;
+  --input: 215 30% 90%;
+  --ring: 215 80% 42%;
 
-  --chart-1: 24 95% 53%;
-  --chart-2: 45 93% 47%;
-  --chart-3: 200 80% 50%;
-  --chart-4: 140 60% 40%;
-  --chart-5: 280 60% 50%;
+  --chart-1: 215 80% 42%;
+  --chart-2: 200 85% 55%;
+  --chart-3: 195 70% 40%;
+  --chart-4: 220 60% 60%;
+  --chart-5: 210 40% 30%;
 
   --app-font-sans: 'Inter', sans-serif;
   --app-font-serif: 'Georgia', serif;
@@ -135,23 +135,22 @@
 }
 
 .dark {
-  /* Minimal dark mode support, default to light mode design for this warm school brand */
-  --background: 220 30% 10%;
-  --foreground: 40 33% 98%;
-  --border: 220 30% 20%;
-  --card: 220 30% 12%;
-  --card-foreground: 40 33% 98%;
-  --card-border: 220 30% 20%;
-  --primary: 24 95% 53%;
+  --background: 217 50% 10%;
+  --foreground: 0 0% 98%;
+  --border: 217 30% 20%;
+  --card: 217 50% 12%;
+  --card-foreground: 0 0% 98%;
+  --card-border: 217 30% 20%;
+  --primary: 215 80% 55%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 45 93% 47%;
-  --secondary-foreground: 220 30% 15%;
-  --muted: 220 30% 15%;
-  --muted-foreground: 220 20% 70%;
-  --accent: 200 80% 50%;
+  --secondary: 200 95% 65%;
+  --secondary-foreground: 217 50% 15%;
+  --muted: 217 30% 15%;
+  --muted-foreground: 217 20% 70%;
+  --accent: 200 85% 55%;
   --accent-foreground: 0 0% 100%;
-  --input: 220 30% 20%;
-  --ring: 24 95% 53%;
+  --input: 217 30% 20%;
+  --ring: 215 80% 55%;
 }
 
 @layer base {

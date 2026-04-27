@@ -72,7 +72,7 @@ export default function Campus() {
               <img src="/images/bus.png" alt="Transport Fleet" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
-              <div className="w-12 h-12 bg-yellow-500/10 text-yellow-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
                 <Bus className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold mb-3">Transport Fleet</h3>
