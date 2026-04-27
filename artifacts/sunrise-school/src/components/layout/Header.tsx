@@ -1,7 +1,8 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, Sun, BookOpen, GraduationCap, MapPin } from "lucide-react";
+import { Menu, X, BookOpen, GraduationCap, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import schoolLogo from "@assets/sunrise_logo.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -42,9 +43,11 @@ export default function Header() {
           
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary flex items-center justify-center text-white shrink-0 group-hover:scale-105 transition-transform">
-              <Sun className="w-6 h-6 md:w-7 md:h-7" />
-            </div>
+            <img
+              src={schoolLogo}
+              alt="Sunrise Senior Secondary School official crest"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain shrink-0 group-hover:scale-105 transition-transform"
+            />
             <div className="flex flex-col">
               <span className="font-bold text-lg md:text-xl leading-tight text-foreground">
                 Sunrise Senior Secondary School
