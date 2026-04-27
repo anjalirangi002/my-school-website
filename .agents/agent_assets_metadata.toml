@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "GlNr1Cu9VpLBZ-UC77eo1"
+uri = "file://artifacts/sunrise-school/public/images/hero.png"
+type = "image"
+title = "School Hero Image"
+
+[[generated]]
+id = "aUsuvvouYX9UnB4leA0-J"
+uri = "file://artifacts/sunrise-school/public/images/principal.png"
+type = "image"
+title = "Principal Portrait"
+
+[[generated]]
+id = "35t9Q5VlY6FupoTJmiJyQ"
+uri = "file://artifacts/sunrise-school/public/images/classroom.png"
+type = "image"
+title = "Classroom Scene"
+
+[[generated]]
+id = "I0l1EFMRMclUkQXykjeGd"
+uri = "file://artifacts/sunrise-school/public/images/science-lab.png"
+type = "image"
+title = "Science Lab"
+
+[[generated]]
+id = "4oW6ct7w1brbSnaFq2Yd7"
+uri = "file://artifacts/sunrise-school/public/images/library.png"
+type = "image"
+title = "Library Scene"
+
+[[generated]]
+id = "4M18XwiVciluSYixReayr"
+uri = "file://artifacts/sunrise-school/public/images/assembly.png"
+type = "image"
+title = "Morning Assembly"
+
+[[generated]]
+id = "pqUWYjAjzh_9z4VGQUbjN"
+uri = "file://artifacts/sunrise-school/public/images/sports.png"
+type = "image"
+title = "Sports Day"
+
+[[generated]]
+id = "1i0QUEj-UygK_sTkCWpyz"
+uri = "file://artifacts/sunrise-school/public/images/cultural.png"
+type = "image"
+title = "Cultural Festival"
+
+[[generated]]
+id = "VhSINDvq3Gb5tQcNcy4eP"
+uri = "file://artifacts/sunrise-school/public/images/bus.png"
+type = "image"
+title = "School Bus"
+
+[[generated]]
+id = "wWpD7RBpGaBm23wKcuDGb"
+uri = "file://artifacts/sunrise-school/public/images/playground.png"
+type = "image"
+title = "Playground Scene"

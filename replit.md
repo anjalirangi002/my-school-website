@@ -25,3 +25,7 @@ pnpm workspace monorepo using TypeScript. Each package manages its own dependenc
 - `pnpm --filter @workspace/api-server run dev` — run API server locally
 
 See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details.
+
+## Artifacts
+
+- **sunrise-school** (`artifacts/sunrise-school`) — React + Vite website for Sunrise Senior Secondary School (CBSE-affiliated, Vill. Mago Majri, Kaithal, Haryana). Frontend-only, multi-page (Home, About, Academics, Admissions, Campus, Co-curricular, Gallery, Contact). Sunrise-themed palette, framer-motion animations, lucide-react icons, wouter routing. Mounted at `/`.

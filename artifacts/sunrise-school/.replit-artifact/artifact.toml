@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Sunrise Senior Secondary School"
+version = "1.0.0"
+id = "artifacts/sunrise-school"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19735
+
+[services.development]
+run = "pnpm --filter @workspace/sunrise-school run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sunrise-school", "run", "build" ]
+publicDir = "artifacts/sunrise-school/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19735"
+BASE_PATH = "/"
