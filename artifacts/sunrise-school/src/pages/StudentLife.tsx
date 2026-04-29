@@ -25,6 +25,22 @@ export default function StudentLife() {
           </p>
         </div>
 
+        {/* NEW: Students in Classroom */}
+        <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
+          <div className="space-y-6">
+            <h2 className="text-3xl font-bold text-foreground">Interactive Learning</h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Our classrooms are designed to be dynamic spaces of inquiry and engagement. With limited batch sizes, we ensure every student receives personalized attention.
+            </p>
+            <p className="text-muted-foreground">
+              Teachers act as facilitators, encouraging students to ask questions, participate in discussions, and collaborate on group projects. Smart boards and audio-visual aids make learning an immersive experience.
+            </p>
+          </div>
+          <div className="relative rounded-3xl overflow-hidden shadow-lg h-[400px]">
+            <img src="/images/classroom.png" alt="Students in Classroom" className="w-full h-full object-cover" />
+          </div>
+        </div>
+
         {/* Sports & Physical Ed */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
           <div className="order-2 md:order-1 relative rounded-3xl overflow-hidden shadow-lg h-[400px]">
@@ -88,7 +104,7 @@ export default function StudentLife() {
 
         {/* Assembly & Excursions */}
         <div className="grid md:grid-cols-2 gap-8 mb-24">
-          <div className="bg-foreground text-white rounded-3xl overflow-hidden relative group">
+          <div className="bg-foreground text-white rounded-3xl overflow-hidden relative group shadow-sm">
             <div className="absolute inset-0 bg-black/50 z-10 group-hover:bg-black/40 transition-colors"></div>
             <img src="/images/assembly.png" alt="Morning Assembly" className="absolute inset-0 w-full h-full object-cover" />
             <div className="relative z-20 p-8 h-[350px] flex flex-col justify-end">
@@ -96,7 +112,7 @@ export default function StudentLife() {
               <p className="text-white/80">Starting the day with meditation, national news, thought of the day, and student-led presentations to build public speaking skills.</p>
             </div>
           </div>
-          <div className="bg-primary text-white rounded-3xl overflow-hidden relative group">
+          <div className="bg-primary text-white rounded-3xl overflow-hidden relative group shadow-sm">
             <div className="absolute inset-0 bg-black/30 z-10 group-hover:bg-black/20 transition-colors"></div>
             <img src="/images/bus.png" alt="School Trips" className="absolute inset-0 w-full h-full object-cover opacity-60" />
             <div className="relative z-20 p-8 h-[350px] flex flex-col justify-end">
@@ -108,7 +124,7 @@ export default function StudentLife() {
 
         {/* Student Achievements Gallery */}
         <div>
-          <h2 className="text-3xl font-bold text-center mb-12">Student Achievements & Life</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Campus Life Gallery</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
              <img src="/images/classroom.png" alt="Classroom learning" className="w-full h-64 object-cover rounded-2xl shadow-sm hover:scale-[1.02] transition-transform" />
              <img src="/images/library.png" alt="Library reading" className="w-full h-64 object-cover rounded-2xl shadow-sm hover:scale-[1.02] transition-transform" />

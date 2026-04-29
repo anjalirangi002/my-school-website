@@ -1,6 +1,6 @@
 import { Link } from "wouter";
-import { Flag, Heart, Award, CheckCircle, GraduationCap, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Flag, Heart, Award, CheckCircle, GraduationCap, Users, Trophy, Star, Medal, BookOpen, Clock } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
@@ -79,6 +79,42 @@ export default function About() {
           </div>
         </div>
 
+        {/* School Achievements */}
+        <div className="mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl font-bold text-foreground mb-4">School Achievements</h2>
+            <p className="text-lg text-muted-foreground">Milestones that define our commitment to excellence over the years.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { icon: Trophy, title: "100% Board Results", year: "5 Consecutive Years", desc: "Unmatched performance in CBSE Class 10 & 12 board examinations." },
+              { icon: Star, title: "Best CBSE School Award", year: "Kaithal District 2023", desc: "Recognized for outstanding academic infrastructure and methodology." },
+              { icon: Medal, title: "State-Level Sports Champions", year: "2024", desc: "Our athletes won gold in multiple state-level track and field events." },
+              { icon: BookOpen, title: "Inter-school Science Olympiad", year: "Winners", desc: "Secured top ranks in regional science and mathematics olympiads." },
+              { icon: Award, title: "Excellence in Cultural Events", year: "Regional Level", desc: "First prize in state-level group dance and drama competitions." },
+              { icon: Users, title: "1000+ Successful Alumni", year: "Global Network", desc: "Our former students excel in top universities and varied professions." }
+            ].map((achieve, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="bg-white p-6 rounded-2xl border border-border shadow-sm flex gap-4 hover:border-primary/50 transition-colors"
+              >
+                <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
+                  <achieve.icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-foreground">{achieve.title}</h4>
+                  <span className="text-xs font-bold text-primary uppercase tracking-wider block my-1">{achieve.year}</span>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{achieve.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         {/* Principal's Detailed Message */}
         <div className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
@@ -135,59 +171,35 @@ export default function About() {
           </div>
         </div>
 
-        {/* Affiliation & Streams */}
-        <div className="grid md:grid-cols-2 gap-12 items-start">
-          <div className="bg-primary/5 p-8 rounded-3xl border border-primary/10">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">Affiliation Details</h3>
-            <ul className="space-y-4 text-muted-foreground">
-               <li className="flex justify-between border-b border-primary/10 pb-2">
-                 <span className="font-semibold text-foreground">Board</span>
-                 <span>CBSE, New Delhi</span>
-               </li>
-               <li className="flex justify-between border-b border-primary/10 pb-2">
-                 <span className="font-semibold text-foreground">Affiliation No.</span>
-                 <span>531671</span>
-               </li>
-               <li className="flex justify-between border-b border-primary/10 pb-2">
-                 <span className="font-semibold text-foreground">School Code</span>
-                 <span>41650</span>
-               </li>
-               <li className="flex justify-between border-b border-primary/10 pb-2">
-                 <span className="font-semibold text-foreground">Type</span>
-                 <span>Co-educational, Private Unaided</span>
-               </li>
-               <li className="flex justify-between border-b border-primary/10 pb-2">
-                 <span className="font-semibold text-foreground">Classes</span>
-                 <span>Playway to Grade 12</span>
-               </li>
-               <li className="flex justify-between">
-                 <span className="font-semibold text-foreground">Medium</span>
-                 <span>English</span>
-               </li>
-            </ul>
-          </div>
-
-          <div>
-             <h3 className="text-2xl font-bold mb-6 text-foreground">Streams Offered (Class 11 & 12)</h3>
-             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-6 bg-white border border-border rounded-2xl flex items-center gap-4 hover:border-primary transition-colors">
-                  <div className="w-3 h-3 rounded-full bg-primary shrink-0"></div>
-                  <span className="font-bold text-lg">Medical</span>
-                </div>
-                <div className="p-6 bg-white border border-border rounded-2xl flex items-center gap-4 hover:border-primary transition-colors">
-                  <div className="w-3 h-3 rounded-full bg-primary shrink-0"></div>
-                  <span className="font-bold text-lg">Non-Medical</span>
-                </div>
-                <div className="p-6 bg-white border border-border rounded-2xl flex items-center gap-4 hover:border-secondary transition-colors">
-                  <div className="w-3 h-3 rounded-full bg-secondary shrink-0"></div>
-                  <span className="font-bold text-lg">Commerce</span>
-                </div>
-                <div className="p-6 bg-white border border-border rounded-2xl flex items-center gap-4 hover:border-secondary transition-colors">
-                  <div className="w-3 h-3 rounded-full bg-secondary shrink-0"></div>
-                  <span className="font-bold text-lg">Arts / Humanities</span>
-                </div>
-             </div>
-          </div>
+        {/* Affiliation */}
+        <div className="max-w-4xl mx-auto bg-primary/5 p-8 md:p-12 rounded-3xl border border-primary/10">
+          <h3 className="text-2xl md:text-3xl font-bold mb-8 text-foreground text-center">Affiliation Details</h3>
+          <ul className="grid sm:grid-cols-2 gap-6 text-muted-foreground">
+             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+               <span className="font-bold text-foreground">Board</span>
+               <span>CBSE, New Delhi</span>
+             </li>
+             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+               <span className="font-bold text-foreground">Affiliation No.</span>
+               <span>531671</span>
+             </li>
+             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+               <span className="font-bold text-foreground">School Code</span>
+               <span>41650</span>
+             </li>
+             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+               <span className="font-bold text-foreground">Type</span>
+               <span>Co-educational, Private Unaided</span>
+             </li>
+             <li className="flex flex-col gap-1 border-b sm:border-none border-primary/10 pb-4 sm:pb-0">
+               <span className="font-bold text-foreground">Classes</span>
+               <span>Playway to Grade 12</span>
+             </li>
+             <li className="flex flex-col gap-1">
+               <span className="font-bold text-foreground">Medium</span>
+               <span>English</span>
+             </li>
+          </ul>
         </div>
 
       </div>

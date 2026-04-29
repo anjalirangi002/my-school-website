@@ -53,7 +53,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-5 gap-12 items-start">
           
           <div className="md:col-span-2 space-y-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h2>
               <div className="space-y-6 text-muted-foreground">
                 <div className="flex gap-4">
@@ -115,7 +115,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Student Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Enter student name" {...field} />
+                            <Input placeholder="Enter student name" {...field} className="bg-muted/30" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -128,7 +128,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Parent/Guardian Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Enter parent name" {...field} />
+                            <Input placeholder="Enter parent name" {...field} className="bg-muted/30" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -145,7 +145,7 @@ export default function Contact() {
                           <FormLabel>Class for Admission</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger>
+                              <SelectTrigger className="bg-muted/30">
                                 <SelectValue placeholder="Select Class" />
                               </SelectTrigger>
                             </FormControl>
@@ -169,7 +169,7 @@ export default function Contact() {
                         <FormItem>
                           <FormLabel>Phone Number</FormLabel>
                           <FormControl>
-                            <Input type="tel" placeholder="Mobile number" {...field} />
+                            <Input type="tel" placeholder="Mobile number" {...field} className="bg-muted/30" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -184,13 +184,13 @@ export default function Contact() {
                       <FormItem>
                         <FormLabel>Message / Queries</FormLabel>
                         <FormControl>
-                          <Textarea placeholder="Any specific questions regarding admission?" rows={4} {...field} />
+                          <Textarea placeholder="Any specific questions regarding admission?" rows={4} {...field} className="bg-muted/30" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-white rounded-full">
+                  <Button type="submit" className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-white rounded-full mt-4">
                     Submit Inquiry
                   </Button>
                 </form>

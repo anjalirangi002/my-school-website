@@ -34,10 +34,10 @@ export default function Footer() {
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Quick Links</h3>
             <ul className="flex flex-col gap-3 text-white/80">
               <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/academic" className="hover:text-primary transition-colors">Academic</Link></li>
               <li><Link href="/student-life" className="hover:text-primary transition-colors">Student Life</Link></li>
-              <li><Link href="/result" className="hover:text-primary transition-colors">Result</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -93,7 +93,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50 text-center md:text-left">
           <p>© {currentYear} Sunrise Senior Secondary School. All rights reserved.</p>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center justify-center md:justify-end">
             <span>CBSE Affiliated • Est. 2010</span>
             <span className="hidden md:inline">|</span>
             <span>Managed by Sunrise Education Society</span>
