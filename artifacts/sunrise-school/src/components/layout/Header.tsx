@@ -1,17 +1,14 @@
 import { Link, useLocation } from "wouter";
-import { Menu, X, BookOpen, GraduationCap, MapPin } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import schoolLogo from "@assets/sunrise_logo.png";
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
-  { label: "About Us", href: "/about" },
-  { label: "Academics", href: "/academics" },
-  { label: "Admissions", href: "/admissions" },
-  { label: "Campus", href: "/campus" },
-  { label: "Co-curricular", href: "/co-curricular" },
-  { label: "Gallery", href: "/gallery" },
+  { label: "About", href: "/about" },
+  { label: "Student Life", href: "/student-life" },
+  { label: "Result", href: "/result" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -75,7 +72,7 @@ export default function Header() {
             ))}
             <div className="pl-4 ml-2 border-l border-border">
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm">
-                <Link href="/admissions">Apply Now</Link>
+                <Link href="/contact">Admission Open</Link>
               </Button>
             </div>
           </nav>
@@ -108,7 +105,7 @@ export default function Header() {
             </Link>
           ))}
           <Button asChild className="mt-4 w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-12">
-            <Link href="/admissions">Admissions Open — Apply Now</Link>
+            <Link href="/contact">Admission Open</Link>
           </Button>
         </div>
       )}

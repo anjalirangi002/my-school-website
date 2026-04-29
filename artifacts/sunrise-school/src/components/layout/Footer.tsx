@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { MapPin, Phone, Mail, Clock, Sun, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Sun } from "lucide-react";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -27,29 +27,17 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed">
               To provide quality education that balances academic excellence with character building and cultural values.
             </p>
-            <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white">
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-white">
-                <Youtube className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
           <div className="flex flex-col gap-6">
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Quick Links</h3>
             <ul className="flex flex-col gap-3 text-white/80">
-              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="/academics" className="hover:text-primary transition-colors">Academics</Link></li>
-              <li><Link href="/admissions" className="hover:text-primary transition-colors">Admissions</Link></li>
-              <li><Link href="/campus" className="hover:text-primary transition-colors">Campus & Facilities</Link></li>
-              <li><Link href="/gallery" className="hover:text-primary transition-colors">Photo Gallery</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
+              <li><Link href="/about" className="hover:text-primary transition-colors">About</Link></li>
+              <li><Link href="/student-life" className="hover:text-primary transition-colors">Student Life</Link></li>
+              <li><Link href="/result" className="hover:text-primary transition-colors">Result</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -82,17 +70,22 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Map Placeholder */}
+          {/* Working Hours */}
           <div className="flex flex-col gap-6">
-            <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Location</h3>
-            <div className="w-full h-40 bg-white/5 rounded-lg border border-white/10 overflow-hidden relative group cursor-pointer flex items-center justify-center">
-               <div className="absolute inset-0 bg-[url('https://api.maptiler.com/maps/streets-v2/static/76.3986,29.7904,13/400x300.png?key=get_your_own_OpIi9ZULNHzrESv6T2vL')] bg-cover bg-center opacity-50 grayscale mix-blend-luminosity transition-all group-hover:opacity-80 group-hover:grayscale-0 group-hover:mix-blend-normal"></div>
-               <div className="relative z-10 flex flex-col items-center gap-2">
-                 <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center animate-bounce shadow-lg">
-                   <MapPin className="w-5 h-5 text-white" />
-                 </div>
-                 <span className="bg-foreground/80 backdrop-blur-sm text-xs font-medium px-2 py-1 rounded text-white border border-white/10">View on Map</span>
-               </div>
+            <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Working Hours</h3>
+            <div className="w-full text-white/80 text-sm space-y-2">
+              <div className="flex justify-between border-b border-white/10 pb-2">
+                <span>Monday - Friday</span>
+                <span>08:00 AM - 03:00 PM</span>
+              </div>
+              <div className="flex justify-between border-b border-white/10 pb-2">
+                <span>Saturday</span>
+                <span>08:00 AM - 03:00 PM</span>
+              </div>
+              <div className="flex justify-between text-white/50">
+                <span>Sunday</span>
+                <span>Closed</span>
+              </div>
             </div>
           </div>
 
@@ -100,7 +93,11 @@ export default function Footer() {
 
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50 text-center md:text-left">
           <p>© {currentYear} Sunrise Senior Secondary School. All rights reserved.</p>
-          <p>Managed by Sunrise Education Society</p>
+          <div className="flex gap-4 items-center">
+            <span>CBSE Affiliated • Est. 2010</span>
+            <span className="hidden md:inline">|</span>
+            <span>Managed by Sunrise Education Society</span>
+          </div>
         </div>
       </div>
     </footer>

@@ -7,11 +7,8 @@ import Layout from "@/components/layout/Layout";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
-import Academics from "@/pages/Academics";
-import Admissions from "@/pages/Admissions";
-import Campus from "@/pages/Campus";
-import CoCurricular from "@/pages/CoCurricular";
-import Gallery from "@/pages/Gallery";
+import StudentLife from "@/pages/StudentLife";
+import Result from "@/pages/Result";
 import Contact from "@/pages/Contact";
 
 const queryClient = new QueryClient();
@@ -22,11 +19,8 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
-        <Route path="/academics" component={Academics} />
-        <Route path="/admissions" component={Admissions} />
-        <Route path="/campus" component={Campus} />
-        <Route path="/co-curricular" component={CoCurricular} />
-        <Route path="/gallery" component={Gallery} />
+        <Route path="/student-life" component={StudentLife} />
+        <Route path="/result" component={Result} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>
