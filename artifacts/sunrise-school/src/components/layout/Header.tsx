@@ -35,6 +35,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "About Us", href: "/about" },
   { label: "Academic", href: "/academic" },
   { label: "Student Life", href: "/student-life" },
+  { label: "Updates", href: "/updates" },
   { label: "Contact Us", href: "/contact" },
 ];
 
@@ -89,12 +90,14 @@ function BrandLogo() {
         alt="Sunrise Senior Secondary School official crest"
         className="w-11 h-11 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain shrink-0 group-hover:scale-105 transition-transform"
       />
-      <div className="flex flex-col min-w-0 leading-tight">
-        <span className="font-bold text-sm md:text-base lg:text-[15px] xl:text-base 2xl:text-lg text-foreground truncate">
-          Sunrise Senior Secondary School
+      <div className="hidden sm:flex flex-col min-w-0 leading-tight">
+        <span className="font-bold text-sm md:text-base lg:text-sm xl:text-[15px] 2xl:text-lg text-foreground truncate">
+          <span className="lg:hidden 2xl:inline">Sunrise Senior Secondary School</span>
+          <span className="hidden lg:inline 2xl:hidden">Sunrise Sr. Sec. School</span>
         </span>
         <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-xs font-medium text-muted-foreground uppercase tracking-wider truncate mt-0.5">
-          CBSE Affiliated • No. 531671 • Est. 2010
+          <span className="lg:hidden 2xl:inline">CBSE Affiliated • No. 531671 • Est. 2010</span>
+          <span className="hidden lg:inline 2xl:hidden">CBSE • No. 531671 • Est. 2010</span>
         </span>
       </div>
     </Link>
@@ -104,7 +107,7 @@ function BrandLogo() {
 /** Build the className for a desktop nav link based on its state. */
 function getDesktopLinkClasses(isActive: boolean, isContact: boolean): string {
   const base =
-    "px-3 xl:px-4 py-2 rounded-md text-sm xl:text-[15px] font-medium transition-all relative group whitespace-nowrap";
+    "px-2.5 lg:px-3 xl:px-4 py-2 rounded-md text-sm xl:text-[15px] font-medium transition-all relative group whitespace-nowrap";
 
   if (isActive) return `${base} text-primary bg-primary/10`;
   if (isContact) return `${base} text-primary bg-primary/5 hover:bg-primary/10`;
@@ -114,7 +117,7 @@ function getDesktopLinkClasses(isActive: boolean, isContact: boolean): string {
 /** Desktop navigation: 5 links + Admission Open CTA. */
 function DesktopNav({ currentPath }: { currentPath: string }) {
   return (
-    <nav className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0">
+    <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 flex-shrink-0">
       {NAV_LINKS.map((link) => {
         const isActive = currentPath === link.href;
         const isContact = link.href === CONTACT_HREF;

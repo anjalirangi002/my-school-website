@@ -9,6 +9,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Academic from "@/pages/Academic";
 import StudentLife from "@/pages/StudentLife";
+import Updates from "@/pages/Updates";
 import Contact from "@/pages/Contact";
 
 const queryClient = new QueryClient();
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/about" component={About} />
         <Route path="/academic" component={Academic} />
         <Route path="/student-life" component={StudentLife} />
+        <Route path="/updates" component={Updates} />
         <Route path="/contact" component={Contact} />
         <Route component={NotFound} />
       </Switch>

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Users, Building, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Bell, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { NOTICES as ALL_NOTICES } from "@/data/notices";
 
 const HERO_IMAGES = [
   { src: "/images/hero.png", alt: "Sunrise Senior Secondary School at sunset" },
@@ -11,6 +12,9 @@ const HERO_IMAGES = [
 ];
 
 const HERO_SLIDE_INTERVAL_MS = 5000;
+
+// Show only the latest 4 notices on the Home page; the full list lives on /updates.
+const NOTICES = ALL_NOTICES.slice(0, 4);
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -26,37 +30,6 @@ const staggerChildren = {
     }
   }
 };
-
-const NOTICES = [
-  {
-    badge: "ADMISSION",
-    date: "15 Oct 2024",
-    title: "Admissions Open for Academic Session 2025-26",
-    desc: "Registrations for Playway to Class 11 are now open. Limited seats available.",
-    color: "bg-primary text-white"
-  },
-  {
-    badge: "EXAM",
-    date: "05 Nov 2024",
-    title: "Class 10 & 12 Pre-Board Exams Schedule Released",
-    desc: "The datesheet for upcoming pre-boards is available on the student portal.",
-    color: "bg-sky-600 text-white"
-  },
-  {
-    badge: "EVENT",
-    date: "15 Dec 2024",
-    title: "Annual Sports Day — 15 December 2024",
-    desc: "Join us in cheering for our talented athletes at the school ground.",
-    color: "bg-[hsl(var(--primary))] text-white" // using primary
-  },
-  {
-    badge: "NOTICE",
-    date: "10 Jan 2025",
-    title: "Parent-Teacher Meeting — Saturday, 12 PM",
-    desc: "A mandatory PTM to discuss student progress and upcoming assessments.",
-    color: "bg-navy-700 text-white"
-  }
-];
 
 export default function Home() {
   const [heroIndex, setHeroIndex] = useState(0);
@@ -178,7 +151,7 @@ export default function Home() {
               <p className="text-lg text-muted-foreground">Stay informed with the latest announcements from our school.</p>
             </div>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white rounded-full">
-               <Link href="/contact">View All Notices</Link>
+               <Link href="/updates">View All Notices</Link>
             </Button>
           </div>
           
@@ -202,7 +175,7 @@ export default function Home() {
                   </span>
                   <h3 className="text-xl font-bold text-foreground">{notice.title}</h3>
                   <p className="text-sm text-muted-foreground line-clamp-2">{notice.desc}</p>
-                  <Link href="/contact" className="inline-flex items-center text-primary text-sm font-semibold hover:underline">
+                  <Link href="/updates" className="inline-flex items-center text-primary text-sm font-semibold hover:underline">
                     Read More <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </div>
