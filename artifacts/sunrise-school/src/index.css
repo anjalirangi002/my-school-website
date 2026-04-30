@@ -89,18 +89,18 @@
   --sidebar: 210 60% 97%;
   --sidebar-foreground: 217 50% 15%;
   --sidebar-border: 215 30% 90%;
-  --sidebar-primary: 215 80% 42%;
+  --sidebar-primary: 215 88% 28%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 200 85% 55%;
   --sidebar-accent-foreground: 0 0% 100%;
-  --sidebar-ring: 215 80% 42%;
+  --sidebar-ring: 215 88% 28%;
 
   --popover: 0 0% 100%;
   --popover-foreground: 217 50% 15%;
   --popover-border: 215 30% 90%;
 
-  /* Primary: School Building Blue (deep) */
-  --primary: 215 80% 42%;
+  /* Primary: School Building Blue (deep navy) */
+  --primary: 215 88% 28%;
   --primary-foreground: 0 0% 100%;
 
   /* Secondary: Bright Sky Blue (used as accent text on dark hero) */
@@ -119,9 +119,9 @@
   --destructive-foreground: 0 0% 100%;
 
   --input: 215 30% 90%;
-  --ring: 215 80% 42%;
+  --ring: 215 88% 28%;
 
-  --chart-1: 215 80% 42%;
+  --chart-1: 215 88% 28%;
   --chart-2: 200 85% 55%;
   --chart-3: 195 70% 40%;
   --chart-4: 220 60% 60%;
@@ -141,7 +141,7 @@
   --card: 217 50% 12%;
   --card-foreground: 0 0% 98%;
   --card-border: 217 30% 20%;
-  --primary: 215 80% 55%;
+  --primary: 215 85% 48%;
   --primary-foreground: 0 0% 100%;
   --secondary: 200 95% 65%;
   --secondary-foreground: 217 50% 15%;
@@ -150,7 +150,7 @@
   --accent: 200 85% 55%;
   --accent-foreground: 0 0% 100%;
   --input: 217 30% 20%;
-  --ring: 215 80% 55%;
+  --ring: 215 85% 48%;
 }
 
 @layer base {

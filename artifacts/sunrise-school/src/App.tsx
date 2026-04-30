@@ -8,6 +8,7 @@ import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Academic from "@/pages/Academic";
+import Faculty from "@/pages/Faculty";
 import StudentLife from "@/pages/StudentLife";
 import Updates from "@/pages/Updates";
 import Contact from "@/pages/Contact";
@@ -21,6 +22,7 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/academic" component={Academic} />
+        <Route path="/faculty" component={Faculty} />
         <Route path="/student-life" component={StudentLife} />
         <Route path="/updates" component={Updates} />
         <Route path="/contact" component={Contact} />

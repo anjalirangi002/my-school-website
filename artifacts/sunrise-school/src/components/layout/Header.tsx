@@ -34,6 +34,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Academic", href: "/academic" },
+  { label: "Faculty", href: "/faculty" },
   { label: "Student Life", href: "/student-life" },
   { label: "Updates", href: "/updates" },
   { label: "Contact Us", href: "/contact" },
