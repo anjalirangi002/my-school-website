@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Calendar, Bell, Filter } from "lucide-react";
@@ -22,6 +22,21 @@ export default function Updates() {
     if (activeFilter === "ALL") return NOTICES;
     return NOTICES.filter((n) => n.badge === activeFilter);
   }, [activeFilter]);
+
+  // If user clicked "Read More" on a Home page notice card, scroll that notice into view.
+  useEffect(() => {
+    const targetId = sessionStorage.getItem("scrollToNotice");
+    if (!targetId) return;
+    sessionStorage.removeItem("scrollToNotice");
+    const timer = setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (!el) return;
+      const headerOffset = 140; // sticky header (~72px) + sticky filter bar (~68px)
+      const top = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({ top, behavior: "auto" });
+    }, 120);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="flex flex-col">
@@ -85,6 +100,7 @@ export default function Updates() {
               {filteredNotices.map((notice, idx) => (
                 <motion.article
                   key={notice.id}
+                  id={notice.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

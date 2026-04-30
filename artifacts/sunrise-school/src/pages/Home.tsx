@@ -175,7 +175,11 @@ export default function Home() {
                   </span>
                   <h3 className="text-xl font-bold text-foreground">{notice.title}</h3>
                   <p className="text-sm text-muted-foreground line-clamp-2">{notice.desc}</p>
-                  <Link href="/updates" className="inline-flex items-center text-primary text-sm font-semibold hover:underline">
+                  <Link
+                    href="/updates"
+                    onClick={() => sessionStorage.setItem("scrollToNotice", notice.id)}
+                    className="inline-flex items-center text-primary text-sm font-semibold hover:underline"
+                  >
                     Read More <ArrowRight className="w-4 h-4 ml-1" />
                   </Link>
                 </div>
