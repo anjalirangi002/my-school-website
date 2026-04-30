@@ -151,7 +151,7 @@ export default function Home() {
               <p className="text-lg text-muted-foreground">Stay informed with the latest announcements from our school.</p>
             </div>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white rounded-full">
-               <Link href="/updates">View All Notices</Link>
+               <Link href="/updates" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "auto" })}>View All Notices</Link>
             </Button>
           </div>
           
