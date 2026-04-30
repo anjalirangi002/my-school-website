@@ -1,17 +1,13 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Users, Building, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Bell, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NOTICES as ALL_NOTICES } from "@/data/notices";
 
-const HERO_IMAGES = [
-  { src: "/images/hero.png", alt: "Sunrise Senior Secondary School at sunset" },
-  { src: "/images/hero-2.png", alt: "Sunrise Senior Secondary School golden hour view" },
-  { src: "/images/campus-day.png", alt: "Sunrise Senior Secondary School daytime view" },
-];
-
-const HERO_SLIDE_INTERVAL_MS = 5000;
+const HERO_IMAGE = {
+  src: "/images/hero-main.png",
+  alt: "Sunrise Senior Secondary School campus view at sunset",
+};
 
 // Show only the latest 4 notices on the Home page; the full list lives on /updates.
 const NOTICES = ALL_NOTICES.slice(0, 4);
@@ -32,49 +28,19 @@ const staggerChildren = {
 };
 
 export default function Home() {
-  const [heroIndex, setHeroIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, HERO_SLIDE_INTERVAL_MS);
-    return () => clearInterval(timer);
-  }, []);
-
   return (
     <div className="flex flex-col min-h-screen">
-      {/* 1. Hero Section — auto-rotating photo slideshow */}
+      {/* 1. Hero Section — single static photo */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black/40">
         <div className="absolute inset-0 z-0">
-          <AnimatePresence mode="sync">
-            <motion.img
-              key={HERO_IMAGES[heroIndex].src}
-              src={HERO_IMAGES[heroIndex].src}
-              alt={HERO_IMAGES[heroIndex].alt}
-              className="absolute inset-0 w-full h-full object-cover"
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ opacity: { duration: 1.2 }, scale: { duration: 6, ease: "easeOut" } }}
-            />
-          </AnimatePresence>
+          <img
+            src={HERO_IMAGE.src}
+            alt={HERO_IMAGE.alt}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
         </div>
 
-        {/* Slide indicator dots */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {HERO_IMAGES.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setHeroIndex(i)}
-              aria-label={`Show slide ${i + 1}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                i === heroIndex ? "w-8 bg-white" : "w-2 bg-white/50 hover:bg-white/80"
-              }`}
-            />
-          ))}
-        </div>
-        
         <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-center text-white">
           <motion.div 
             initial="hidden"
