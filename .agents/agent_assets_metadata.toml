@@ -60,3 +60,39 @@ id = "wWpD7RBpGaBm23wKcuDGb"
 uri = "file://artifacts/sunrise-school/public/images/playground.png"
 type = "image"
 title = "Playground Scene"
+
+[[generated]]
+id = "CZbH_2GlIli6PXgllOuhW"
+uri = "file://artifacts/sunrise-school/public/images/hero-about.png"
+type = "image"
+title = "school campus hero"
+
+[[generated]]
+id = "D0NheJPOxCNcQa4m5FhZL"
+uri = "file://artifacts/sunrise-school/public/images/hero-academic.png"
+type = "image"
+title = "academic classroom hero"
+
+[[generated]]
+id = "PlJjwK3OYBjNOsZMNKSiD"
+uri = "file://artifacts/sunrise-school/public/images/hero-student-life.png"
+type = "image"
+title = "student life cultural hero"
+
+[[generated]]
+id = "dQisYNFZPgrw_g54KWWSU"
+uri = "file://artifacts/sunrise-school/public/images/hero-contact.png"
+type = "image"
+title = "school entrance contact hero"
+
+[[generated]]
+id = "gnvlbZlXf7Dwct93cDjFr"
+uri = "file://artifacts/sunrise-school/public/images/lab-students.png"
+type = "image"
+title = "science lab students"
+
+[[generated]]
+id = "OSj-d8HcBCHLNzeJ8W64R"
+uri = "file://artifacts/sunrise-school/public/images/library-students.png"
+type = "image"
+title = "library students reading"

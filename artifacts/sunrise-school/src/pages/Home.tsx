@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { ArrowRight, BookOpen, Users, Building, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Bell, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NOTICES as ALL_NOTICES } from "@/data/notices";
+import TestimonialsMarquee from "@/components/TestimonialsMarquee";
 
 const HERO_IMAGE = {
   src: "/images/hero-main.png",
@@ -282,62 +283,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 9. What Parents Say About Us */}
-      <section className="py-24 bg-muted/30">
+      {/* 9. What Parents Say About Us — auto-scrolling marquee */}
+      <section className="py-24 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Parents Say</h2>
-            <p className="text-lg text-muted-foreground">Hear from our community about their experience at Sunrise.</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-             {[
-               {
-                 name: "Sunita Devi",
-                 relation: "Mother of Class 8 student",
-                 quote: "The teachers at Sunrise are incredibly supportive. My child's confidence has grown immensely, and the discipline they instil is exactly what we wanted.",
-                 initials: "SD"
-               },
-               {
-                 name: "Ramesh Kumar",
-                 relation: "Father of Class 12 student",
-                 quote: "I am deeply impressed by the 100% board results. The school's focus on academics, coupled with safe transport facilities, gives us complete peace of mind.",
-                 initials: "RK"
-               },
-               {
-                 name: "Anita Sharma",
-                 relation: "Mother of Class 5 student",
-                 quote: "The smart classrooms and engaging activities keep my child excited about going to school every day. It truly feels like a second home.",
-                 initials: "AS"
-               }
-             ].map((review, idx) => (
-               <motion.div 
-                 key={idx}
-                 initial={{ opacity: 0, y: 20 }}
-                 whileInView={{ opacity: 1, y: 0 }}
-                 viewport={{ once: true }}
-                 transition={{ delay: idx * 0.15 }}
-                 className="bg-white p-8 rounded-2xl border border-border shadow-sm flex flex-col gap-6"
-               >
-                 <div className="flex gap-1">
-                   {[1,2,3,4,5].map(star => <Star key={star} className="w-5 h-5 fill-primary text-primary" />)}
-                 </div>
-                 <blockquote className="flex-1 text-muted-foreground leading-relaxed italic relative">
-                    "{review.quote}"
-                 </blockquote>
-                 <div className="flex items-center gap-4 mt-auto pt-6 border-t border-border/50">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-lg">
-                      {review.initials}
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-foreground text-sm">{review.name}</h4>
-                      <p className="text-xs text-muted-foreground">{review.relation}</p>
-                    </div>
-                 </div>
-               </motion.div>
-             ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4">
+              <Star className="w-4 h-4 fill-primary" />
+              Trusted by Parents
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Parents Say About Us</h2>
+            <p className="text-lg text-muted-foreground">Real voices from our Sunrise family — sharing why they trust us with their children's future.</p>
+          </motion.div>
         </div>
+        <TestimonialsMarquee />
       </section>
 
       {/* 10. Final CTA */}

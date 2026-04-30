@@ -1,38 +1,19 @@
 import { motion } from "framer-motion";
 import { BookOpen, TrendingUp, Atom, Calculator, Stethoscope, HeartPulse, BarChart3, Landmark, CheckCircle, GraduationCap, MonitorPlay, FlaskConical, Target, Trophy } from "lucide-react";
+import PageHero from "@/components/layout/PageHero";
 
 export default function Academic() {
   return (
-    <div className="flex flex-col min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        
-        {/* Hero Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6 text-sm font-bold tracking-wide uppercase"
-          >
-            <BookOpen className="w-4 h-4" />
-            CBSE Curriculum
-          </motion.div>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight"
-          >
-            Academic Excellence
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-muted-foreground leading-relaxed"
-          >
-            At Sunrise, we focus on a holistic learning approach based on the CBSE pattern, preparing students for future success through critical thinking, digital learning, and comprehensive evaluation.
-          </motion.p>
-        </div>
+    <div className="flex flex-col min-h-screen bg-background page-enter">
+      <PageHero
+        image="/images/hero-academic.png"
+        alt="Smart classroom with students learning at Sunrise School"
+        eyebrow="CBSE Curriculum • NCERT Pattern"
+        title="Academic Excellence"
+        subtitle="A holistic CBSE learning approach — critical thinking, digital classrooms, advanced labs and comprehensive evaluation that prepares students for future success."
+      />
+
+      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
 
         {/* Education Structure Timeline */}
         <div className="mb-24">
@@ -214,6 +195,44 @@ export default function Academic() {
               </div>
             </motion.div>
           </div>
+        </div>
+
+        {/* Inline image showcase — labs & library */}
+        <div className="grid sm:grid-cols-2 gap-6 mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group"
+          >
+            <img src="/images/lab-students.png" alt="Students in science laboratory" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2">
+                <FlaskConical className="w-4 h-4" /> Advanced Labs
+              </span>
+              <h4 className="text-2xl font-bold">Hands-on Science Learning</h4>
+              <p className="text-sm text-white/85 mt-1">Modern apparatus, safe practice and curiosity-driven experiments.</p>
+            </div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group"
+          >
+            <img src="/images/library-students.png" alt="Students reading in school library" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+              <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2">
+                <BookOpen className="w-4 h-4" /> Rich Library
+              </span>
+              <h4 className="text-2xl font-bold">A Habit of Reading & Research</h4>
+              <p className="text-sm text-white/85 mt-1">Wide collection of reference, literature and digital resources.</p>
+            </div>
+          </motion.div>
         </div>
 
         {/* Board Result Excellence & Smart Learning */}

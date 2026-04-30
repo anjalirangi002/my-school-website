@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import PageHero from "@/components/layout/PageHero";
 
 const inquirySchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -41,14 +42,16 @@ export default function Contact() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Contact & Admissions</h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Reach out to us for admission queries, campus visits, or any other information. We are here to help you make the right choice for your child.
-          </p>
-        </div>
+    <div className="flex flex-col min-h-screen bg-background page-enter">
+      <PageHero
+        image="/images/hero-contact.png"
+        alt="Sunrise School entrance gate and campus building"
+        eyebrow="Admission Open • Session 2025-26"
+        title="Contact & Admissions"
+        subtitle="Reach out for admission queries, campus visits or any information — we're here to help you make the right choice for your child."
+      />
+
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl pt-16 pb-16">
         
         <div className="grid md:grid-cols-5 gap-12 items-start">
           

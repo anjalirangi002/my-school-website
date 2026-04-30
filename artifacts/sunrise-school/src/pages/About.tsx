@@ -1,19 +1,20 @@
 import { Link } from "wouter";
 import { Flag, Heart, Award, CheckCircle, GraduationCap, Users, Trophy, Star, Medal, BookOpen, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import PageHero from "@/components/layout/PageHero";
 
 export default function About() {
   return (
-    <div className="flex flex-col min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">About Us</h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Founded in 2010 by Sunrise Education Society in Vill. Mago Majri, Kaithal, we are dedicated to academic rigor and moral integrity.
-          </p>
-        </div>
+    <div className="flex flex-col min-h-screen bg-background page-enter">
+      <PageHero
+        image="/images/hero-about.png"
+        alt="Sunrise Senior Secondary School campus with students"
+        eyebrow="Established 2010 • CBSE Affiliated"
+        title="About Sunrise School"
+        subtitle="A legacy of academic rigor, character building and cultural values — nurturing young minds in Mago Majri, Kaithal since 2010."
+      />
+
+      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
 
         {/* Mission, Vision, Core Values */}
         <div className="grid md:grid-cols-3 gap-8 mb-24">

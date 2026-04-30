@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Music, Palette, Trophy, Users, Monitor, BookOpen, Globe, MessageSquare } from "lucide-react";
+import PageHero from "@/components/layout/PageHero";
 
 export default function StudentLife() {
   const clubs = [
@@ -14,16 +15,16 @@ export default function StudentLife() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen pt-24 pb-16 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">Student Life at Sunrise</h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            Education extends beyond the four walls of a classroom. Our vibrant campus life ensures every student finds their passion, builds confidence, and creates lifelong memories.
-          </p>
-        </div>
+    <div className="flex flex-col min-h-screen bg-background page-enter">
+      <PageHero
+        image="/images/hero-student-life.png"
+        alt="Sunrise students performing at a cultural event"
+        eyebrow="Beyond the Classroom"
+        title="Student Life at Sunrise"
+        subtitle="A vibrant campus where every student finds their passion — sports, culture, science, art and lifelong friendships."
+      />
+
+      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
 
         {/* NEW: Students in Classroom */}
         <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
