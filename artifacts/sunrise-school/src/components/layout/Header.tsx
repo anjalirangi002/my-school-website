@@ -108,17 +108,24 @@ function BrandLogo() {
 /** Build the className for a desktop nav link based on its state. */
 function getDesktopLinkClasses(isActive: boolean, isContact: boolean): string {
   const base =
-    "px-2.5 lg:px-3 xl:px-4 py-2 rounded-md text-sm xl:text-[15px] font-medium transition-all relative group whitespace-nowrap";
+    "px-3 lg:px-3.5 xl:px-4 py-2 rounded-lg text-sm xl:text-[15px] font-medium transition-all duration-200 relative group whitespace-nowrap";
+
+  if (isContact) {
+    const contactBase = `${base} font-semibold border tracking-wide`;
+    if (isActive) {
+      return `${contactBase} text-primary-foreground bg-primary border-primary shadow-sm`;
+    }
+    return `${contactBase} text-primary bg-primary/5 border-primary/30 hover:bg-primary hover:text-primary-foreground hover:border-primary hover:shadow-sm`;
+  }
 
   if (isActive) return `${base} text-primary bg-primary/10`;
-  if (isContact) return `${base} text-primary bg-primary/5 hover:bg-primary/10`;
   return `${base} text-foreground/80 hover:text-primary hover:bg-primary/5`;
 }
 
-/** Desktop navigation: 5 links + Admission Open CTA. */
+/** Desktop navigation: nav links + Admission Open CTA. */
 function DesktopNav({ currentPath }: { currentPath: string }) {
   return (
-    <nav className="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3 flex-shrink-0">
+    <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 flex-shrink-0">
       {NAV_LINKS.map((link) => {
         const isActive = currentPath === link.href;
         const isContact = link.href === CONTACT_HREF;
@@ -288,7 +295,7 @@ export default function Header() {
     <>
       <header className={headerClass}>
         <div className="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-10">
-          <div className="flex items-center justify-between gap-6 lg:gap-12 xl:gap-20">
+          <div className="flex items-center justify-between gap-6 lg:gap-8 xl:gap-12 2xl:gap-16">
             <BrandLogo />
             <DesktopNav currentPath={location} />
             <MobileToggleButton
