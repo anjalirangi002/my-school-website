@@ -47,28 +47,28 @@ export default function Header() {
           isScrolled ? "bg-white/95 backdrop-blur-md shadow-lg border-border py-2" : "bg-white py-3"
         }`}
       >
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex items-center justify-between gap-4 lg:gap-8 xl:gap-12">
+        <div className="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-10">
+          <div className="flex items-center justify-between gap-6 lg:gap-12 xl:gap-20">
 
-            {/* Logo block */}
-            <Link href="/" className="flex items-center gap-3 group min-w-0 flex-shrink">
+            {/* Logo block — tightly grouped on the extreme left */}
+            <Link href="/" className="flex items-center gap-3 group min-w-0 flex-shrink-0 lg:flex-shrink">
               <img
                 src={schoolLogo}
                 alt="Sunrise Senior Secondary School official crest"
-                className="w-11 h-11 md:w-12 md:h-12 object-contain shrink-0 group-hover:scale-105 transition-transform"
+                className="w-11 h-11 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain shrink-0 group-hover:scale-105 transition-transform"
               />
-              <div className="flex flex-col min-w-0">
-                <span className="font-bold text-sm md:text-base lg:text-[15px] xl:text-base 2xl:text-lg leading-tight text-foreground truncate">
+              <div className="flex flex-col min-w-0 leading-tight">
+                <span className="font-bold text-sm md:text-base lg:text-[15px] xl:text-base 2xl:text-lg text-foreground truncate">
                   Sunrise Senior Secondary School
                 </span>
-                <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-xs font-medium text-muted-foreground uppercase tracking-wider truncate">
+                <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-xs font-medium text-muted-foreground uppercase tracking-wider truncate mt-0.5">
                   CBSE Affiliated • No. 531671 • Est. 2010
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1 xl:gap-2 flex-shrink-0">
+            {/* Desktop Nav — right aligned, with comfortable breathing room between links */}
+            <nav className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 flex-shrink-0">
               {NAV_LINKS.map((link) => {
                 const isActive = location === link.href;
                 const isContact = link.href === "/contact";
@@ -77,7 +77,7 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all relative group whitespace-nowrap ${
+                    className={`px-3 xl:px-4 py-2 rounded-md text-sm xl:text-[15px] font-medium transition-all relative group whitespace-nowrap ${
                       isActive
                         ? "text-primary bg-primary/10"
                         : isContact
@@ -87,13 +87,13 @@ export default function Header() {
                   >
                     {link.label}
                     {!isActive && !isContact && (
-                      <span className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary -translate-x-1/2 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                      <span className="absolute bottom-1 left-1/2 w-0 h-0.5 bg-primary -translate-x-1/2 transition-all duration-300 group-hover:w-1/2 rounded-full"></span>
                     )}
                   </Link>
                 );
               })}
-              <div className="pl-3 ml-2 border-l border-border">
-                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm whitespace-nowrap">
+              <div className="pl-4 xl:pl-5 ml-2 xl:ml-3 border-l border-border">
+                <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm whitespace-nowrap px-5">
                   <Link href="/contact">Admission Open</Link>
                 </Button>
               </div>
