@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Users, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
+import schoolLogo from "@assets/sunrise_logo.png";
 import { Button } from "@/components/ui/button";
 import { NOTICES as ALL_NOTICES } from "@/data/notices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
@@ -362,9 +363,11 @@ export default function Home() {
                </p>
                <div className="mt-4 space-y-4">
                  <div className="flex items-start gap-3">
-                   <div className="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
-                     <Sun className="w-5 h-5" />
-                   </div>
+                   <img
+                     src={schoolLogo}
+                     alt="Sunrise Senior Secondary School logo"
+                     className="w-10 h-10 object-contain shrink-0"
+                   />
                    <div>
                      <h4 className="font-bold text-sm">Address</h4>
                      <p className="text-sm text-muted-foreground mt-1">Village Mago Majri (Mago Manas), Khanouri Road, Near Kaithal, Haryana 136027</p>

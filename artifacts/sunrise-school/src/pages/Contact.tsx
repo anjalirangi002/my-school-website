@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import schoolLogo from "@assets/sunrise_logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -68,7 +69,7 @@ export default function Contact() {
               <h2 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h2>
               <div className="space-y-6 text-muted-foreground">
                 <div className="flex gap-4">
-                  <MapPin className="w-6 h-6 text-primary shrink-0" />
+                  <img src={schoolLogo} alt="Sunrise Senior Secondary School logo" className="w-8 h-8 object-contain shrink-0" />
                   <div>
                     <h4 className="font-bold text-foreground text-sm mb-1">Address</h4>
                     <p>Village Mago Majri (Mago Manas), Khanouri Road, Kaithal, Haryana – 136027</p>
