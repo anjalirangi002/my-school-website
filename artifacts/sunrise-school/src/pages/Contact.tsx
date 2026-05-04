@@ -49,7 +49,7 @@ export default function Contact() {
       <PageHero
         image="/images/hero-contact.png"
         alt="Sunrise School entrance gate and campus building"
-        eyebrow="Admission Open • Session 2025-26"
+        eyebrow="Admission Open • Session 2026-27"
         title="Contact & Admissions"
         subtitle="Reach out for admission queries, campus visits or any information — we're here to help you make the right choice for your child."
       />

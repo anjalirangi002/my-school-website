@@ -20,7 +20,7 @@ export const NOTICES: Notice[] = [
     id: "admission-2025-26",
     badge: "ADMISSION",
     date: "15 Oct 2024",
-    title: "Admissions Open for Academic Session 2025-26",
+    title: "Admissions Open for Academic Session 2026-27",
     desc: "Registrations for Playway to Class 11 are now open. Limited seats available.",
     detail:
       "Sunrise Senior Secondary School invites applications for the academic session 2025-26 from Playway through Class 11 (all four streams — Medical, Non-Medical, Commerce and Arts). Application forms are available at the school office between 8:00 AM and 3:00 PM, Monday to Saturday. Required documents: birth certificate, transfer certificate (for transfer cases), report card of last class passed, Aadhaar copy, and four recent passport-size photographs.",

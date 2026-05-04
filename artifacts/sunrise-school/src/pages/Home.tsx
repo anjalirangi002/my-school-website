@@ -79,7 +79,7 @@ export default function Home() {
       <div className="bg-foreground text-white py-4 shadow-inner relative z-30">
         <div className="container mx-auto px-4">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
-            <span className="font-bold text-lg md:text-xl tracking-wide">Admission Open for Academic Session 2025-26</span>
+            <span className="font-bold text-lg md:text-xl tracking-wide">Admission Open for Academic Session 2026-27</span>
             <Button asChild size="sm" className="bg-primary hover:bg-primary/90 text-white rounded-full px-6">
               <Link href="/contact">Inquire Now</Link>
             </Button>
