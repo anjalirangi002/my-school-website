@@ -199,9 +199,6 @@ export default function Faculty() {
                   transition={{ duration: 0.4 }}
                   className="flex flex-col items-center gap-3 mt-12"
                 >
-                  <p className="text-sm text-muted-foreground">
-                    Showing {visibleTeachers.length} of {filteredTeachers.length} faculty members
-                  </p>
                   <Button
                     onClick={() => setShowAll(true)}
                     className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 h-12 font-semibold text-base shadow-sm"
