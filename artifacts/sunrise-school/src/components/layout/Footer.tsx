@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { MapPin, Phone, Mail, Clock, Sun } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { fadeUp, stagger, inView } from "@/lib/animations";
+import schoolLogo from "@assets/sunrise_logo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -19,9 +20,11 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
-                <Sun className="w-6 h-6" />
-              </div>
+              <img
+                src={schoolLogo}
+                alt="Sunrise Senior Secondary School logo"
+                className="w-12 h-12 object-contain shrink-0"
+              />
               <div className="flex flex-col">
                 <span className="font-bold text-lg leading-tight text-white">
                   Sunrise Senior Secondary School

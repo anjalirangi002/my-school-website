@@ -144,14 +144,6 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
         );
       })}
 
-      <div className="pl-4 xl:pl-5 ml-2 xl:ml-3 border-l border-border">
-        <Button
-          asChild
-          className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-sm whitespace-nowrap px-5"
-        >
-          <Link href={CONTACT_HREF}>Admission Open</Link>
-        </Button>
-      </div>
     </nav>
   );
 }
@@ -260,15 +252,9 @@ function MobileDrawer({
         </ul>
       </nav>
 
-      {/* Drawer bottom: Admission Open CTA + CBSE badge */}
+      {/* Drawer bottom: CBSE badge */}
       <div className="p-4 border-t border-border bg-muted/20 flex-shrink-0">
-        <Button
-          asChild
-          className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold h-12 text-base"
-        >
-          <Link href={CONTACT_HREF}>Admission Open</Link>
-        </Button>
-        <p className="text-center text-xs text-muted-foreground mt-3">
+        <p className="text-center text-xs text-muted-foreground">
           CBSE Affiliated • No. 531671
         </p>
       </div>

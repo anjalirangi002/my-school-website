@@ -223,7 +223,7 @@ export default function Contact() {
           className="mt-16 rounded-3xl overflow-hidden shadow-sm border border-border h-[400px]"
         >
           <iframe
-            src="https://www.google.com/maps?q=29.8175491,76.3477644&output=embed"
+            src="https://www.google.com/maps?q=Sunrise+Senior+Secondary+School,+Mago+Majri,+Kaithal,+Haryana&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
