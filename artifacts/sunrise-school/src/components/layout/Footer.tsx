@@ -1,5 +1,7 @@
+import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { MapPin, Phone, Mail, Clock, Sun } from "lucide-react";
+import { fadeUp, stagger, inView } from "@/lib/animations";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -7,10 +9,15 @@ export default function Footer() {
   return (
     <footer className="bg-foreground text-white border-t-4 border-primary">
       <div className="container mx-auto px-4 md:px-6 pt-16 pb-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={stagger}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8"
+        >
           {/* Brand */}
-          <div className="flex flex-col gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white shrink-0">
                 <Sun className="w-6 h-6" />
@@ -27,53 +34,66 @@ export default function Footer() {
             <p className="text-white/70 text-sm leading-relaxed">
               To provide quality education that balances academic excellence with character building and cultural values.
             </p>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div className="flex flex-col gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Quick Links</h3>
             <ul className="flex flex-col gap-3 text-white/80">
-              <li><Link href="/" className="hover:text-primary transition-colors">Home</Link></li>
-              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
-              <li><Link href="/academic" className="hover:text-primary transition-colors">Academic</Link></li>
-              <li><Link href="/faculty" className="hover:text-primary transition-colors">Faculty</Link></li>
-              <li><Link href="/student-life" className="hover:text-primary transition-colors">Student Life</Link></li>
-              <li><Link href="/updates" className="hover:text-primary transition-colors">Updates</Link></li>
-              <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              {[
+                { label: "Home", href: "/" },
+                { label: "About Us", href: "/about" },
+                { label: "Academic", href: "/academic" },
+                { label: "Faculty", href: "/faculty" },
+                { label: "Student Life", href: "/student-life" },
+                { label: "Updates", href: "/updates" },
+                { label: "Contact Us", href: "/contact" },
+              ].map(({ label, href }) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="hover:text-primary transition-colors duration-200 hover:pl-1 inline-block"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact Info */}
-          <div className="flex flex-col gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Contact Us</h3>
             <ul className="flex flex-col gap-4 text-white/80 text-sm">
-              <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 group">
+                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                 <span>Vill. Mago Majri (Mago Manas), Khanouri Road, Near Kaithal, Haryana 136027</span>
               </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary shrink-0" />
+              <li className="flex items-center gap-3 group">
+                <Phone className="w-5 h-5 text-primary shrink-0 group-hover:scale-110 transition-transform duration-200" />
                 <div className="flex flex-col">
-                  <span>+91-9255528310</span>
-                  <span>+91-8397877909</span>
+                  <a href="tel:+919255528310" className="hover:text-primary transition-colors">+91-9255528310</a>
+                  <a href="tel:+918397877909" className="hover:text-primary transition-colors">+91-8397877909</a>
                 </div>
               </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span>sunrisesr.secschool@yahoo.com</span>
+              <li className="flex items-center gap-3 group">
+                <Mail className="w-5 h-5 text-primary shrink-0 group-hover:scale-110 transition-transform duration-200" />
+                <a href="mailto:sunrisesr.secschool@yahoo.com" className="hover:text-primary transition-colors break-all">
+                  sunrisesr.secschool@yahoo.com
+                </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3 group">
+                <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-200" />
                 <div className="flex flex-col">
                   <span>08:00 AM – 03:00 PM</span>
                   <span className="text-white/60 text-xs">Monday – Saturday</span>
                 </div>
               </li>
             </ul>
-          </div>
+          </motion.div>
 
           {/* Working Hours */}
-          <div className="flex flex-col gap-6">
+          <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Working Hours</h3>
             <div className="w-full text-white/80 text-sm space-y-2">
               <div className="flex justify-between border-b border-white/10 pb-2">
@@ -89,18 +109,23 @@ export default function Footer() {
                 <span>Closed</span>
               </div>
             </div>
-          </div>
+          </motion.div>
+        </motion.div>
 
-        </div>
-
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50 text-center md:text-left">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={inView}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-white/50 text-center md:text-left"
+        >
           <p>© {currentYear} Sunrise Senior Secondary School. All rights reserved.</p>
           <div className="flex gap-4 items-center justify-center md:justify-end">
             <span>CBSE Affiliated • Est. 2010</span>
             <span className="hidden md:inline">|</span>
             <span>Managed by Sunrise Education Society</span>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

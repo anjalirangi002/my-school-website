@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import PageHero from "@/components/layout/PageHero";
+import { fadeUp, fadeLeft, fadeRight, stagger, inView } from "@/lib/animations";
 
 const inquirySchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -33,7 +35,7 @@ export default function Contact() {
     }
   });
 
-  const onSubmit = (data: InquiryForm) => {
+  const onSubmit = (_data: InquiryForm) => {
     toast({
       title: "Inquiry Submitted Successfully!",
       description: "We will contact you shortly regarding admission.",
@@ -52,11 +54,17 @@ export default function Contact() {
       />
 
       <div className="container mx-auto px-4 md:px-6 max-w-6xl pt-16 pb-16">
-        
-        <div className="grid md:grid-cols-5 gap-12 items-start">
-          
-          <div className="md:col-span-2 space-y-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow">
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={stagger}
+          className="grid md:grid-cols-5 gap-12 items-start"
+        >
+          {/* Left — contact info */}
+          <motion.div variants={fadeLeft} className="md:col-span-2 space-y-8">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-shadow duration-300">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Get in Touch</h2>
               <div className="space-y-6 text-muted-foreground">
                 <div className="flex gap-4">
@@ -89,23 +97,24 @@ export default function Contact() {
             </div>
 
             <div className="bg-primary/5 p-8 rounded-2xl border border-primary/10">
-               <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-foreground">
-                 <Clock className="w-5 h-5 text-primary" /> Working Hours
-               </h2>
-               <ul className="space-y-3 text-sm text-muted-foreground">
-                 <li className="flex justify-between border-b border-border pb-2">
-                   <span>Monday – Saturday</span>
-                   <span className="font-semibold text-foreground">08:00 AM – 03:00 PM</span>
-                 </li>
-                 <li className="flex justify-between text-muted-foreground/60 pt-1">
-                   <span>Sunday</span>
-                   <span>Closed</span>
-                 </li>
-               </ul>
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2 text-foreground">
+                <Clock className="w-5 h-5 text-primary" /> Working Hours
+              </h2>
+              <ul className="space-y-3 text-sm text-muted-foreground">
+                <li className="flex justify-between border-b border-border pb-2">
+                  <span>Monday – Saturday</span>
+                  <span className="font-semibold text-foreground">08:00 AM – 03:00 PM</span>
+                </li>
+                <li className="flex justify-between text-muted-foreground/60 pt-1">
+                  <span>Sunday</span>
+                  <span>Closed</span>
+                </li>
+              </ul>
             </div>
-          </div>
-          
-          <div className="md:col-span-3 space-y-8">
+          </motion.div>
+
+          {/* Right — form */}
+          <motion.div variants={fadeRight} className="md:col-span-3 space-y-8">
             <div className="bg-white p-8 md:p-10 rounded-2xl shadow-xl border border-border">
               <h2 className="text-2xl font-bold mb-6 text-foreground">Admission Inquiry Form</h2>
               <Form {...form}>
@@ -138,7 +147,7 @@ export default function Contact() {
                       )}
                     />
                   </div>
-                  
+
                   <div className="grid sm:grid-cols-2 gap-5">
                     <FormField
                       control={form.control}
@@ -193,28 +202,37 @@ export default function Contact() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-white rounded-full mt-4">
+                  <Button
+                    type="submit"
+                    className="w-full h-14 text-lg font-bold bg-primary hover:bg-primary/90 text-white rounded-full mt-4 hover:scale-[1.02] transition-transform duration-200"
+                  >
                     Submit Inquiry
                   </Button>
                 </form>
               </Form>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Map */}
-        <div className="mt-16 rounded-3xl overflow-hidden shadow-sm border border-border h-[400px]">
-          <iframe 
-            src="https://www.google.com/maps?q=29.8175491,76.3477644&output=embed" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen 
-            loading="lazy" 
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={fadeUp}
+          className="mt-16 rounded-3xl overflow-hidden shadow-sm border border-border h-[400px]"
+        >
+          <iframe
+            src="https://www.google.com/maps?q=29.8175491,76.3477644&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Sunrise School Location Map"
           ></iframe>
-        </div>
+        </motion.div>
 
       </div>
     </div>

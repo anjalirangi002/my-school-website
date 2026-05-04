@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { fadeUp, stagger, inView } from "@/lib/animations";
 import { GraduationCap, Award, Users, Filter, BookOpen, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PRINCIPAL, TEACHERS, DEPARTMENTS_ORDER, type Department } from "@/data/faculty";
@@ -85,28 +86,28 @@ export default function Faculty() {
       {/* Stats */}
       <section className="bg-muted/30 border-y border-border py-12">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="flex justify-center mb-2"><Users className="w-7 h-7 text-primary" /></div>
-              <p className="text-3xl font-bold text-foreground">{TEACHERS.length + 1}+</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Total Faculty</p>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2"><Award className="w-7 h-7 text-primary" /></div>
-              <p className="text-3xl font-bold text-foreground">100%</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Qualified Teachers</p>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2"><BookOpen className="w-7 h-7 text-primary" /></div>
-              <p className="text-3xl font-bold text-foreground">{DEPARTMENTS_ORDER.length}</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Departments</p>
-            </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-2"><GraduationCap className="w-7 h-7 text-primary" /></div>
-              <p className="text-3xl font-bold text-foreground">12+</p>
-              <p className="text-sm text-muted-foreground uppercase tracking-wider mt-1">Avg. Experience (yrs)</p>
-            </div>
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={stagger}
+            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto"
+          >
+            {[
+              { icon: Users, value: `${TEACHERS.length + 1}+`, label: "Total Faculty" },
+              { icon: Award, value: "100%", label: "Qualified Teachers" },
+              { icon: BookOpen, value: `${DEPARTMENTS_ORDER.length}`, label: "Departments" },
+              { icon: GraduationCap, value: "12+", label: "Avg. Experience (yrs)" },
+            ].map(({ icon: Icon, value, label }, idx) => (
+              <motion.div key={idx} variants={fadeUp} className="text-center">
+                <div className="flex justify-center mb-2">
+                  <Icon className="w-7 h-7 text-primary" />
+                </div>
+                <p className="text-3xl font-bold text-foreground">{value}</p>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider mt-1">{label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </section>
 

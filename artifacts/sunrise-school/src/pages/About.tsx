@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Flag, Heart, Award, CheckCircle, GraduationCap, Users, Trophy, Star, Medal, BookOpen, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import PageHero from "@/components/layout/PageHero";
+import { fadeUp, fadeLeft, fadeRight, stagger, inView } from "@/lib/animations";
 
 export default function About() {
   return (
@@ -17,41 +18,56 @@ export default function About() {
       <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
 
         {/* Mission, Vision, Core Values */}
-        <div className="grid md:grid-cols-3 gap-8 mb-24">
-          <div className="p-8 bg-white rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-              <Flag className="w-8 h-8" />
-            </div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Our Mission</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              To provide high-quality education that balances academic excellence with character building and cultural values in a safe learning environment.
-            </p>
-          </div>
-          
-          <div className="p-8 bg-white rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-secondary/10 text-secondary rounded-2xl flex items-center justify-center mb-6">
-              <Heart className="w-8 h-8" />
-            </div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Our Vision</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              To be a beacon of learning, empowering rural youth with the knowledge, skills, and ethical grounding needed to succeed globally while respecting their roots.
-            </p>
-          </div>
-
-          <div className="p-8 bg-white rounded-3xl shadow-sm border border-border hover:shadow-md transition-shadow">
-            <div className="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-6">
-              <CheckCircle className="w-8 h-8" />
-            </div>
-            <h2 className="text-2xl font-bold text-foreground mb-4">Core Values</h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Integrity, Discipline, Compassion, and Curiosity. We foster a culture where every student feels valued and motivated to achieve their best.
-            </p>
-          </div>
-        </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={stagger}
+          className="grid md:grid-cols-3 gap-8 mb-24"
+        >
+          {[
+            {
+              icon: Flag,
+              color: "bg-primary/10 text-primary",
+              title: "Our Mission",
+              body: "To provide high-quality education that balances academic excellence with character building and cultural values in a safe learning environment.",
+            },
+            {
+              icon: Heart,
+              color: "bg-secondary/10 text-secondary",
+              title: "Our Vision",
+              body: "To be a beacon of learning, empowering rural youth with the knowledge, skills, and ethical grounding needed to succeed globally while respecting their roots.",
+            },
+            {
+              icon: CheckCircle,
+              color: "bg-primary/10 text-primary",
+              title: "Core Values",
+              body: "Integrity, Discipline, Compassion, and Curiosity. We foster a culture where every student feels valued and motivated to achieve their best.",
+            },
+          ].map(({ icon: Icon, color, title, body }, idx) => (
+            <motion.div
+              key={idx}
+              variants={fadeUp}
+              className="p-8 bg-white rounded-3xl shadow-sm border border-border hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className={`w-14 h-14 ${color} rounded-2xl flex items-center justify-center mb-6`}>
+                <Icon className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold text-foreground mb-4">{title}</h2>
+              <p className="text-muted-foreground leading-relaxed">{body}</p>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* History and Management */}
         <div className="mb-24 bg-muted/30 rounded-3xl p-8 md:p-16 border border-border flex flex-col md:flex-row gap-12 items-center">
-          <div className="w-full md:w-1/2">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeLeft}
+            className="w-full md:w-1/2"
+          >
             <h2 className="text-3xl font-bold text-foreground mb-6">Our Journey</h2>
             <div className="space-y-6 relative border-l-2 border-primary/20 pl-6 ml-3">
               <div className="relative">
@@ -74,18 +90,30 @@ export default function About() {
               <h4 className="font-bold text-primary mb-2">Managed by Sunrise Education Society</h4>
               <p className="text-sm text-muted-foreground">A dedicated group committed to providing private, unaided, and premium education to the region.</p>
             </div>
-          </div>
-          <div className="w-full md:w-1/2">
-             <img src="/images/hero.png" alt="School History" className="w-full h-auto rounded-2xl shadow-lg" />
-          </div>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeRight}
+            className="w-full md:w-1/2"
+          >
+            <img src="/images/hero.png" alt="School History" className="w-full h-auto rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500" />
+          </motion.div>
         </div>
 
         {/* School Achievements */}
         <div className="mb-24">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
             <h2 className="text-3xl font-bold text-foreground mb-4">School Achievements</h2>
             <p className="text-lg text-muted-foreground">Milestones that define our commitment to excellence over the years.</p>
-          </div>
+          </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { icon: Trophy, title: "100% Board Results", year: "5 Consecutive Years", desc: "Unmatched performance in CBSE Class 10 & 12 board examinations." },
@@ -95,13 +123,13 @@ export default function About() {
               { icon: Award, title: "Excellence in Cultural Events", year: "Regional Level", desc: "First prize in state-level group dance and drama competitions." },
               { icon: Users, title: "1000+ Successful Alumni", year: "Global Network", desc: "Our former students excel in top universities and varied professions." }
             ].map((achieve, idx) => (
-              <motion.div 
+              <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-white p-6 rounded-2xl border border-border shadow-sm flex gap-4 hover:border-primary/50 transition-colors"
+                viewport={inView}
+                transition={{ delay: idx * 0.08, duration: 0.5, ease: "easeOut" }}
+                className="bg-white p-6 rounded-2xl border border-border shadow-sm flex gap-4 hover:border-primary/50 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-12 h-12 bg-primary/10 text-primary rounded-full flex items-center justify-center shrink-0">
                   <achieve.icon className="w-6 h-6" />
@@ -117,16 +145,29 @@ export default function About() {
         </div>
 
         {/* Principal's Detailed Message */}
-        <div id="principal-message" className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={fadeUp}
+          id="principal-message"
+          className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24"
+        >
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
           <div className="relative z-10 grid md:grid-cols-12 gap-12 items-center">
-            <div className="md:col-span-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={inView}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="md:col-span-4"
+            >
               <img src="/images/principal.png" alt="Principal Mr. Khushi Ram" className="w-full aspect-[3/4] object-cover rounded-2xl shadow-lg border-4 border-white/10" />
-            </div>
+            </motion.div>
             <div className="md:col-span-8 space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Principal's Message</h2>
               <blockquote className="text-xl italic font-medium leading-relaxed text-white/90">
-                "Welcome to Sunrise Senior Secondary School. Our journey started with a simple belief: every child, regardless of their background, deserves access to top-tier education. 
+                "Welcome to Sunrise Senior Secondary School. Our journey started with a simple belief: every child, regardless of their background, deserves access to top-tier education.
                 <br/><br/>
                 We focus on holistic development. While our CBSE curriculum and 100% board results speak for our academic rigor, it is the character of our students that truly defines us. We invite you to join our family and partner with us in shaping a bright future for your child."
               </blockquote>
@@ -136,72 +177,84 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Faculty Overview */}
         <div className="mb-24">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+            className="text-center max-w-3xl mx-auto mb-12"
+          >
             <h2 className="text-3xl font-bold text-foreground mb-4">Our Dedicated Faculty</h2>
             <p className="text-lg text-muted-foreground">Experienced educators committed to nurturing young minds.</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-             <div className="bg-white p-8 rounded-2xl border border-border text-center hover:shadow-md transition-all">
-                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full mx-auto flex items-center justify-center mb-4">
-                  <GraduationCap className="w-8 h-8" />
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={stagger}
+            className="grid md:grid-cols-3 gap-8"
+          >
+            {[
+              { icon: GraduationCap, color: "bg-primary/10 text-primary", title: "PGTs", sub: "Post Graduate Teachers", body: "Subject experts managing Senior Secondary classes (11th & 12th) across all specialized streams." },
+              { icon: Users, color: "bg-secondary/10 text-secondary", title: "TGTs", sub: "Trained Graduate Teachers", body: "Highly qualified educators focusing on Middle and Secondary grades (6th to 10th)." },
+              { icon: Heart, color: "bg-primary/10 text-primary", title: "PRTs", sub: "Primary Teachers", body: "Caring and patient educators handling Primary and Pre-Primary classes with a strong foundation approach." },
+            ].map(({ icon: Icon, color, title, sub, body }, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeUp}
+                className="bg-white p-8 rounded-2xl border border-border text-center hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className={`w-16 h-16 ${color} rounded-full mx-auto flex items-center justify-center mb-4`}>
+                  <Icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">PGTs</h3>
-                <p className="text-sm font-semibold text-primary mb-3">Post Graduate Teachers</p>
-                <p className="text-muted-foreground text-sm">Subject experts managing Senior Secondary classes (11th & 12th) across all specialized streams.</p>
-             </div>
-             <div className="bg-white p-8 rounded-2xl border border-border text-center hover:shadow-md transition-all">
-                <div className="w-16 h-16 bg-secondary/10 text-secondary rounded-full mx-auto flex items-center justify-center mb-4">
-                  <Users className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">TGTs</h3>
-                <p className="text-sm font-semibold text-secondary mb-3">Trained Graduate Teachers</p>
-                <p className="text-muted-foreground text-sm">Highly qualified educators focusing on Middle and Secondary grades (6th to 10th).</p>
-             </div>
-             <div className="bg-white p-8 rounded-2xl border border-border text-center hover:shadow-md transition-all">
-                <div className="w-16 h-16 bg-primary/10 text-primary rounded-full mx-auto flex items-center justify-center mb-4">
-                  <Heart className="w-8 h-8" />
-                </div>
-                <h3 className="text-xl font-bold mb-2">PRTs</h3>
-                <p className="text-sm font-semibold text-primary mb-3">Primary Teachers</p>
-                <p className="text-muted-foreground text-sm">Caring and patient educators handling Primary and Pre-Primary classes with a strong foundation approach.</p>
-             </div>
-          </div>
+                <h3 className="text-xl font-bold mb-2">{title}</h3>
+                <p className="text-sm font-semibold text-primary mb-3">{sub}</p>
+                <p className="text-muted-foreground text-sm">{body}</p>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Affiliation */}
-        <div className="max-w-4xl mx-auto bg-primary/5 p-8 md:p-12 rounded-3xl border border-primary/10">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={inView}
+          variants={fadeUp}
+          className="max-w-4xl mx-auto bg-primary/5 p-8 md:p-12 rounded-3xl border border-primary/10"
+        >
           <h3 className="text-2xl md:text-3xl font-bold mb-8 text-foreground text-center">Affiliation Details</h3>
           <ul className="grid sm:grid-cols-2 gap-6 text-muted-foreground">
-             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
-               <span className="font-bold text-foreground">Board</span>
-               <span>CBSE, New Delhi</span>
-             </li>
-             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
-               <span className="font-bold text-foreground">Affiliation No.</span>
-               <span>531671</span>
-             </li>
-             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
-               <span className="font-bold text-foreground">School Code</span>
-               <span>41650</span>
-             </li>
-             <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
-               <span className="font-bold text-foreground">Type</span>
-               <span>Co-educational, Private Unaided</span>
-             </li>
-             <li className="flex flex-col gap-1 border-b sm:border-none border-primary/10 pb-4 sm:pb-0">
-               <span className="font-bold text-foreground">Classes</span>
-               <span>Playway to Grade 12</span>
-             </li>
-             <li className="flex flex-col gap-1">
-               <span className="font-bold text-foreground">Medium</span>
-               <span>English</span>
-             </li>
+            <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+              <span className="font-bold text-foreground">Board</span>
+              <span>CBSE, New Delhi</span>
+            </li>
+            <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+              <span className="font-bold text-foreground">Affiliation No.</span>
+              <span>531671</span>
+            </li>
+            <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+              <span className="font-bold text-foreground">School Code</span>
+              <span>41650</span>
+            </li>
+            <li className="flex flex-col gap-1 border-b border-primary/10 pb-4">
+              <span className="font-bold text-foreground">Type</span>
+              <span>Co-educational, Private Unaided</span>
+            </li>
+            <li className="flex flex-col gap-1 border-b sm:border-none border-primary/10 pb-4 sm:pb-0">
+              <span className="font-bold text-foreground">Classes</span>
+              <span>Playway to Grade 12</span>
+            </li>
+            <li className="flex flex-col gap-1">
+              <span className="font-bold text-foreground">Medium</span>
+              <span>English</span>
+            </li>
           </ul>
-        </div>
+        </motion.div>
 
       </div>
     </div>

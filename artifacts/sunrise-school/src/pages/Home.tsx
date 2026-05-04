@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, Users, Building, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Bell, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
+import { ArrowRight, BookOpen, Users, ShieldCheck, Bus, FlaskConical, MonitorPlay, Sun, Calendar, Star, Award, Monitor, GraduationCap, ClipboardCheck, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { NOTICES as ALL_NOTICES } from "@/data/notices";
 import TestimonialsMarquee from "@/components/TestimonialsMarquee";
+import { fadeUp, fadeLeft, fadeRight, scaleIn, stagger, inView } from "@/lib/animations";
 
 const HERO_IMAGE = {
   src: "/images/hero-main.png",
@@ -183,13 +184,19 @@ export default function Home() {
       {/* 6. Principal's Message Section */}
       <section className="py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center shadow-sm">
-            <div className="w-full md:w-1/3 shrink-0">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={stagger}
+            className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center shadow-sm"
+          >
+            <motion.div variants={scaleIn} className="w-full md:w-1/3 shrink-0">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-                <img src="/images/principal.png" alt="Mr. Khushi Ram" className="w-full h-full object-cover" />
+                <img src="/images/principal.png" alt="Mr. Khushi Ram" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
-            </div>
-            <div className="w-full md:w-2/3 space-y-6">
+            </motion.div>
+            <motion.div variants={fadeRight} className="w-full md:w-2/3 space-y-6">
               <h2 className="text-3xl font-bold text-foreground">Principal's Message</h2>
               <blockquote className="text-xl md:text-2xl font-medium text-muted-foreground italic leading-relaxed relative">
                 <Quote className="absolute -top-4 -left-6 w-8 h-8 text-primary/20 rotate-180" />
@@ -204,18 +211,24 @@ export default function Home() {
                   <Link href="/about#principal-message">Read Full Message <ArrowRight className="ml-2 w-5 h-5" /></Link>
                 </Button>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* 7. Why Parents Trust Us */}
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Parents Trust Us</h2>
             <p className="text-lg text-muted-foreground">We provide an environment where children feel secure, engaged, and inspired.</p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -248,10 +261,16 @@ export default function Home() {
       {/* 8. Campus Highlights */}
       <section className="py-24 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+            className="text-center max-w-3xl mx-auto mb-16"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Campus Highlights</h2>
             <p className="text-lg text-muted-foreground">Modern infrastructure designed to support comprehensive academic and physical development.</p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -307,22 +326,35 @@ export default function Home() {
       {/* 10. Final CTA */}
       <section className="py-24 bg-primary text-primary-foreground text-center">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Sunrise Family</h2>
-          <p className="text-xl mb-10 max-w-2xl mx-auto text-primary-foreground/90 leading-relaxed">
-            Admissions are open for the upcoming academic session. Give your child the foundation they deserve in a school that feels like home.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold h-14 px-12 text-lg rounded-full shadow-lg">
-              <Link href="/contact">Admission Inquiry</Link>
-            </Button>
-          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Sunrise Family</h2>
+            <p className="text-xl mb-10 max-w-2xl mx-auto text-primary-foreground/90 leading-relaxed">
+              Admissions are open for the upcoming academic session. Give your child the foundation they deserve in a school that feels like home.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-gray-100 font-bold h-14 px-12 text-lg rounded-full shadow-lg hover:scale-105 transition-transform duration-200">
+                <Link href="/contact">Admission Inquiry</Link>
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
       
       {/* 11. School Location Map */}
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row gap-8 items-center bg-white border border-border rounded-3xl overflow-hidden shadow-sm">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={inView}
+            variants={fadeUp}
+            className="flex flex-col md:flex-row gap-8 items-center bg-white border border-border rounded-3xl overflow-hidden shadow-sm"
+          >
             <div className="p-8 md:p-12 md:w-1/3 flex flex-col gap-4">
                <h2 className="text-3xl font-bold text-foreground mb-2">Find Us On The Map</h2>
                <p className="text-muted-foreground leading-relaxed">
@@ -355,7 +387,7 @@ export default function Home() {
                 title="Sunrise School Location Map"
               ></iframe>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
