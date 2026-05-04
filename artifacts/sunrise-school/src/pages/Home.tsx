@@ -380,7 +380,7 @@ export default function Home() {
             </div>
             <div className="w-full md:w-2/3 h-[400px] md:h-[500px]">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1748!2d76.3477644!3d29.8175491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3911e7d72929f60b%3A0x3b9667c80e4de39!2sSunrise%20Senior%20Secondary%20School%2C%20Mago%20Manas%2C%20Kaithal!5e0!3m2!1sen!2sin!4v1714836000000!5m2!1sen!2sin" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1748!2d76.3477644!3d29.8175491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3911e7d72929f60b%3A0x3b9667c80e4de39!2sSunrise%20Senior%20Secondary%20School%2C%20Mago%20Manas%2C%20Kaithal!5e0!3m2!1sen!2sin!4v1714836000000!5m2!1sen!2sin&hl=en" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 
