@@ -22,6 +22,16 @@ function ScrollToTop() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem("scrollToNotice")) return;
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const el = document.querySelector(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }, 100);
+      return;
+    }
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;

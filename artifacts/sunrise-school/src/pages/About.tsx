@@ -117,7 +117,7 @@ export default function About() {
         </div>
 
         {/* Principal's Detailed Message */}
-        <div className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24">
+        <div id="principal-message" className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24">
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
           <div className="relative z-10 grid md:grid-cols-12 gap-12 items-center">
             <div className="md:col-span-4">

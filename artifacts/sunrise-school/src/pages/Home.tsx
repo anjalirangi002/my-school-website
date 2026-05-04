@@ -201,7 +201,7 @@ export default function Home() {
               </div>
               <div className="pt-4">
                 <Button asChild variant="link" className="text-primary font-bold px-0 text-lg">
-                  <Link href="/about">Read Full Message <ArrowRight className="ml-2 w-5 h-5" /></Link>
+                  <Link href="/about#principal-message">Read Full Message <ArrowRight className="ml-2 w-5 h-5" /></Link>
                 </Button>
               </div>
             </div>
