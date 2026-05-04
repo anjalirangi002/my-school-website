@@ -8,7 +8,7 @@ export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-background page-enter">
       <PageHero
-        image="/images/hero-about.png"
+        image="/images/hero-2.png"
         alt="Sunrise Senior Secondary School campus with students"
         eyebrow="Established 2010 • CBSE Affiliated"
         title="About Sunrise School"
