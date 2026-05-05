@@ -34,43 +34,51 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Hero Section — single static photo */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-black/40">
+      <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden bg-black/40">
         <div className="absolute inset-0 z-0">
           <img
             src={HERO_IMAGE.src}
             alt={HERO_IMAGE.alt}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-l from-black/75 via-black/35 to-transparent" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-center text-white">
-          <motion.div 
+        <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-white flex flex-col gap-8">
+          {/* Text — right-aligned, smaller font */}
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerChildren}
-            className="max-w-4xl mx-auto flex flex-col items-center gap-6"
+            className="ml-auto max-w-lg flex flex-col items-end gap-4 text-right"
           >
-            <motion.span variants={fadeIn} className="px-4 py-1.5 rounded-full bg-primary text-sm font-semibold tracking-wide uppercase shadow-sm border border-primary-foreground/20">
+            <motion.span variants={fadeRight} className="px-4 py-1.5 rounded-full bg-primary text-xs font-semibold tracking-wide uppercase shadow-sm border border-primary-foreground/20">
               CBSE Affiliated • No. 531671 • Est. 2010
             </motion.span>
-            
-            <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-lg">
+
+            <motion.h1 variants={fadeRight} className="text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
               Shaping Bright Futures with <span className="text-secondary">Quality Education</span>
             </motion.h1>
-            
-            <motion.p variants={fadeIn} className="text-xl md:text-2xl text-white/90 max-w-2xl font-medium drop-shadow-md">
+
+            <motion.p variants={fadeRight} className="text-base md:text-lg text-white/90 font-medium drop-shadow-md">
               A vibrant learning community dedicated to academic excellence and holistic development.
             </motion.p>
-            
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row gap-4 mt-8">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-lg rounded-full shadow-xl">
-                <Link href="/contact">Apply Now <ArrowRight className="ml-2 w-5 h-5" /></Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-bold h-14 px-8 text-lg rounded-full">
-                <Link href="/about">Discover More</Link>
-              </Button>
-            </motion.div>
+          </motion.div>
+
+          {/* Buttons — centered, original position */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={fadeIn}
+            transition={{ delay: 0.5 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-lg rounded-full shadow-xl">
+              <Link href="/contact">Apply Now <ArrowRight className="ml-2 w-5 h-5" /></Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-bold h-14 px-8 text-lg rounded-full">
+              <Link href="/about">Discover More</Link>
+            </Button>
           </motion.div>
         </div>
       </section>

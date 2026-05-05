@@ -99,17 +99,17 @@ export default function Footer() {
           <motion.div variants={fadeUp} className="flex flex-col gap-6">
             <h3 className="font-bold text-lg border-b-2 border-primary/50 pb-2 inline-block self-start">Working Hours</h3>
             <div className="w-full text-white/80 text-sm space-y-2">
-              <div className="flex justify-between border-b border-white/10 pb-2">
-                <span>Monday - Friday</span>
-                <span>08:00 AM - 03:00 PM</span>
+              <div className="grid grid-cols-[1fr_auto] gap-x-4 border-b border-white/10 pb-2">
+                <span>Monday – Friday</span>
+                <span className="whitespace-nowrap text-right">8:00 AM – 3:00 PM</span>
               </div>
-              <div className="flex justify-between border-b border-white/10 pb-2">
+              <div className="grid grid-cols-[1fr_auto] gap-x-4 border-b border-white/10 pb-2">
                 <span>Saturday</span>
-                <span>08:00 AM - 03:00 PM</span>
+                <span className="whitespace-nowrap text-right">8:00 AM – 3:00 PM</span>
               </div>
-              <div className="flex justify-between text-white/50">
+              <div className="grid grid-cols-[1fr_auto] gap-x-4 text-white/50">
                 <span>Sunday</span>
-                <span>Closed</span>
+                <span className="text-right">Closed</span>
               </div>
             </div>
           </motion.div>
