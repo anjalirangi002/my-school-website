@@ -41,7 +41,7 @@ export default function Home() {
             alt={HERO_IMAGE.alt}
             className="absolute inset-0 w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-l from-black/75 via-black/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
         </div>
 
         <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-white flex flex-col gap-8">
@@ -50,17 +50,17 @@ export default function Home() {
             initial="hidden"
             animate="visible"
             variants={staggerChildren}
-            className="ml-auto max-w-lg flex flex-col items-end gap-4 text-right"
+            className="mr-auto max-w-lg flex flex-col items-start gap-4 text-left"
           >
-            <motion.span variants={fadeRight} className="px-4 py-1.5 rounded-full bg-primary text-xs font-semibold tracking-wide uppercase shadow-sm border border-primary-foreground/20">
+            <motion.span variants={fadeLeft} className="px-4 py-1.5 rounded-full bg-primary text-xs font-semibold tracking-wide uppercase shadow-sm border border-primary-foreground/20">
               CBSE Affiliated • No. 531671 • Est. 2010
             </motion.span>
 
-            <motion.h1 variants={fadeRight} className="text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
+            <motion.h1 variants={fadeLeft} className="text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
               Shaping Bright Futures with <span className="text-secondary">Quality Education</span>
             </motion.h1>
 
-            <motion.p variants={fadeRight} className="text-base md:text-lg text-white/90 font-medium drop-shadow-md">
+            <motion.p variants={fadeLeft} className="text-base md:text-lg text-white/90 font-medium drop-shadow-md">
               A vibrant learning community dedicated to academic excellence and holistic development.
             </motion.p>
           </motion.div>
