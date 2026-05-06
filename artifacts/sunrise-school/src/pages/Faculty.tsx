@@ -6,7 +6,7 @@ import { GraduationCap, Award, Users, Filter, BookOpen, Quote } from "lucide-rea
 import { Button } from "@/components/ui/button";
 import { PRINCIPAL, TEACHERS, DEPARTMENTS_ORDER, type Department } from "@/data/faculty";
 
-const PRINCIPAL_PHOTO = "/images/principal.png";
+const PRINCIPAL_PHOTO = "/images/principal.jpg";
 
 const DEPARTMENT_FILTERS: ("ALL" | Department)[] = ["ALL", ...DEPARTMENTS_ORDER];
 

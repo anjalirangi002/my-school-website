@@ -47,7 +47,7 @@ export default function Contact() {
   return (
     <div className="flex flex-col min-h-screen bg-background page-enter">
       <PageHero
-        image="/images/hero-contact.png"
+        image="/images/hero-contact.jpg"
         alt="Sunrise School entrance gate and campus building"
         eyebrow="Admission Open • Session 2026-27"
         title="Contact & Admissions"

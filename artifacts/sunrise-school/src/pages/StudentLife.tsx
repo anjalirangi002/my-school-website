@@ -26,21 +26,21 @@ const EVENTS = [
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/lab-students.png",
+    src: "/images/lab-students.jpg",
     title: "Science Lab Sessions",
     desc: "Hands-on experiments that spark curiosity and scientific thinking.",
     span: "col-span-1",
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/playground.png",
+    src: "/images/playground.jpg",
     title: "Playground & Open Grounds",
     desc: "Spacious grounds for free play, athletics and daily physical activity.",
     span: "col-span-1",
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/library-students.png",
+    src: "/images/library-students.jpg",
     title: "Library Hour",
     desc: "A quiet space for reading, research and discovering new worlds.",
     span: "col-span-1",
@@ -54,7 +54,7 @@ const EVENTS = [
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/bus.png",
+    src: "/images/bus.jpg",
     title: "School Trips & Excursions",
     desc: "Educational tours and picnics — learning that goes beyond the classroom.",
     span: "col-span-1",
@@ -71,8 +71,8 @@ const EVENTS = [
 
 const GALLERY = [
   { src: "/images/real-campus.jpg", alt: "Campus life at Sunrise" },
-  { src: "/images/science-lab.png", alt: "Science lab" },
-  { src: "/images/library.png", alt: "School library" },
+  { src: "/images/science-lab.jpg", alt: "Science lab" },
+  { src: "/images/library.jpg", alt: "School library" },
   { src: "/images/real-sports.jpg", alt: "Sports grounds" },
   { src: "/images/real-cultural-dance.jpg", alt: "Cultural programme" },
   { src: "/images/real-cultural2.jpg", alt: "School celebrations" },
@@ -93,7 +93,7 @@ export default function StudentLife() {
   return (
     <div className="flex flex-col min-h-screen bg-background page-enter">
       <PageHero
-        image="/images/hero-student-life.png"
+        image="/images/hero-student-life.jpg"
         alt="Sunrise students performing at a cultural event"
         eyebrow="Beyond the Classroom"
         title="Student Life at Sunrise"

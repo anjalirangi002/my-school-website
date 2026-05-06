@@ -32,13 +32,13 @@ export default function CoCurricular() {
               </ul>
             </div>
             <div className="order-1 md:order-2">
-              <img src="/images/sports.png" alt="Sports Day" className="w-full h-[400px] object-cover rounded-3xl shadow-xl" />
+              <img src="/images/sports.jpg" alt="Sports Day" className="w-full h-[400px] object-cover rounded-3xl shadow-xl" />
             </div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <img src="/images/cultural.png" alt="Cultural Event" className="w-full h-[400px] object-cover rounded-3xl shadow-xl" />
+              <img src="/images/cultural.jpg" alt="Cultural Event" className="w-full h-[400px] object-cover rounded-3xl shadow-xl" />
             </div>
             <div>
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/20 text-secondary-foreground mb-6">

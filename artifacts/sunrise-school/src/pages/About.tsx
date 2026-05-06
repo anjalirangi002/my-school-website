@@ -8,7 +8,7 @@ export default function About() {
   return (
     <div className="flex flex-col min-h-screen bg-background page-enter">
       <PageHero
-        image="/images/hero-2.png"
+        image="/images/hero-2.jpg"
         alt="Sunrise Senior Secondary School campus with students"
         eyebrow="Established 2010 • CBSE Affiliated"
         title="About Sunrise School"
@@ -98,7 +98,7 @@ export default function About() {
             variants={fadeRight}
             className="w-full md:w-1/2"
           >
-            <img src="/images/hero.png" alt="School History" className="w-full h-auto rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500" />
+            <img src="/images/hero.jpg" alt="School History" className="w-full h-auto rounded-2xl shadow-lg hover:scale-[1.02] transition-transform duration-500" />
           </motion.div>
         </div>
 
@@ -162,7 +162,7 @@ export default function About() {
               transition={{ duration: 0.6, ease: "easeOut" }}
               className="md:col-span-4"
             >
-              <img src="/images/principal.png" alt="Principal Mr. Khushi Ram" className="w-full aspect-[3/4] object-cover rounded-2xl shadow-lg border-4 border-white/10" />
+              <img src="/images/principal.jpg" alt="Principal Mr. Khushi Ram" className="w-full aspect-[3/4] object-cover rounded-2xl shadow-lg border-4 border-white/10" />
             </motion.div>
             <div className="md:col-span-8 space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold">Principal's Message</h2>

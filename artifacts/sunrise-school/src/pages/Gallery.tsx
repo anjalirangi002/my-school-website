@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 
 const images = [
-  { src: "/images/hero.png", alt: "Sunrise School Building", title: "Campus Exterior" },
-  { src: "/images/assembly.png", alt: "Morning Assembly", title: "Morning Assembly" },
-  { src: "/images/classroom.png", alt: "Classroom", title: "Smart Classrooms" },
-  { src: "/images/science-lab.png", alt: "Science Lab", title: "Science Laboratory" },
-  { src: "/images/library.png", alt: "Library", title: "School Library" },
-  { src: "/images/sports.png", alt: "Sports Day", title: "Annual Sports Day" },
-  { src: "/images/cultural.png", alt: "Cultural Event", title: "Cultural Festival" },
-  { src: "/images/bus.png", alt: "School Bus", title: "Transport Facility" },
-  { src: "/images/playground.png", alt: "Playground", title: "Kids Playground" }
+  { src: "/images/hero.jpg", alt: "Sunrise School Building", title: "Campus Exterior" },
+  { src: "/images/assembly.jpg", alt: "Morning Assembly", title: "Morning Assembly" },
+  { src: "/images/classroom.jpg", alt: "Classroom", title: "Smart Classrooms" },
+  { src: "/images/science-lab.jpg", alt: "Science Lab", title: "Science Laboratory" },
+  { src: "/images/library.jpg", alt: "Library", title: "School Library" },
+  { src: "/images/sports.jpg", alt: "Sports Day", title: "Annual Sports Day" },
+  { src: "/images/cultural.jpg", alt: "Cultural Event", title: "Cultural Festival" },
+  { src: "/images/bus.jpg", alt: "School Bus", title: "Transport Facility" },
+  { src: "/images/playground.jpg", alt: "Playground", title: "Kids Playground" }
 ];
 
 export default function Gallery() {
