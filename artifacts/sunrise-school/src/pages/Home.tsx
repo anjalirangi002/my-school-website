@@ -202,7 +202,7 @@ export default function Home() {
           >
             <motion.div variants={scaleIn} className="w-full md:w-1/3 shrink-0 max-w-[280px] md:max-w-none mx-auto md:mx-0">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white">
-                <img src="/images/principal.png" alt="Mr. Khushi Ram" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                <img src="/images/principal.png" alt="Mr. Khushi Ram" className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500" />
               </div>
             </motion.div>
             <motion.div variants={fadeRight} className="w-full md:w-2/3 space-y-4 md:space-y-6">
