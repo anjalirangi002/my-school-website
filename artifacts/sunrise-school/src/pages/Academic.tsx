@@ -13,13 +13,13 @@ export default function Academic() {
         subtitle="A holistic CBSE learning approach — critical thinking, digital classrooms, advanced labs and comprehensive evaluation that prepares students for future success."
       />
 
-      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
+      <div className="container mx-auto px-4 md:px-6 pt-10 md:pt-16 pb-10 md:pb-16">
 
         {/* Education Structure Timeline */}
-        <div className="mb-24">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Education Structure</h2>
-            <p className="text-lg text-muted-foreground">A seamless progression from early childhood to young adulthood.</p>
+        <div className="mb-12 md:mb-24">
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">Education Structure</h2>
+            <p className="text-base md:text-lg text-muted-foreground">A seamless progression from early childhood to young adulthood.</p>
           </div>
           
           <div className="relative max-w-5xl mx-auto">
@@ -54,7 +54,7 @@ export default function Academic() {
         </div>
 
         {/* CBSE Curriculum & CCE */}
-        <div className="grid md:grid-cols-2 gap-8 mb-24">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-12 md:mb-24">
            <motion.div 
              initial={{ opacity: 0, x: -20 }}
              whileInView={{ opacity: 1, x: 0 }}
@@ -109,10 +109,10 @@ export default function Academic() {
         </div>
 
         {/* Streams Offered */}
-        <div className="mb-24">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl font-bold text-foreground mb-4">Streams Offered (Class 11 & 12)</h2>
-            <p className="text-lg text-muted-foreground">Comprehensive academic pathways for senior secondary students to pursue their career goals.</p>
+        <div className="mb-12 md:mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">Streams Offered (Class 11 & 12)</h2>
+            <p className="text-base md:text-lg text-muted-foreground">Comprehensive academic pathways for senior secondary students to pursue their career goals.</p>
           </div>
           
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
@@ -198,7 +198,7 @@ export default function Academic() {
         </div>
 
         {/* Inline image showcase — labs & library */}
-        <div className="grid sm:grid-cols-2 gap-6 mb-24">
+        <div className="grid sm:grid-cols-2 gap-6 mb-12 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

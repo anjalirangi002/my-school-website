@@ -9,63 +9,63 @@ const EVENTS = [
     title: "Annual Cultural Function",
     desc: "Students shine in dance, drama, choir and artistic performances every year.",
     span: "col-span-2",
-    height: "h-[380px]",
+    height: "h-[260px] md:h-[380px]",
   },
   {
     src: "/images/assembly.png",
     title: "Morning Assembly",
     desc: "Daily assembly builds discipline, confidence and public speaking skills.",
     span: "col-span-1",
-    height: "h-[380px]",
+    height: "h-[260px] md:h-[380px]",
   },
   {
     src: "/images/sports.png",
     title: "Sports & Athletics",
     desc: "Inter-house tournaments, kabaddi, kho-kho and annual sports meets.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/lab-students.png",
     title: "Science Lab Sessions",
     desc: "Hands-on experiments that spark curiosity and scientific thinking.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/playground.png",
     title: "Playground & Open Grounds",
     desc: "Spacious grounds for free play, athletics and daily physical activity.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/library-students.png",
     title: "Library Hour",
     desc: "A quiet space for reading, research and discovering new worlds.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/campus-day.png",
     title: "Republic Day & Parades",
     desc: "Patriotic celebrations with flag hoisting, marching and cultural programmes.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/bus.png",
     title: "School Trips & Excursions",
     desc: "Educational tours and picnics — learning that goes beyond the classroom.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
   {
     src: "/images/classroom.png",
     title: "Smart Classroom Learning",
     desc: "Interactive boards, group discussions and personalised attention in every class.",
     span: "col-span-1",
-    height: "h-[320px]",
+    height: "h-[220px] md:h-[320px]",
   },
 ];
 
@@ -100,7 +100,7 @@ export default function StudentLife() {
         subtitle="A vibrant campus where every student finds their passion — sports, culture, science, art and lifelong friendships."
       />
 
-      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
+      <div className="container mx-auto px-4 md:px-6 pt-10 md:pt-16 pb-10 md:pb-16">
 
         {/* Events & Activities Photo Grid */}
         <motion.div
@@ -110,8 +110,8 @@ export default function StudentLife() {
           variants={fadeUp}
           className="mb-6"
         >
-          <h2 className="text-3xl font-bold text-foreground mb-2">Events & Activities</h2>
-          <p className="text-muted-foreground">Life at Sunrise is full of moments worth celebrating.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Events & Activities</h2>
+          <p className="text-sm md:text-base text-muted-foreground">Life at Sunrise is full of moments worth celebrating.</p>
         </motion.div>
 
         {/* Row 1: featured (2-col) + side */}
@@ -199,16 +199,16 @@ export default function StudentLife() {
         </motion.div>
 
         {/* Clubs & Societies */}
-        <div className="mb-24 bg-primary/5 rounded-3xl p-8 md:p-16 border border-primary/10">
+        <div className="mb-12 md:mb-24 bg-primary/5 rounded-3xl p-6 md:p-16 border border-primary/10">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="text-center max-w-2xl mx-auto mb-10"
+            className="text-center max-w-2xl mx-auto mb-8 md:mb-10"
           >
-            <h2 className="text-3xl font-bold text-foreground mb-3">Clubs & Societies</h2>
-            <p className="text-muted-foreground">Discover new interests, develop leadership and collaborate with peers.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">Clubs & Societies</h2>
+            <p className="text-sm md:text-base text-muted-foreground">Discover new interests, develop leadership and collaborate with peers.</p>
           </motion.div>
           <motion.div
             initial="hidden"
@@ -238,10 +238,10 @@ export default function StudentLife() {
           whileInView="visible"
           viewport={inView}
           variants={fadeUp}
-          className="mb-8 text-center"
+          className="mb-6 md:mb-8 text-center"
         >
-          <h2 className="text-3xl font-bold text-foreground mb-2">Campus Life</h2>
-          <p className="text-muted-foreground">Every day at Sunrise is a memory in the making.</p>
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2">Campus Life</h2>
+          <p className="text-sm md:text-base text-muted-foreground">Every day at Sunrise is a memory in the making.</p>
         </motion.div>
         <motion.div
           initial="hidden"

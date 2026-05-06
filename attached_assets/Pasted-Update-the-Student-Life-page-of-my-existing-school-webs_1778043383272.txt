@@ -1,0 +1,69 @@
+Update the “Student Life” page of my existing school website for “Sunrise Senior Secondary School” by replacing specific AI-generated images with real school photos that I will provide.
+
+IMPORTANT:
+
+* Do NOT change the website design, layout, structure, or Blue + White theme
+* Do NOT remove all images
+* Do NOT redesign the page
+* Only replace images where relevant
+* Keep everything else exactly the same
+
+━━━━━━━━━━━━━━━━━━━━
+IMAGE REPLACEMENT LOGIC
+━━━━━━━━━━━━━━━━━━━━
+
+I will upload/select real school photos.
+
+You must:
+
+* Identify the type/category of each existing image on the Student Life page
+  (example: events, classroom, sports, cultural function, activities)
+
+* Replace ONLY those images which match the same category
+
+Examples:
+
+* If there is an “event/festival” image → replace it with my real event photo
+* If there is a “sports activity” image → replace it with my real sports photo
+* If there is a “classroom/student learning” image → replace it with my real classroom photo
+
+Do NOT randomly replace images.
+
+Matching must be:
+Old Image Type → Replace with Same Type Real Image
+
+━━━━━━━━━━━━━━━━━━━━
+IMAGE PLACEMENT RULES
+━━━━━━━━━━━━━━━━━━━━
+
+* Place each new image in the correct section according to its context
+* Maintain the same layout (grid, cards, gallery style)
+* Keep image size, alignment, and spacing consistent with existing design
+* Ensure images look clean, properly cropped, and well-fitted
+
+━━━━━━━━━━━━━━━━━━━━
+QUALITY REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━
+
+* Images should not stretch or distort
+* Maintain proper aspect ratio
+* Ensure good visual balance
+* Optimize images for fast loading
+* Keep professional school website appearance
+
+━━━━━━━━━━━━━━━━━━━━
+LIMITED REPLACEMENT RULE
+━━━━━━━━━━━━━━━━━━━━
+
+* Replace ONLY the images I provide
+* Do NOT remove other existing images
+* Do NOT add extra new images
+* Do NOT change content or text
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL GOAL
+━━━━━━━━━━━━━━━━━━━━
+
+The Student Life page should look more authentic and real by using actual school photos, while keeping the same professional layout and design.
+
+Only improve authenticity by replacing relevant images — no other changes.

@@ -42,7 +42,7 @@ export default function Faculty() {
   return (
     <div className="flex flex-col">
       {/* Hero */}
-      <section className="bg-gradient-to-br from-primary via-primary to-sky-800 text-white pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary via-primary to-sky-800 text-white pt-28 pb-14 md:pt-32 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_50%,white_2px,transparent_2px)] bg-[length:30px_30px]" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div
@@ -66,16 +66,16 @@ export default function Faculty() {
       </section>
 
       {/* Principal feature */}
-      <section className="py-20 bg-background">
+      <section className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-5xl mx-auto bg-white border border-border rounded-2xl shadow-sm overflow-hidden grid md:grid-cols-[280px_1fr]"
+            className="max-w-5xl mx-auto bg-white border border-border rounded-2xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-[280px_1fr]"
           >
-            <div className="bg-primary/5 flex items-center justify-center p-8">
+            <div className="bg-primary/5 flex items-center justify-center p-6 md:p-8">
               <img
                 src={PRINCIPAL_PHOTO}
                 alt={`${PRINCIPAL.name}, Principal`}
@@ -149,7 +149,7 @@ export default function Faculty() {
       </section>
 
       {/* Teachers grid */}
-      <section className="py-16 bg-muted/30">
+      <section className="py-10 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           {filteredTeachers.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">No teachers found in this department.</p>

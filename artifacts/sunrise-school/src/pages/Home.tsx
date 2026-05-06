@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* 1. Hero Section — single static photo */}
-      <section className="relative h-[90vh] min-h-[600px] flex items-center overflow-hidden bg-black/40">
+      <section className="relative min-h-screen md:h-[90vh] md:min-h-[600px] flex items-center overflow-hidden bg-black/40">
         <div className="absolute inset-0 z-0">
           <img
             src={HERO_IMAGE.src}
@@ -44,39 +44,39 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-white flex flex-col gap-8">
-          {/* Text — right-aligned, smaller font */}
+        <div className="container relative z-10 mx-auto px-4 md:px-6 mt-16 text-white flex flex-col gap-5 md:gap-8">
+          {/* Text */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={staggerChildren}
-            className="mr-auto max-w-lg flex flex-col items-start gap-4 text-left"
+            className="mr-auto max-w-lg flex flex-col items-start gap-3 md:gap-4 text-left"
           >
             <motion.span variants={fadeLeft} className="px-4 py-1.5 rounded-full bg-primary text-xs font-semibold tracking-wide uppercase shadow-sm border border-primary-foreground/20">
               CBSE Affiliated • No. 531671 • Est. 2010
             </motion.span>
 
-            <motion.h1 variants={fadeLeft} className="text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
+            <motion.h1 variants={fadeLeft} className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight text-white drop-shadow-lg">
               Shaping Bright Futures with <span className="text-secondary">Quality Education</span>
             </motion.h1>
 
-            <motion.p variants={fadeLeft} className="text-base md:text-lg text-white/90 font-medium drop-shadow-md">
+            <motion.p variants={fadeLeft} className="text-sm sm:text-base md:text-lg text-white/90 font-medium drop-shadow-md">
               A vibrant learning community dedicated to academic excellence and holistic development.
             </motion.p>
           </motion.div>
 
-          {/* Buttons — centered, original position */}
+          {/* Buttons */}
           <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeIn}
             transition={{ delay: 0.5 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center"
           >
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-14 px-8 text-lg rounded-full shadow-xl">
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-bold h-12 md:h-14 px-6 md:px-8 text-base md:text-lg rounded-full shadow-xl">
               <Link href="/contact">Apply Now <ArrowRight className="ml-2 w-5 h-5" /></Link>
             </Button>
-            <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-bold h-14 px-8 text-lg rounded-full">
+            <Button asChild size="lg" variant="outline" className="bg-white/10 hover:bg-white/20 text-white border-white/30 backdrop-blur-sm font-bold h-12 md:h-14 px-6 md:px-8 text-base md:text-lg rounded-full">
               <Link href="/about">Discover More</Link>
             </Button>
           </motion.div>
@@ -96,23 +96,23 @@ export default function Home() {
       </div>
 
       {/* 3. School Introduction */}
-      <section className="py-24 bg-background">
+      <section className="py-14 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerChildren}
-            className="max-w-4xl mx-auto text-center space-y-6"
+            className="max-w-4xl mx-auto text-center space-y-5 md:space-y-6"
           >
             <motion.div variants={fadeIn} className="flex items-center justify-center gap-2 text-primary font-bold tracking-wider uppercase mb-4">
               <Sun className="w-5 h-5" />
               Welcome to Sunrise
             </motion.div>
-            <motion.h2 variants={fadeIn} className="text-4xl md:text-5xl font-bold text-foreground leading-tight">
+            <motion.h2 variants={fadeIn} className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
               Rooted in Values, Growing Towards Excellence.
             </motion.h2>
-            <motion.p variants={fadeIn} className="text-lg md:text-xl text-muted-foreground leading-relaxed">
+            <motion.p variants={fadeIn} className="text-base md:text-xl text-muted-foreground leading-relaxed">
               Founded in 2010 by the Sunrise Education Society, we are committed to providing top-tier CBSE-affiliated education. We blend modern teaching methodologies with deep-rooted cultural values to nurture confident, capable, and compassionate young minds ready to shape the future.
             </motion.p>
           </motion.div>
@@ -120,12 +120,12 @@ export default function Home() {
       </section>
 
       {/* 4. Notice Section / Latest Updates */}
-      <section className="py-16 bg-muted/30 border-y border-border">
+      <section className="py-12 md:py-16 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Latest Updates & Notices</h2>
-              <p className="text-lg text-muted-foreground">Stay informed with the latest announcements from our school.</p>
+              <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-2 md:mb-4">Latest Updates & Notices</h2>
+              <p className="text-base md:text-lg text-muted-foreground">Stay informed with the latest announcements from our school.</p>
             </div>
             <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white rounded-full">
                <Link href="/updates" onClick={() => window.scrollTo({ top: 0, left: 0, behavior: "auto" })}>View All Notices</Link>
@@ -167,9 +167,9 @@ export default function Home() {
       </section>
 
       {/* 5. Stats Row */}
-      <section className="bg-white py-16 border-b border-border">
+      <section className="bg-white py-10 md:py-16 border-b border-border">
         <div className="container mx-auto px-4 md:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 divide-x-0 md:divide-x divide-border">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 divide-x-0 md:divide-x divide-border">
             <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="flex flex-col items-center text-center px-4">
               <span className="text-4xl md:text-5xl font-bold mb-2 text-primary">2010</span>
               <span className="text-muted-foreground font-medium uppercase tracking-wide text-sm">Established</span>
@@ -191,24 +191,24 @@ export default function Home() {
       </section>
 
       {/* 6. Principal's Message Section */}
-      <section className="py-24 bg-white">
+      <section className="py-14 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={stagger}
-            className="bg-primary/5 rounded-3xl p-8 md:p-12 border border-primary/10 max-w-6xl mx-auto flex flex-col md:flex-row gap-12 items-center shadow-sm"
+            className="bg-primary/5 rounded-3xl p-6 md:p-12 border border-primary/10 max-w-6xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12 items-center shadow-sm"
           >
-            <motion.div variants={scaleIn} className="w-full md:w-1/3 shrink-0">
+            <motion.div variants={scaleIn} className="w-full md:w-1/3 shrink-0 max-w-[280px] md:max-w-none mx-auto md:mx-0">
               <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-4 border-white">
                 <img src="/images/principal.png" alt="Mr. Khushi Ram" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
               </div>
             </motion.div>
-            <motion.div variants={fadeRight} className="w-full md:w-2/3 space-y-6">
-              <h2 className="text-3xl font-bold text-foreground">Principal's Message</h2>
-              <blockquote className="text-xl md:text-2xl font-medium text-muted-foreground italic leading-relaxed relative">
-                <Quote className="absolute -top-4 -left-6 w-8 h-8 text-primary/20 rotate-180" />
+            <motion.div variants={fadeRight} className="w-full md:w-2/3 space-y-4 md:space-y-6">
+              <h2 className="text-2xl md:text-3xl font-bold text-foreground">Principal's Message</h2>
+              <blockquote className="text-base md:text-xl font-medium text-muted-foreground italic leading-relaxed relative pl-4 sm:pl-8">
+                <Quote className="hidden sm:block absolute -top-2 -left-2 w-8 h-8 text-primary/20 rotate-180" />
                 "Education is not just about academic results; it's about building character. We strive every day to ensure our students leave Sunrise not just as scholars, but as responsible citizens ready to lead."
               </blockquote>
               <div>
@@ -226,17 +226,17 @@ export default function Home() {
       </section>
 
       {/* 7. Why Parents Trust Us */}
-      <section className="py-24 bg-muted/30">
+      <section className="py-14 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Why Parents Trust Us</h2>
-            <p className="text-lg text-muted-foreground">We provide an environment where children feel secure, engaged, and inspired.</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">Why Parents Trust Us</h2>
+            <p className="text-base md:text-lg text-muted-foreground">We provide an environment where children feel secure, engaged, and inspired.</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -268,17 +268,17 @@ export default function Home() {
       </section>
 
       {/* 8. Campus Highlights */}
-      <section className="py-24 bg-white border-y border-border">
+      <section className="py-14 md:py-24 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Campus Highlights</h2>
-            <p className="text-lg text-muted-foreground">Modern infrastructure designed to support comprehensive academic and physical development.</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">Campus Highlights</h2>
+            <p className="text-base md:text-lg text-muted-foreground">Modern infrastructure designed to support comprehensive academic and physical development.</p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -312,28 +312,28 @@ export default function Home() {
       </section>
 
       {/* 9. What Parents Say About Us — auto-scrolling marquee */}
-      <section className="py-24 bg-muted/30 overflow-hidden">
+      <section className="py-14 md:py-24 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-10 md:mb-12"
           >
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wider uppercase mb-4">
               <Star className="w-4 h-4 fill-primary" />
               Trusted by Parents
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">What Parents Say About Us</h2>
-            <p className="text-lg text-muted-foreground">Real voices from our Sunrise family — sharing why they trust us with their children's future.</p>
+            <h2 className="text-2xl md:text-4xl font-bold text-foreground mb-3 md:mb-4">What Parents Say About Us</h2>
+            <p className="text-base md:text-lg text-muted-foreground">Real voices from our Sunrise family — sharing why they trust us with their children's future.</p>
           </motion.div>
         </div>
         <TestimonialsMarquee />
       </section>
 
       {/* 10. Final CTA */}
-      <section className="py-24 bg-primary text-primary-foreground text-center">
+      <section className="py-14 md:py-24 bg-primary text-primary-foreground text-center">
         <div className="container mx-auto px-4">
           <motion.div
             initial="hidden"
@@ -341,8 +341,8 @@ export default function Home() {
             viewport={inView}
             variants={fadeUp}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Join the Sunrise Family</h2>
-            <p className="text-xl mb-10 max-w-2xl mx-auto text-primary-foreground/90 leading-relaxed">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Join the Sunrise Family</h2>
+            <p className="text-base md:text-xl mb-8 md:mb-10 max-w-2xl mx-auto text-primary-foreground/90 leading-relaxed">
               Admissions are open for the upcoming academic session. Give your child the foundation they deserve in a school that feels like home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -355,16 +355,16 @@ export default function Home() {
       </section>
       
       {/* 11. School Location Map */}
-      <section className="py-16 bg-background">
+      <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="flex flex-col md:flex-row gap-8 items-center bg-white border border-border rounded-3xl overflow-hidden shadow-sm"
+            className="flex flex-col md:flex-row gap-0 items-stretch bg-white border border-border rounded-3xl overflow-hidden shadow-sm"
           >
-            <div className="p-8 md:p-12 md:w-1/3 flex flex-col gap-4">
+            <div className="p-6 md:p-12 md:w-1/3 flex flex-col gap-4">
                <h2 className="text-3xl font-bold text-foreground mb-2">Find Us On The Map</h2>
                <p className="text-muted-foreground leading-relaxed">
                  Sunrise Senior Secondary School is conveniently located in Mago Majri, easily accessible from Kaithal and surrounding areas via our dedicated transport fleet.

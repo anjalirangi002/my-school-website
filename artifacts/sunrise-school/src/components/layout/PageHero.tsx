@@ -61,7 +61,7 @@ export default function PageHero({
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg"
+            className="text-2xl sm:text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg"
           >
             {title}
           </motion.h1>

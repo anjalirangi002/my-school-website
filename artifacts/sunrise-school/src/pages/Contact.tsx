@@ -54,14 +54,14 @@ export default function Contact() {
         subtitle="Reach out for admission queries, campus visits or any information — we're here to help you make the right choice for your child."
       />
 
-      <div className="container mx-auto px-4 md:px-6 max-w-6xl pt-16 pb-16">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl pt-10 md:pt-16 pb-10 md:pb-16">
 
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={inView}
           variants={stagger}
-          className="grid md:grid-cols-5 gap-12 items-start"
+          className="grid md:grid-cols-5 gap-8 md:gap-12 items-start"
         >
           {/* Left — contact info */}
           <motion.div variants={fadeLeft} className="md:col-span-2 space-y-8">

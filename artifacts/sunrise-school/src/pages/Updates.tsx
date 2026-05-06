@@ -41,7 +41,7 @@ export default function Updates() {
   return (
     <div className="flex flex-col">
       {/* Hero header */}
-      <section className="bg-gradient-to-br from-primary via-primary to-sky-700 text-white pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-primary via-primary to-sky-700 text-white pt-28 pb-14 md:pt-32 md:pb-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_50%,white_2px,transparent_2px)] bg-[length:30px_30px]" />
         <div className="container mx-auto px-4 md:px-6 relative">
           <motion.div

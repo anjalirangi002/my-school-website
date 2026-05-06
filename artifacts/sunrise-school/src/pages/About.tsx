@@ -15,7 +15,7 @@ export default function About() {
         subtitle="A legacy of academic rigor, character building and cultural values — nurturing young minds in Mago Majri, Kaithal since 2010."
       />
 
-      <div className="container mx-auto px-4 md:px-6 pt-16 pb-16">
+      <div className="container mx-auto px-4 md:px-6 pt-10 md:pt-16 pb-10 md:pb-16">
 
         {/* Mission, Vision, Core Values */}
         <motion.div
@@ -23,7 +23,7 @@ export default function About() {
           whileInView="visible"
           viewport={inView}
           variants={stagger}
-          className="grid md:grid-cols-3 gap-8 mb-24"
+          className="grid md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-24"
         >
           {[
             {
@@ -60,7 +60,7 @@ export default function About() {
         </motion.div>
 
         {/* History and Management */}
-        <div className="mb-24 bg-muted/30 rounded-3xl p-8 md:p-16 border border-border flex flex-col md:flex-row gap-12 items-center">
+        <div className="mb-12 md:mb-24 bg-muted/30 rounded-3xl p-6 md:p-16 border border-border flex flex-col md:flex-row gap-8 md:gap-12 items-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -103,16 +103,16 @@ export default function About() {
         </div>
 
         {/* School Achievements */}
-        <div className="mb-24">
+        <div className="mb-12 md:mb-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            <h2 className="text-3xl font-bold text-foreground mb-4">School Achievements</h2>
-            <p className="text-lg text-muted-foreground">Milestones that define our commitment to excellence over the years.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">School Achievements</h2>
+            <p className="text-base md:text-lg text-muted-foreground">Milestones that define our commitment to excellence over the years.</p>
           </motion.div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -151,7 +151,7 @@ export default function About() {
           viewport={inView}
           variants={fadeUp}
           id="principal-message"
-          className="bg-foreground text-white rounded-3xl p-8 md:p-16 shadow-2xl relative overflow-hidden mb-24"
+          className="bg-foreground text-white rounded-3xl p-6 md:p-16 shadow-2xl relative overflow-hidden mb-12 md:mb-24"
         >
           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
           <div className="relative z-10 grid md:grid-cols-12 gap-12 items-center">
@@ -180,23 +180,23 @@ export default function About() {
         </motion.div>
 
         {/* Faculty Overview */}
-        <div className="mb-24">
+        <div className="mb-12 md:mb-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={fadeUp}
-            className="text-center max-w-3xl mx-auto mb-12"
+            className="text-center max-w-3xl mx-auto mb-8 md:mb-12"
           >
-            <h2 className="text-3xl font-bold text-foreground mb-4">Our Dedicated Faculty</h2>
-            <p className="text-lg text-muted-foreground">Experienced educators committed to nurturing young minds.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">Our Dedicated Faculty</h2>
+            <p className="text-base md:text-lg text-muted-foreground">Experienced educators committed to nurturing young minds.</p>
           </motion.div>
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={inView}
             variants={stagger}
-            className="grid md:grid-cols-3 gap-8"
+            className="grid md:grid-cols-3 gap-6 md:gap-8"
           >
             {[
               { icon: GraduationCap, color: "bg-primary/10 text-primary", title: "PGTs", sub: "Post Graduate Teachers", body: "Subject experts managing Senior Secondary classes (11th & 12th) across all specialized streams." },

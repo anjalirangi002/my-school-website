@@ -1,0 +1,128 @@
+Improve the responsiveness of my existing school website for “Sunrise Senior Secondary School” without changing anything else.
+
+IMPORTANT:
+
+Do NOT change design, layout structure, content, colors, or theme (keep Blue + White exactly the same)
+Do NOT redesign sections
+Only fix responsiveness and layout behavior across devices
+
+━━━━━━━━━━━━━━━━━━━━
+MAIN ISSUE: RESPONSIVENESS PROBLEM
+━━━━━━━━━━━━━━━━━━━━
+
+Current Problems:
+
+Website layout breaks or shifts on mobile and tablet
+Structure looks correct on desktop but not on smaller screens
+Hero section is not properly visible on mobile (user has to scroll to see it fully)
+Elements are not properly aligned across devices
+
+━━━━━━━━━━━━━━━━━━━━
+
+FULL RESPONSIVE FIX (ALL DEVICES)
+━━━━━━━━━━━━━━━━━━━━
+
+Ensure website works perfectly on:
+
+Mobile (small screens)
+Tablet (medium screens)
+Desktop (large screens)
+
+Fix:
+
+Proper responsive breakpoints
+Flexible layouts (no fixed widths that break UI)
+Use responsive grid and spacing system
+Maintain same structure but adapt sizing
+
+━━━━━━━━━━━━━━━━━━━━
+2. HERO SECTION MOBILE FIX (VERY IMPORTANT)
+━━━━━━━━━━━━━━━━━━━━
+
+Current Issue:
+Hero section does not fully fit on mobile screen.
+
+Required Fix:
+
+Hero section should fit within the first screen (above the fold) on mobile
+No unnecessary scrolling required to see main hero content
+Adjust:
+Height (use responsive height like min-h-screen or similar)
+Font sizes (smaller on mobile)
+Padding and spacing
+Image/video scaling
+
+Hero section must look clean, centered, and properly visible on all devices.
+
+━━━━━━━━━━━━━━━━━━━━
+3. TEXT & FONT RESPONSIVENESS
+━━━━━━━━━━━━━━━━━━━━
+
+Headings should scale properly on mobile
+Paragraph text should remain readable (not too big or too small)
+Maintain proper line spacing
+
+━━━━━━━━━━━━━━━━━━━━
+4. IMAGE RESPONSIVENESS
+━━━━━━━━━━━━━━━━━━━━
+
+Images should scale properly without breaking layout
+No overflow or cropping issues
+Maintain aspect ratio
+Use responsive width (100%) where needed
+
+━━━━━━━━━━━━━━━━━━━━
+5. NAVBAR RESPONSIVENESS
+━━━━━━━━━━━━━━━━━━━━
+
+Desktop → normal navbar
+Mobile → hamburger menu
+Proper spacing and alignment on all devices
+Logo and menu should not overlap or compress
+
+━━━━━━━━━━━━━━━━━━━━
+6. SECTION SPACING FIX
+━━━━━━━━━━━━━━━━━━━━
+
+Reduce excessive padding/margins on mobile
+Maintain balanced spacing across devices
+No content should feel cramped or too spread out
+
+━━━━━━━━━━━━━━━━━━━━
+7. GRID & CARD RESPONSIVENESS
+━━━━━━━━━━━━━━━━━━━━
+
+Multi-column layout on desktop
+Stack into single column on mobile
+Cards should resize properly
+Maintain clean alignment
+
+━━━━━━━━━━━━━━━━━━━━
+8. FORM RESPONSIVENESS
+━━━━━━━━━━━━━━━━━━━━
+
+Contact form should be easy to use on mobile
+Inputs should be full width
+Proper spacing between fields
+
+━━━━━━━━━━━━━━━━━━━━
+PERFORMANCE NOTE
+━━━━━━━━━━━━━━━━━━━━
+
+Keep website fast and smooth
+Avoid heavy elements that break mobile performance
+
+━━━━━━━━━━━━━━━━━━━━
+FINAL GOAL
+━━━━━━━━━━━━━━━━━━━━
+
+The website should:
+
+Look perfect on mobile, tablet, and desktop
+Maintain same design but adapt smoothly
+Have a clean, balanced, and professional layout on every screen size
+Provide a smooth and user-friendly experience without layout issues
+
+Do not add new features.
+Do not change design.
+Only fix responsiveness and layout behavior.
