@@ -79,7 +79,7 @@ export default function Faculty() {
               <img
                 src={PRINCIPAL_PHOTO}
                 alt={`${PRINCIPAL.name}, Principal`}
-                className="w-48 h-48 rounded-full object-cover border-4 border-white shadow-lg"
+                className="w-48 h-48 rounded-full object-cover object-top border-4 border-white shadow-lg"
               />
             </div>
             <div className="p-8 md:p-10 flex flex-col justify-center">
