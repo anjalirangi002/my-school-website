@@ -5,21 +5,21 @@ import { fadeUp, scaleIn, stagger, staggerFast, inView } from "@/lib/animations"
 
 const EVENTS = [
   {
-    src: "/images/cultural.png",
+    src: "/images/real-cultural.jpg",
     title: "Annual Cultural Function",
     desc: "Students shine in dance, drama, choir and artistic performances every year.",
     span: "col-span-2",
     height: "h-[260px] md:h-[380px]",
   },
   {
-    src: "/images/assembly.png",
+    src: "/images/real-assembly.jpg",
     title: "Morning Assembly",
     desc: "Daily assembly builds discipline, confidence and public speaking skills.",
     span: "col-span-1",
     height: "h-[260px] md:h-[380px]",
   },
   {
-    src: "/images/sports.png",
+    src: "/images/real-sports.jpg",
     title: "Sports & Athletics",
     desc: "Inter-house tournaments, kabaddi, kho-kho and annual sports meets.",
     span: "col-span-1",
@@ -47,7 +47,7 @@ const EVENTS = [
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/campus-day.png",
+    src: "/images/real-campus-day.jpg",
     title: "Republic Day & Parades",
     desc: "Patriotic celebrations with flag hoisting, marching and cultural programmes.",
     span: "col-span-1",
@@ -61,7 +61,7 @@ const EVENTS = [
     height: "h-[220px] md:h-[320px]",
   },
   {
-    src: "/images/classroom.png",
+    src: "/images/real-classroom.jpg",
     title: "Smart Classroom Learning",
     desc: "Interactive boards, group discussions and personalised attention in every class.",
     span: "col-span-1",
@@ -70,12 +70,12 @@ const EVENTS = [
 ];
 
 const GALLERY = [
-  { src: "/images/hero-2.png", alt: "Campus life at Sunrise" },
+  { src: "/images/real-campus.jpg", alt: "Campus life at Sunrise" },
   { src: "/images/science-lab.png", alt: "Science lab" },
   { src: "/images/library.png", alt: "School library" },
-  { src: "/images/sports.png", alt: "Sports grounds" },
-  { src: "/images/cultural.png", alt: "Cultural programme" },
-  { src: "/images/campus-day.png", alt: "School celebrations" },
+  { src: "/images/real-sports.jpg", alt: "Sports grounds" },
+  { src: "/images/real-cultural-dance.jpg", alt: "Cultural programme" },
+  { src: "/images/real-cultural2.jpg", alt: "School celebrations" },
 ];
 
 const CLUBS = [
