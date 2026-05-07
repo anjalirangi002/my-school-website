@@ -122,7 +122,7 @@ export default function AIAssistant() {
             <motion.img
               src="/images/ai-bot.png"
               alt="AI Assistant"
-              className="w-16 h-16 object-contain drop-shadow-xl"
+              className="w-24 h-24 object-contain drop-shadow-xl"
               animate={{ y: [0, -7, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.18, rotate: [0, -5, 5, 0] }}
