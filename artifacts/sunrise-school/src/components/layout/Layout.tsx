@@ -3,6 +3,7 @@ import { useLocation } from "wouter";
 import Header from "./Header";
 import Footer from "./Footer";
 import WhatsAppButton from "@/components/ui/WhatsAppButton";
+import AIAssistant from "@/components/ui/AIAssistant";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -51,6 +52,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </main>
       <Footer />
       <WhatsAppButton />
+      <AIAssistant />
     </div>
   );
 }
