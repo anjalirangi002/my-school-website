@@ -82,7 +82,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* 2. Admission Open Banner */}
       <div className="bg-foreground text-white py-4 shadow-inner relative z-30">
         <div className="container mx-auto px-4">
@@ -94,7 +93,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* 3. School Introduction */}
       <section className="py-14 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
@@ -105,7 +103,7 @@ export default function Home() {
             variants={staggerChildren}
             className="max-w-4xl mx-auto text-center space-y-5 md:space-y-6"
           >
-            <motion.div variants={fadeIn} className="flex items-center justify-center gap-2 text-primary font-bold tracking-wider uppercase mb-4">
+            <motion.div variants={fadeIn} className="flex items-center justify-center gap-2 text-primary tracking-wider uppercase mb-4 text-[22px] font-extrabold">
               <Sun className="w-5 h-5" />
               Welcome to Sunrise
             </motion.div>
@@ -118,7 +116,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* 4. Notice Section / Latest Updates */}
       <section className="py-12 md:py-16 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
@@ -165,7 +162,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 5. Stats Row */}
       <section className="bg-white py-10 md:py-16 border-b border-border">
         <div className="container mx-auto px-4 md:px-8">
@@ -189,7 +185,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 6. Principal's Message Section */}
       <section className="py-14 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
@@ -224,7 +219,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
       {/* 7. Why Parents Trust Us */}
       <section className="py-14 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
@@ -266,7 +260,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 8. Campus Highlights */}
       <section className="py-14 md:py-24 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
@@ -310,7 +303,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* 9. What Parents Say About Us — auto-scrolling marquee */}
       <section className="py-14 md:py-24 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
@@ -331,7 +323,6 @@ export default function Home() {
         </div>
         <TestimonialsMarquee />
       </section>
-
       {/* 10. Final CTA */}
       <section className="py-14 md:py-24 bg-primary text-primary-foreground text-center">
         <div className="container mx-auto px-4">
@@ -353,7 +344,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-      
       {/* 11. School Location Map */}
       <section className="py-12 md:py-16 bg-background">
         <div className="container mx-auto px-4 md:px-6">
@@ -401,7 +391,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
     </div>
   );
 }
