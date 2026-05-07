@@ -107,7 +107,7 @@ export default function Home() {
               <Sun className="w-5 h-5" />
               Welcome to Sunrise
             </motion.div>
-            <motion.h2 variants={fadeIn} className="text-3xl md:text-5xl font-bold text-foreground leading-tight">
+            <motion.h2 variants={fadeIn} className="md:text-5xl font-bold text-foreground text-[35px]">
               Rooted in Values, Growing Towards Excellence.
             </motion.h2>
             <motion.p variants={fadeIn} className="text-base md:text-xl text-muted-foreground leading-relaxed">
