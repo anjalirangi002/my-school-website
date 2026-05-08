@@ -16,8 +16,8 @@ export default function Campus() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           
           <div className="rounded-3xl overflow-hidden shadow-sm border border-border bg-white group flex flex-col">
-            <div className="h-56 overflow-hidden">
-              <img src="/images/classroom.jpg" alt="Smart Classrooms" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="aspect-[4/3] overflow-hidden bg-muted/40">
+              <img src="/images/classroom.jpg" alt="Smart Classrooms" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">
@@ -29,8 +29,8 @@ export default function Campus() {
           </div>
 
           <div className="rounded-3xl overflow-hidden shadow-sm border border-border bg-white group flex flex-col">
-            <div className="h-56 overflow-hidden">
-              <img src="/images/science-lab.jpg" alt="Science Labs" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="aspect-[4/3] overflow-hidden bg-muted/40">
+              <img src="/images/science-lab.jpg" alt="Science Labs" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="w-12 h-12 bg-accent/10 text-accent rounded-xl flex items-center justify-center mb-6">
@@ -42,8 +42,8 @@ export default function Campus() {
           </div>
 
           <div className="rounded-3xl overflow-hidden shadow-sm border border-border bg-white group flex flex-col">
-            <div className="h-56 overflow-hidden">
-              <img src="/images/library.jpg" alt="Library" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="aspect-[4/3] overflow-hidden bg-muted/40">
+              <img src="/images/library.jpg" alt="Library" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="w-12 h-12 bg-secondary/10 text-secondary-foreground rounded-xl flex items-center justify-center mb-6">
@@ -55,8 +55,8 @@ export default function Campus() {
           </div>
 
           <div className="rounded-3xl overflow-hidden shadow-sm border border-border bg-white group flex flex-col">
-            <div className="h-56 overflow-hidden">
-              <img src="/images/playground.jpg" alt="Playground" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="aspect-[4/3] overflow-hidden bg-muted/40">
+              <img src="/images/playground.jpg" alt="Playground" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="w-12 h-12 bg-green-500/10 text-green-600 rounded-xl flex items-center justify-center mb-6">
@@ -68,8 +68,8 @@ export default function Campus() {
           </div>
 
           <div className="rounded-3xl overflow-hidden shadow-sm border border-border bg-white group flex flex-col">
-            <div className="h-56 overflow-hidden">
-              <img src="/images/bus.jpg" alt="Transport Fleet" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            <div className="aspect-[4/3] overflow-hidden bg-muted/40">
+              <img src="/images/bus.jpg" alt="Transport Fleet" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" />
             </div>
             <div className="p-8 flex-1">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center mb-6">

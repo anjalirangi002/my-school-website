@@ -126,12 +126,12 @@ export default function StudentLife() {
             <motion.div
               key={idx}
               variants={scaleIn}
-              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer ${ev.span === "col-span-2" ? "md:col-span-2" : ""} ${ev.height}`}
+              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer bg-gray-900 ${ev.span === "col-span-2" ? "md:col-span-2" : ""} ${ev.height}`}
             >
               <img
                 src={ev.src}
                 alt={ev.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
@@ -154,12 +154,12 @@ export default function StudentLife() {
             <motion.div
               key={idx}
               variants={scaleIn}
-              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer ${ev.height}`}
+              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer bg-gray-900 ${ev.height}`}
             >
               <img
                 src={ev.src}
                 alt={ev.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
@@ -182,12 +182,12 @@ export default function StudentLife() {
             <motion.div
               key={idx}
               variants={scaleIn}
-              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer ${ev.height}`}
+              className={`relative rounded-2xl overflow-hidden group shadow-sm cursor-pointer bg-gray-900 ${ev.height}`}
             >
               <img
                 src={ev.src}
                 alt={ev.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5 z-10">

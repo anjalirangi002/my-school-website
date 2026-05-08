@@ -204,9 +204,9 @@ export default function Academic() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group"
+            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group bg-gray-900"
           >
-            <img src="/images/lab-students.jpg" alt="Students in science laboratory" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/images/lab-students.jpg" alt="Students in science laboratory" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2">
@@ -221,9 +221,9 @@ export default function Academic() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group"
+            className="relative h-72 md:h-80 rounded-3xl overflow-hidden shadow-sm border border-border group bg-gray-900"
           >
-            <img src="/images/library-students.jpg" alt="Students reading in school library" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/images/library-students.jpg" alt="Students reading in school library" className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
               <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-secondary mb-2">

@@ -289,9 +289,9 @@ export default function Home() {
                  whileInView={{ opacity: 1, scale: 1 }}
                  viewport={{ once: true }}
                  transition={{ delay: idx * 0.1 }}
-                 className="group relative h-64 rounded-2xl overflow-hidden shadow-sm border border-border"
+                 className="group relative h-64 rounded-2xl overflow-hidden shadow-sm border border-border bg-gray-900"
                >
-                 <img src={`/images/${item.img}`} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                 <img src={`/images/${item.img}`} alt={item.title} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                    <div className="flex items-center gap-3 text-white">
                      <item.icon className="w-6 h-6 text-secondary" />

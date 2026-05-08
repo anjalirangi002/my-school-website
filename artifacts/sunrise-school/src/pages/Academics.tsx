@@ -41,7 +41,7 @@ export default function Academics() {
             </div>
           </div>
           <div>
-            <img src="/images/classroom.jpg" alt="Classroom" className="w-full h-[400px] object-cover rounded-3xl shadow-xl" />
+            <img src="/images/classroom.jpg" alt="Classroom" className="w-full h-auto rounded-3xl shadow-xl" />
           </div>
         </div>
 

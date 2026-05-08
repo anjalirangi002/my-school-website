@@ -31,12 +31,12 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: (idx % 3) * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] border border-border bg-muted"
+              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 aspect-[4/3] border border-border bg-muted/60"
             >
               <img 
                 src={img.src} 
                 alt={img.alt} 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
+                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                 <span className="text-white font-bold text-lg">{img.title}</span>
