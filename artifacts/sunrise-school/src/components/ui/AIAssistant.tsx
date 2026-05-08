@@ -102,7 +102,7 @@ export default function AIAssistant() {
             onClick={reopen}
             onHoverStart={() => setHovered(true)}
             onHoverEnd={() => setHovered(false)}
-            className="fixed bottom-24 right-5 z-[60] flex flex-col items-center focus:outline-none"
+            className="fixed bottom-24 right-5 z-[60] focus:outline-none"
             aria-label="Open assistant"
           >
             <AnimatePresence>
@@ -112,7 +112,7 @@ export default function AIAssistant() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 6, scale: 0.88 }}
                   transition={{ duration: 0.18 }}
-                  className="mb-1.5 bg-white text-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap border border-border"
+                  className="absolute bottom-full right-0 mb-2 bg-white text-foreground text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg whitespace-nowrap border border-border"
                 >
                   Need help? Click me! 😊
                 </motion.div>
@@ -122,10 +122,10 @@ export default function AIAssistant() {
             <motion.img
               src="/images/ai-bot.png"
               alt="AI Assistant"
-              className="w-24 h-24 object-contain drop-shadow-xl"
+              className="w-28 h-28 object-contain drop-shadow-xl"
               animate={{ y: [0, -7, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-              whileHover={{ scale: 1.18, rotate: [0, -5, 5, 0] }}
+              whileHover={{ scale: 1.15 }}
             />
           </motion.button>
         )}
