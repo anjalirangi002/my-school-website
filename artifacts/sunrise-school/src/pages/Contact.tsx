@@ -57,6 +57,7 @@ export default function Contact() {
       <div className="container mx-auto px-4 md:px-6 max-w-6xl pt-10 md:pt-16 pb-10 md:pb-16">
 
         <motion.div
+          id="contact-info"
           initial="hidden"
           whileInView="visible"
           viewport={inView}

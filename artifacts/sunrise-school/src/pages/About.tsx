@@ -19,6 +19,7 @@ export default function About() {
 
         {/* Mission, Vision, Core Values */}
         <motion.div
+          id="about-values"
           initial="hidden"
           whileInView="visible"
           viewport={inView}
@@ -103,7 +104,7 @@ export default function About() {
         </div>
 
         {/* School Achievements */}
-        <div className="mb-12 md:mb-24">
+        <div id="about-achievements" className="mb-12 md:mb-24">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -221,6 +222,7 @@ export default function About() {
 
         {/* Affiliation */}
         <motion.div
+          id="about-affiliation"
           initial="hidden"
           whileInView="visible"
           viewport={inView}

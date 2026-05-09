@@ -104,6 +104,7 @@ export default function StudentLife() {
 
         {/* Events & Activities Photo Grid */}
         <motion.div
+          id="studentlife-events"
           initial="hidden"
           whileInView="visible"
           viewport={inView}
@@ -199,7 +200,7 @@ export default function StudentLife() {
         </motion.div>
 
         {/* Clubs & Societies */}
-        <div className="mb-12 md:mb-24 bg-primary/5 rounded-3xl p-6 md:p-16 border border-primary/10">
+        <div id="studentlife-clubs" className="mb-12 md:mb-24 bg-primary/5 rounded-3xl p-6 md:p-16 border border-primary/10">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -234,6 +235,7 @@ export default function StudentLife() {
 
         {/* Campus Life Gallery */}
         <motion.div
+          id="studentlife-gallery"
           initial="hidden"
           whileInView="visible"
           viewport={inView}

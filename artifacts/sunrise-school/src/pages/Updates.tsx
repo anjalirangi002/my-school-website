@@ -91,7 +91,7 @@ export default function Updates() {
       </section>
 
       {/* Notices list */}
-      <section className="py-16 bg-muted/30">
+      <section id="updates-notices" className="py-16 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           {filteredNotices.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">No notices found in this category.</p>

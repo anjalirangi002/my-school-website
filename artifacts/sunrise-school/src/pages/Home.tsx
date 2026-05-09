@@ -94,7 +94,7 @@ export default function Home() {
         </div>
       </div>
       {/* 3. School Introduction */}
-      <section className="py-14 md:py-24 bg-background">
+      <section id="home-intro" className="py-14 md:py-24 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div 
             initial="hidden"
@@ -117,7 +117,7 @@ export default function Home() {
         </div>
       </section>
       {/* 4. Notice Section / Latest Updates */}
-      <section className="py-12 md:py-16 bg-muted/30 border-y border-border">
+      <section id="home-notices" className="py-12 md:py-16 bg-muted/30 border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 md:gap-6 mb-8 md:mb-12">
             <div>
@@ -186,7 +186,7 @@ export default function Home() {
         </div>
       </section>
       {/* 6. Principal's Message Section */}
-      <section className="py-14 md:py-24 bg-white">
+      <section id="home-principal" className="py-14 md:py-24 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
@@ -220,7 +220,7 @@ export default function Home() {
         </div>
       </section>
       {/* 7. Why Parents Trust Us */}
-      <section className="py-14 md:py-24 bg-muted/30">
+      <section id="home-trust" className="py-14 md:py-24 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
@@ -261,7 +261,7 @@ export default function Home() {
         </div>
       </section>
       {/* 8. Campus Highlights */}
-      <section className="py-14 md:py-24 bg-white border-y border-border">
+      <section id="home-campus" className="py-14 md:py-24 bg-white border-y border-border">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
@@ -304,7 +304,7 @@ export default function Home() {
         </div>
       </section>
       {/* 9. What Parents Say About Us — auto-scrolling marquee */}
-      <section className="py-14 md:py-24 bg-muted/30 overflow-hidden">
+      <section id="home-testimonials" className="py-14 md:py-24 bg-muted/30 overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

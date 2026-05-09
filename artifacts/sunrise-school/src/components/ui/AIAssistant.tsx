@@ -6,54 +6,215 @@ import { X, Send, ChevronRight, ChevronLeft } from "lucide-react";
 type Phase = "center" | "corner" | "chat" | "tour";
 type Message = { role: "assistant" | "user"; text: string };
 
-const TOUR_STEPS = [
+interface TourStep {
+  path: string;
+  scrollId: string | null;
+  title: string;
+  message: string;
+}
+
+const TOUR_STEPS: TourStep[] = [
+  // ── HOME ──────────────────────────────────────────────────────────────
   {
     path: "/",
-    title: "🏫 Home",
+    scrollId: null,
+    title: "🏫 Welcome to Sunrise!",
     message:
-      "Welcome to Sunrise Senior Secondary School! We are CBSE-affiliated (No. 531671), established in 2010 in Vill. Mago Majri, Kaithal, Haryana. Let me take you on a quick tour!",
+      "Welcome to Sunrise Senior Secondary School — CBSE affiliated (No. 531671), established in 2010 in Vill. Mago Majri, Kaithal, Haryana! Let me show you around.",
+  },
+  {
+    path: "/",
+    scrollId: "home-intro",
+    title: "🌟 Our Story",
+    message:
+      "Founded by the Sunrise Education Society, we blend modern teaching methods with deep-rooted cultural values to nurture confident and capable young minds.",
+  },
+  {
+    path: "/",
+    scrollId: "home-notices",
+    title: "📢 Latest Notices",
+    message:
+      "Stay updated with admission schedules, exam dates and important school announcements right here on the home page.",
+  },
+  {
+    path: "/",
+    scrollId: "home-principal",
+    title: "👨‍💼 Principal's Message",
+    message:
+      "Our Principal Mr. Khushi Ram (M.A., B.Ed.) with 30+ years of experience believes: \"Education is not just about results — it's about building character.\"",
+  },
+  {
+    path: "/",
+    scrollId: "home-trust",
+    title: "💪 Why Parents Trust Us",
+    message:
+      "100% board results, safe campus with 24/7 CCTV, smart classrooms, experienced faculty, school transport and strong discipline — 6 reasons parents choose Sunrise!",
+  },
+  {
+    path: "/",
+    scrollId: "home-campus",
+    title: "🏛️ Campus Highlights",
+    message:
+      "Smart classrooms, modern science labs, rich library, school transport, morning assembly ground and a spacious playground — all within our campus.",
+  },
+  {
+    path: "/",
+    scrollId: "home-testimonials",
+    title: "⭐ What Parents Say",
+    message:
+      "Real voices from our Sunrise family! Parents share why they trust us with their children's future. See what they have to say.",
+  },
+
+  // ── ABOUT ─────────────────────────────────────────────────────────────
+  {
+    path: "/about",
+    scrollId: null,
+    title: "📖 About Sunrise",
+    message:
+      "Learn about our 15-year journey of academic excellence, holistic development and cultural values in Mago Majri, Kaithal.",
   },
   {
     path: "/about",
-    title: "📖 About Us",
+    scrollId: "about-values",
+    title: "🎯 Mission, Vision & Values",
     message:
-      "Here you will find our school's story, vision, and achievements. We have maintained 100% CBSE board results for 6 consecutive years — a record we are very proud of!",
+      "Our Mission: quality education with character. Our Vision: empowering rural youth globally. Our Values: Integrity, Discipline, Compassion and Curiosity.",
+  },
+  {
+    path: "/about",
+    scrollId: "about-achievements",
+    title: "🏆 Our Achievements",
+    message:
+      "100% board results for 5 consecutive years, Best CBSE School Award (Kaithal 2023), state-level sports champions and 1000+ successful alumni!",
+  },
+  {
+    path: "/about",
+    scrollId: "about-affiliation",
+    title: "✅ CBSE Affiliation Details",
+    message:
+      "Board: CBSE, New Delhi • Affiliation No.: 531671 • School Code: 41650 • Type: Co-educational, Private Unaided • Classes: Playway to Grade 12 • Medium: English.",
+  },
+
+  // ── ACADEMICS ─────────────────────────────────────────────────────────
+  {
+    path: "/academic",
+    scrollId: null,
+    title: "📚 Academics",
+    message:
+      "A holistic CBSE learning approach — from Playway to Class 12, with critical thinking, digital classrooms and advanced labs that prepare students for the future.",
   },
   {
     path: "/academic",
-    title: "📚 Academics",
+    scrollId: "academic-structure",
+    title: "🎓 Education Structure",
     message:
-      "From Playway to Class 12, we offer complete education. Class 11 & 12 have 4 streams: Medical, Non-Medical, Commerce, and Arts — all with experienced and dedicated faculty.",
+      "A seamless journey: Pre-Primary (Playway to KG) → Primary (Class 1–5) → Middle (Class 6–8) → Secondary (Class 9–10) → Senior Secondary (Class 11–12).",
+  },
+  {
+    path: "/academic",
+    scrollId: "academic-streams",
+    title: "🔬 Streams Offered",
+    message:
+      "Class 11 & 12 students choose from 4 career streams: Medical (PCB), Non-Medical (PCM), Commerce, and Arts/Humanities — all with expert dedicated faculty!",
+  },
+  {
+    path: "/academic",
+    scrollId: "academic-smart",
+    title: "💡 Smart Learning Ecosystem",
+    message:
+      "Smart Classrooms with digital boards, Advanced Science Labs, a Digital Library and Expert Coaching — this is the Smart Learning Ecosystem at Sunrise!",
+  },
+
+  // ── FACULTY ───────────────────────────────────────────────────────────
+  {
+    path: "/faculty",
+    scrollId: null,
+    title: "👩‍🏫 Our Faculty",
+    message:
+      "Meet our 32+ qualified and dedicated educators committed to nurturing every child's potential at Sunrise School.",
   },
   {
     path: "/faculty",
-    title: "👩‍🏫 Faculty",
+    scrollId: "faculty-principal",
+    title: "👨‍💼 The Principal",
     message:
-      "Meet our 32+ qualified and dedicated teachers! Our Principal Mr. Khushi Ram (M.A., B.Ed.) has 30+ years of experience in education.",
+      "Mr. Khushi Ram, M.A., B.Ed. — our visionary Principal who believes every child deserves top-tier education, regardless of their background.",
+  },
+  {
+    path: "/faculty",
+    scrollId: "faculty-stats",
+    title: "📊 Faculty at a Glance",
+    message:
+      "32+ total faculty • 100% qualified teachers • Multiple departments • 7+ years average experience — a team fully dedicated to your child's growth!",
+  },
+  {
+    path: "/faculty",
+    scrollId: "faculty-grid",
+    title: "🧑‍🏫 Meet the Team",
+    message:
+      "Browse all our teachers by department — Science, Mathematics, Languages, Social Studies, Commerce, Computer Science and more. Use the filter bar to explore!",
+  },
+
+  // ── STUDENT LIFE ──────────────────────────────────────────────────────
+  {
+    path: "/student-life",
+    scrollId: null,
+    title: "🎭 Student Life",
+    message:
+      "Life at Sunrise goes beyond books — sports, culture, science, art and lifelong friendships await every student!",
   },
   {
     path: "/student-life",
-    title: "🎭 Student Life",
+    scrollId: "studentlife-events",
+    title: "🎪 Events & Activities",
     message:
-      "Life at Sunrise goes beyond books! Sports, cultural events, science exhibitions, and 8 student clubs — there is something for every student to shine.",
+      "Annual Cultural Function, Morning Assembly, Sports & Athletics, Science Lab Sessions, Republic Day Parades and School Excursions — every day is a celebration!",
   },
   {
-    path: "/campus",
-    title: "🏛️ Campus",
+    path: "/student-life",
+    scrollId: "studentlife-clubs",
+    title: "🌟 Clubs & Societies",
     message:
-      "Smart classrooms, modern science labs, a rich library, spacious sports grounds, school transport, and 24/7 CCTV security — all within our campus.",
+      "8 student clubs: Science, Literary, Music & Dance, Eco Club, Sports, Computer, Art & Craft, and Debate Society — there is something for every student to shine!",
+  },
+  {
+    path: "/student-life",
+    scrollId: "studentlife-gallery",
+    title: "📸 Campus Life Gallery",
+    message:
+      "Every day at Sunrise is a memory in the making — see our vibrant campus life through these real moments captured at school.",
+  },
+
+  // ── UPDATES ───────────────────────────────────────────────────────────
+  {
+    path: "/updates",
+    scrollId: null,
+    title: "📢 Latest Updates",
+    message:
+      "Our notice board keeps all parents and students informed about important school announcements throughout the year.",
   },
   {
     path: "/updates",
-    title: "📢 Updates",
+    scrollId: "updates-notices",
+    title: "📋 Notice Board",
     message:
-      "Stay informed! All important notices — admission schedules, exam dates, events, and holiday announcements — are posted here regularly.",
+      "Browse notices by category — Admission, Exam, Event, Result, Notice, Holiday. Filter and find exactly what you need!",
+  },
+
+  // ── CONTACT ───────────────────────────────────────────────────────────
+  {
+    path: "/contact",
+    scrollId: null,
+    title: "📞 Contact & Admissions",
+    message:
+      "Reach out to us for admission queries, campus visits, or any questions about Sunrise School — we're here to help!",
   },
   {
     path: "/contact",
-    title: "📞 Contact",
+    scrollId: "contact-info",
+    title: "🗺️ Reach Us",
     message:
-      "That's the tour! 🎉 To visit or inquire, reach us at Vill. Mago Majri, Kaithal, Haryana. Office: Mon–Sat, 8 AM–3 PM. WhatsApp: +91 92555 28310.",
+      "📍 Vill. Mago Majri (Mago Manas), Khanouri Road, Kaithal, Haryana 136027\n📞 +91-9255528310 | +91-8397877909\n⏰ Mon–Sat, 8 AM–3 PM\n\n🎉 That's the end of your tour! Thank you for exploring Sunrise School!",
   },
 ];
 
@@ -121,7 +282,17 @@ function getAnswer(q: string): string {
     return "School follows the CBSE / Haryana government holiday calendar. For the exact schedule contact us at +91 92555 28310.";
   }
 
-  return "🤔 I am not sure about that, but I'd love to help!\n\nTry asking about:\n• Admissions\n• Classes offered\n• Facilities\n• School timings\n• Transport\n• Contact details\n\nOr reach us: +91 92555 28310";
+  return "🤔 I'm not sure about that, but I'd love to help!\n\nTry asking about:\n• Admissions\n• Classes offered\n• Facilities\n• School timings\n• Transport\n• Contact details\n\nOr reach us: +91 92555 28310";
+}
+
+function scrollToSection(id: string, delay = 120) {
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  }, delay);
 }
 
 export default function AIAssistant() {
@@ -134,17 +305,83 @@ export default function AIAssistant() {
   ]);
   const [input, setInput] = useState("");
   const [tourStep, setTourStep] = useState(0);
-  const [, navigate] = useLocation();
+  const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const pendingScrollRef = useRef<string | null>(null);
 
+  // On mount, decide phase based on session storage
   useEffect(() => {
     const seen = sessionStorage.getItem("aiAssistantSeen");
     setPhase(seen ? "corner" : "center");
   }, []);
 
+  // Auto-scroll chat messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // After a page navigation, apply any pending scroll target
+  useEffect(() => {
+    const scrollId = pendingScrollRef.current;
+    if (!scrollId) return;
+
+    // Try at 200ms, 500ms, 900ms to allow page to fully render
+    const t1 = setTimeout(() => {
+      const el = document.getElementById(scrollId);
+      if (el) {
+        pendingScrollRef.current = null;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 200);
+    const t2 = setTimeout(() => {
+      if (!pendingScrollRef.current) return;
+      const el = document.getElementById(pendingScrollRef.current);
+      if (el) {
+        pendingScrollRef.current = null;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 600);
+    const t3 = setTimeout(() => {
+      if (!pendingScrollRef.current) return;
+      const el = document.getElementById(pendingScrollRef.current);
+      if (el) {
+        pendingScrollRef.current = null;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 1000);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      clearTimeout(t3);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location]);
+
+  function goToTourStep(idx: number) {
+    const step = TOUR_STEPS[idx];
+    const prevStep = TOUR_STEPS[tourStep];
+    setTourStep(idx);
+
+    const isSamePage = step.path === prevStep.path || step.path === location;
+
+    if (!step.scrollId) {
+      // Navigate to page and scroll to top
+      pendingScrollRef.current = null;
+      navigate(step.path);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+    } else if (isSamePage) {
+      // Same page — scroll directly without navigation
+      scrollToSection(step.scrollId);
+    } else {
+      // Different page — navigate then scroll via effect
+      pendingScrollRef.current = step.scrollId;
+      navigate(step.path);
+    }
+  }
 
   function dismissToCorner() {
     setPhase("corner");
@@ -154,7 +391,9 @@ export default function AIAssistant() {
   function startTour() {
     setTourStep(0);
     setPhase("tour");
+    pendingScrollRef.current = null;
     navigate(TOUR_STEPS[0].path);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
     sessionStorage.setItem("aiAssistantSeen", "true");
   }
 
@@ -178,9 +417,7 @@ export default function AIAssistant() {
 
   function nextTourStep() {
     if (tourStep < TOUR_STEPS.length - 1) {
-      const next = tourStep + 1;
-      setTourStep(next);
-      navigate(TOUR_STEPS[next].path);
+      goToTourStep(tourStep + 1);
     } else {
       setPhase("corner");
     }
@@ -188,9 +425,7 @@ export default function AIAssistant() {
 
   function prevTourStep() {
     if (tourStep > 0) {
-      const prev = tourStep - 1;
-      setTourStep(prev);
-      navigate(TOUR_STEPS[prev].path);
+      goToTourStep(tourStep - 1);
     }
   }
 
@@ -236,7 +471,7 @@ export default function AIAssistant() {
                   <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Your Guide</p>
                   <h3 className="text-lg font-bold text-foreground mb-1.5">Hi! I'm Aria 👋</h3>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
-                    Welcome to Sunrise School! Take a guided tour or ask me anything about the school.
+                    Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.
                   </p>
                   <div className="flex gap-3 justify-center">
                     <motion.button
@@ -305,8 +540,8 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[310px] sm:w-[340px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
-            style={{ maxHeight: "430px" }}
+            className="fixed bottom-56 right-5 z-[70] w-[280px] sm:w-[310px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            style={{ maxHeight: "520px" }}
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
@@ -316,7 +551,7 @@ export default function AIAssistant() {
                 <p className="text-white/70 text-xs mt-0.5">Sunrise School Guide • Online</p>
               </div>
               <button
-                onClick={() => { closePanel(); setPhase("tour"); startTour(); }}
+                onClick={() => { startTour(); }}
                 className="text-white/70 hover:text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-white/20 transition-colors mr-1"
               >
                 Tour
@@ -390,7 +625,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[310px] sm:w-[340px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden"
+            className="fixed bottom-56 right-5 z-[70] w-[280px] sm:w-[310px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden"
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
@@ -414,12 +649,12 @@ export default function AIAssistant() {
 
             <div className="p-4">
               {/* Progress bar */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-0.5 mb-4">
                 {TOUR_STEPS.map((_, i) => (
                   <div
                     key={i}
                     className={`h-1 flex-1 rounded-full transition-all duration-400 ${
-                      i < tourStep ? "bg-primary/50" : i === tourStep ? "bg-primary" : "bg-muted"
+                      i < tourStep ? "bg-primary/40" : i === tourStep ? "bg-primary" : "bg-muted"
                     }`}
                   />
                 ))}
@@ -432,13 +667,13 @@ export default function AIAssistant() {
                   initial={{ opacity: 0, x: 16 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -16 }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.18 }}
                   className="mb-4"
                 >
-                  <h4 className="font-bold text-foreground text-base mb-2">
+                  <h4 className="font-bold text-foreground text-sm mb-2">
                     {TOUR_STEPS[tourStep].title}
                   </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
                     {TOUR_STEPS[tourStep].message}
                   </p>
                 </motion.div>

@@ -16,7 +16,7 @@ export default function Academic() {
       <div className="container mx-auto px-4 md:px-6 pt-10 md:pt-16 pb-10 md:pb-16">
 
         {/* Education Structure Timeline */}
-        <div className="mb-12 md:mb-24">
+        <div id="academic-structure" className="mb-12 md:mb-24">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">Education Structure</h2>
             <p className="text-base md:text-lg text-muted-foreground">A seamless progression from early childhood to young adulthood.</p>
@@ -109,7 +109,7 @@ export default function Academic() {
         </div>
 
         {/* Streams Offered */}
-        <div className="mb-12 md:mb-24">
+        <div id="academic-streams" className="mb-12 md:mb-24">
           <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
             <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3 md:mb-4">Streams Offered (Class 11 & 12)</h2>
             <p className="text-base md:text-lg text-muted-foreground">Comprehensive academic pathways for senior secondary students to pursue their career goals.</p>
@@ -236,7 +236,7 @@ export default function Academic() {
         </div>
 
         {/* Board Result Excellence & Smart Learning */}
-        <div className="grid lg:grid-cols-12 gap-8">
+        <div id="academic-smart" className="grid lg:grid-cols-12 gap-8">
           
           <div className="lg:col-span-5 bg-foreground text-white rounded-3xl p-10 flex flex-col justify-center relative overflow-hidden shadow-xl">
              <div className="absolute -right-10 -top-10 w-48 h-48 bg-primary/30 rounded-full blur-3xl"></div>

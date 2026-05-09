@@ -66,7 +66,7 @@ export default function Faculty() {
       </section>
 
       {/* Principal feature */}
-      <section className="py-12 md:py-20 bg-background">
+      <section id="faculty-principal" className="py-12 md:py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -95,7 +95,7 @@ export default function Faculty() {
       </section>
 
       {/* Stats */}
-      <section className="bg-muted/30 border-y border-border py-12">
+      <section id="faculty-stats" className="bg-muted/30 border-y border-border py-12">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial="hidden"
@@ -149,7 +149,7 @@ export default function Faculty() {
       </section>
 
       {/* Teachers grid */}
-      <section className="py-10 md:py-16 bg-muted/30">
+      <section id="faculty-grid" className="py-10 md:py-16 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           {filteredTeachers.length === 0 ? (
             <p className="text-center text-muted-foreground py-12">No teachers found in this department.</p>
