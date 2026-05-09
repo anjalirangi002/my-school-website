@@ -125,7 +125,7 @@ function getDesktopLinkClasses(isActive: boolean, isContact: boolean): string {
 /** Desktop navigation: nav links + Admission Open CTA. */
 function DesktopNav({ currentPath }: { currentPath: string }) {
   return (
-    <nav className="hidden lg:flex items-center gap-1.5 xl:gap-2.5 2xl:gap-4 flex-shrink-0">
+    <nav className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-5 flex-shrink-0">
       {NAV_LINKS.map((link) => {
         const isActive = currentPath === link.href;
         const isContact = link.href === CONTACT_HREF;
@@ -143,7 +143,6 @@ function DesktopNav({ currentPath }: { currentPath: string }) {
           </Link>
         );
       })}
-
     </nav>
   );
 }
@@ -281,7 +280,7 @@ export default function Header() {
     <>
       <header className={headerClass}>
         <div className="max-w-[1400px] mx-auto px-5 md:px-8 lg:px-10">
-          <div className="flex items-center justify-between gap-6 lg:gap-8 xl:gap-12 2xl:gap-16">
+          <div className="flex items-center justify-between gap-8 lg:gap-16 xl:gap-24 2xl:gap-32">
             <BrandLogo />
             <DesktopNav currentPath={location} />
             <MobileToggleButton
