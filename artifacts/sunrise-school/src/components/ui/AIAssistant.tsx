@@ -1,7 +1,20 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import { X, Send, ChevronRight, ChevronLeft } from "lucide-react";
+
+const EL_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY as string;
+const EL_VOICE_ID = import.meta.env.VITE_ELEVENLABS_VOICE_ID as string;
+
+function stripEmojis(text: string): string {
+  return text
+    .replace(/[\u{1F300}-\u{1FFFF}]/gu, "")
+    .replace(/[\u{2600}-\u{26FF}]/gu, "")
+    .replace(/[\u{2700}-\u{27BF}]/gu, "")
+    .replace(/[✅🎉🙏]/gu, "")
+    .replace(/\n+/g, " ")
+    .trim();
+}
 
 type Phase = "center" | "corner" | "chat" | "tour";
 type Message = { role: "assistant" | "user"; text: string };
@@ -168,12 +181,72 @@ export default function AIAssistant() {
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const pendingScrollRef = useRef<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const stopSpeech = useCallback(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.src = "";
+      audioRef.current = null;
+    }
+  }, []);
+
+  const speak = useCallback(async (text: string) => {
+    if (!EL_API_KEY || !EL_VOICE_ID) return;
+    stopSpeech();
+    const clean = stripEmojis(text);
+    if (!clean) return;
+    try {
+      const res = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`,
+        {
+          method: "POST",
+          headers: {
+            "xi-api-key": EL_API_KEY,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            text: clean,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+          }),
+        }
+      );
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audioRef.current = audio;
+      audio.play();
+      audio.onended = () => URL.revokeObjectURL(url);
+    } catch {
+      // silently ignore TTS errors
+    }
+  }, [stopSpeech]);
 
   // On mount, decide phase based on session storage
   useEffect(() => {
     const seen = sessionStorage.getItem("aiAssistantSeen");
     setPhase(seen ? "corner" : "center");
   }, []);
+
+  // Speak welcome message when center popup appears
+  useEffect(() => {
+    if (phase === "center") {
+      speak("Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.");
+    }
+    if (phase === "corner" || phase === "chat") {
+      stopSpeech();
+    }
+  }, [phase, speak, stopSpeech]);
+
+  // Speak tour step message when step changes during tour
+  useEffect(() => {
+    if (phase === "tour") {
+      speak(TOUR_STEPS[tourStep].message);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tourStep, phase]);
 
   // Auto-scroll chat messages
   useEffect(() => {

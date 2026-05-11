@@ -58,3 +58,9 @@ externalPort = 6000
 [[ports]]
 localPort = 19735
 externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+VITE_ELEVENLABS_API_KEY = "sk_f7e56b6f930941a9f4a47dac6ea4d669eacb4c22ca36d259"
+VITE_ELEVENLABS_VOICE_ID = "gO8Kb3hHPEPElVxVHDwT"
