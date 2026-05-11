@@ -181,13 +181,13 @@ export default function AIAssistant() {
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const pendingScrollRef = useRef<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const sourceNodeRef = useRef<AudioBufferSourceNode | null>(null);
 
   const stopSpeech = useCallback(() => {
-    if (audioRef.current) {
-      audioRef.current.pause();
-      audioRef.current.src = "";
-      audioRef.current = null;
+    if (sourceNodeRef.current) {
+      try { sourceNodeRef.current.stop(); } catch { /* already stopped */ }
+      sourceNodeRef.current = null;
     }
   }, []);
 
@@ -196,6 +196,14 @@ export default function AIAssistant() {
     stopSpeech();
     const clean = stripEmojis(text);
     if (!clean) return;
+
+    // Create / resume AudioContext — must happen synchronously in click handler
+    if (!audioCtxRef.current) {
+      audioCtxRef.current = new AudioContext();
+    }
+    const ctx = audioCtxRef.current;
+    if (ctx.state === "suspended") await ctx.resume();
+
     try {
       const res = await fetch(
         `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`,
@@ -213,12 +221,14 @@ export default function AIAssistant() {
         }
       );
       if (!res.ok) return;
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      audioRef.current = audio;
-      audio.play();
-      audio.onended = () => URL.revokeObjectURL(url);
+      const arrayBuffer = await res.arrayBuffer();
+      const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
+      const source = ctx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(ctx.destination);
+      sourceNodeRef.current = source;
+      source.start();
+      source.onended = () => { sourceNodeRef.current = null; };
     } catch {
       // silently ignore TTS errors
     }
@@ -230,23 +240,6 @@ export default function AIAssistant() {
     setPhase(seen ? "corner" : "center");
   }, []);
 
-  // Speak welcome message when center popup appears
-  useEffect(() => {
-    if (phase === "center") {
-      speak("Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.");
-    }
-    if (phase === "corner" || phase === "chat") {
-      stopSpeech();
-    }
-  }, [phase, speak, stopSpeech]);
-
-  // Speak tour step message when step changes during tour
-  useEffect(() => {
-    if (phase === "tour") {
-      speak(TOUR_STEPS[tourStep].message);
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tourStep, phase]);
 
   // Auto-scroll chat messages
   useEffect(() => {
@@ -298,25 +291,24 @@ export default function AIAssistant() {
     const step = TOUR_STEPS[idx];
     const prevStep = TOUR_STEPS[tourStep];
     setTourStep(idx);
+    speak(step.message);
 
     const isSamePage = step.path === prevStep.path || step.path === location;
 
     if (!step.scrollId) {
-      // Navigate to page and scroll to top
       pendingScrollRef.current = null;
       navigate(step.path);
       setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
     } else if (isSamePage) {
-      // Same page — scroll directly without navigation
       scrollToSection(step.scrollId);
     } else {
-      // Different page — navigate then scroll via effect
       pendingScrollRef.current = step.scrollId;
       navigate(step.path);
     }
   }
 
   function dismissToCorner() {
+    stopSpeech();
     setPhase("corner");
     sessionStorage.setItem("aiAssistantSeen", "true");
   }
@@ -328,13 +320,16 @@ export default function AIAssistant() {
     navigate(TOUR_STEPS[0].path);
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
     sessionStorage.setItem("aiAssistantSeen", "true");
+    speak(TOUR_STEPS[0].message);
   }
 
   function openChat() {
+    stopSpeech();
     setPhase("chat");
   }
 
   function closePanel() {
+    stopSpeech();
     setPhase("corner");
   }
 
