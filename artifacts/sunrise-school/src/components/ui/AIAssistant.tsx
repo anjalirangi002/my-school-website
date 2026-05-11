@@ -33,7 +33,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "🏫 Home",
     message:
-      "Welcome to Sunrise Senior Secondary School — CBSE affiliated (No. 531671), established in 2010 in Vill. Mago Majri, Kaithal, Haryana! Scroll down to explore the home page.",
+      "Welcome to Sunrise Senior Secondary School! CBSE affiliated school hai hamaari, affiliation number 531671, jo 2010 mein Vill. Mago Majri, Kaithal, Haryana mein establish hua tha. Yahan jo aap dekh rahe hain yeh hai hamaara Hero Section — ek strong tagline, beautiful campus ki image, aur seedha Admissions aur Tour ka option. Thoda scroll karein — yahan hai Our Story. Sunrise Education Society ke dwara founded, hamaara school modern teaching aur cultural values ka combination hai. Aage badhein — yahan aapko milega Latest Notices ka section. Admissions, exams, events — sab important updates yahan milte hain. Ab dekhiye Principal's Message. Hamaare Principal hain Mr. Khushi Ram, 30 se zyada saal ka experience. Unka maanna hai — education sirf results nahi, character banana hai. Aur ab Why Parents Trust Us — chhe strong reasons: 100% board results, 24/7 CCTV security, smart classrooms, experienced faculty, school transport, aur strict discipline. Aur last mein What Parents Say — real families, real experiences. Hamare parents khud share karte hain ki unhone Sunrise kyun choose kiya.",
   },
 
   // ── ABOUT ─────────────────────────────────────────────────────────────
