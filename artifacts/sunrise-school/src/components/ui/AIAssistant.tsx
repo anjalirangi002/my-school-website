@@ -104,7 +104,7 @@ function getAnswer(q: string): string {
   const lower = q.toLowerCase();
 
   if (/hello|hi\b|hey|namaste|namaskar/.test(lower)) {
-    return "Namaste! 🙏 I'm Aria, your Sunrise School guide. Ask me anything about admissions, academics, facilities, timings, or contact details!";
+    return "Namaste! 🙏 I'm Orbit, your Sunrise School guide. Ask me anything about admissions, academics, facilities, timings, or contact details!";
   }
   if (/thank/.test(lower)) {
     return "You're welcome! 😊 Feel free to ask anything else. I'm always here to help!";
@@ -173,7 +173,7 @@ export default function AIAssistant() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      text: "Namaste! 🙏 I'm Aria, your Sunrise School guide!\n\nAsk me anything about the school, or tap a quick question below.",
+      text: "Namaste! 🙏 I'm Orbit, your Sunrise School guide!\n\nAsk me anything about the school, or tap a quick question below.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -430,7 +430,7 @@ export default function AIAssistant() {
                   transition={{ delay: 0.25 }}
                 >
                   <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Your Guide</p>
-                  <h3 className="text-lg font-bold text-foreground mb-1.5">Hi! I'm Aria 👋</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-1.5">Hi! I'm Orbit 👋</h3>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
                     Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.
                   </p>
@@ -506,9 +506,9 @@ export default function AIAssistant() {
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
-              <img src="/images/ai-bot.png" alt="Aria" className="w-9 h-9 object-contain" />
+              <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
               <div className="flex-1">
-                <p className="text-white font-bold text-sm leading-none">Aria</p>
+                <p className="text-white font-bold text-sm leading-none">Orbit</p>
                 <p className="text-white/70 text-xs mt-0.5">Sunrise School Guide • Online</p>
               </div>
               <button
@@ -590,7 +590,7 @@ export default function AIAssistant() {
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
-              <img src="/images/ai-bot.png" alt="Aria" className="w-9 h-9 object-contain" />
+              <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
               <div className="flex-1">
                 <p className="text-white font-bold text-sm leading-none">School Tour</p>
                 <p className="text-white/70 text-xs mt-0.5">
