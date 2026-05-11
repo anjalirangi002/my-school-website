@@ -33,7 +33,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "🏫 Home",
     message:
-      "Welcome to Sunrise Senior Secondary School! CBSE affiliated school hai hamaari, affiliation number 531671, jo 2010 mein Vill. Mago Majri, Kaithal, Haryana mein establish hua tha. Yahan jo aap dekh rahe hain yeh hai hamaara Hero Section — ek strong tagline, beautiful campus ki image, aur seedha Admissions aur Tour ka option. Thoda scroll karein — yahan hai Our Story. Sunrise Education Society ke dwara founded, hamaara school modern teaching aur cultural values ka combination hai. Aage badhein — yahan aapko milega Latest Notices ka section. Admissions, exams, events — sab important updates yahan milte hain. Ab dekhiye Principal's Message. Hamaare Principal hain Mr. Khushi Ram, 30 se zyada saal ka experience. Unka maanna hai — education sirf results nahi, character banana hai. Aur ab Why Parents Trust Us — chhe strong reasons: 100% board results, 24/7 CCTV security, smart classrooms, experienced faculty, school transport, aur strict discipline. Aur last mein What Parents Say — real families, real experiences. Hamare parents khud share karte hain ki unhone Sunrise kyun choose kiya.",
+      "Welcome to Sunrise Senior Secondary School! CBSE affiliated school hai hamaari, affiliation number 531671, jo 2010 mein Vill. Mago Majri, Kaithal, Haryana mein establish hua tha. Yahan jo aap dekh rahe hain — yeh hai hamaara Hero Section. Yeh school ka pehla impression hai — ek strong tagline, beautiful campus ki jhalkti image, aur seedha Admissions aur Tour ka option. Thoda scroll karein — yahan hai Our Story. Sunrise Education Society ke dwara founded, hamaara school modern teaching aur cultural values ka combination hai. 15 saal se hum rural youth ko quality education de rahe hain. Aage badhein — yahan aapko milega Latest Notices ka section. Admissions, exams, events — sab important updates yahan milte hain parents aur students ko. Ab dekhiye Principal's Message. Hamaare Principal hain Mr. Khushi Ram, M.A., B.Ed., 30 se zyada saal ka experience. Unka maanna hai — education sirf results nahi, character banana hai. Aur ab sabse important — Why Parents Trust Us. Chhe strong reasons: 100% board results, 24/7 CCTV security, smart classrooms, experienced faculty, school transport, aur strict discipline. Yahi woh reasons hain jo Sunrise ko alag banate hain. Aur last mein — What Parents Say. Real families, real experiences. Hamare parents khud share karte hain ki unhone Sunrise kyun choose kiya apne bacchon ke liye.",
   },
 
   // ── ABOUT ─────────────────────────────────────────────────────────────
@@ -184,6 +184,7 @@ export default function AIAssistant() {
   const audioCtxRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<AudioBufferSourceNode | null>(null);
   const autoScrollRef = useRef<number | null>(null);
+  const welcomeAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const stopAutoScroll = useCallback(() => {
     if (autoScrollRef.current !== null) {
@@ -206,12 +207,49 @@ export default function AIAssistant() {
     }, delayMs);
   }, [stopAutoScroll]);
 
+  const stopWelcomeSpeech = useCallback(() => {
+    if (welcomeAudioRef.current) {
+      welcomeAudioRef.current.pause();
+      welcomeAudioRef.current.src = "";
+      welcomeAudioRef.current = null;
+    }
+  }, []);
+
   const stopSpeech = useCallback(() => {
     if (sourceNodeRef.current) {
       try { sourceNodeRef.current.stop(); } catch { /* already stopped */ }
       sourceNodeRef.current = null;
     }
   }, []);
+
+  const speakWelcome = useCallback(async () => {
+    if (!EL_API_KEY || !EL_VOICE_ID) return;
+    stopWelcomeSpeech();
+    const text = "Hi! I'm Orbit. Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.";
+    try {
+      const res = await fetch(
+        `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`,
+        {
+          method: "POST",
+          headers: { "xi-api-key": EL_API_KEY, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text,
+            model_id: "eleven_multilingual_v2",
+            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+          }),
+        }
+      );
+      if (!res.ok) return;
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      welcomeAudioRef.current = audio;
+      audio.onended = () => URL.revokeObjectURL(url);
+      await audio.play();
+    } catch {
+      // Silently ignore — browser may block autoplay before user gesture
+    }
+  }, [stopWelcomeSpeech]);
 
   const speak = useCallback(async (text: string) => {
     if (!EL_API_KEY || !EL_VOICE_ID) return;
@@ -256,9 +294,11 @@ export default function AIAssistant() {
     }
   }, [stopSpeech]);
 
-  // Always show welcome popup on every page load
+  // Always show welcome popup on every page load, then speak welcome
   useEffect(() => {
     setPhase("center");
+    speakWelcome();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
 
@@ -335,12 +375,14 @@ export default function AIAssistant() {
   }
 
   function dismissToCorner() {
+    stopWelcomeSpeech();
     stopSpeech();
     stopAutoScroll();
     setPhase("corner");
   }
 
   function startTour() {
+    stopWelcomeSpeech();
     setTourStep(0);
     setPhase("tour");
     pendingScrollRef.current = null;
