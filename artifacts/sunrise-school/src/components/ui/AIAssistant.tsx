@@ -183,6 +183,28 @@ export default function AIAssistant() {
   const pendingScrollRef = useRef<string | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<AudioBufferSourceNode | null>(null);
+  const autoScrollRef = useRef<number | null>(null);
+
+  const stopAutoScroll = useCallback(() => {
+    if (autoScrollRef.current !== null) {
+      clearInterval(autoScrollRef.current);
+      autoScrollRef.current = null;
+    }
+  }, []);
+
+  const startAutoScroll = useCallback((delayMs = 700) => {
+    stopAutoScroll();
+    setTimeout(() => {
+      autoScrollRef.current = window.setInterval(() => {
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (window.scrollY >= maxScroll) {
+          stopAutoScroll();
+        } else {
+          window.scrollBy(0, 1);
+        }
+      }, 20);
+    }, delayMs);
+  }, [stopAutoScroll]);
 
   const stopSpeech = useCallback(() => {
     if (sourceNodeRef.current) {
@@ -234,10 +256,9 @@ export default function AIAssistant() {
     }
   }, [stopSpeech]);
 
-  // On mount, decide phase based on session storage
+  // Always show welcome popup on every page load
   useEffect(() => {
-    const seen = sessionStorage.getItem("aiAssistantSeen");
-    setPhase(seen ? "corner" : "center");
+    setPhase("center");
   }, []);
 
 
@@ -292,25 +313,31 @@ export default function AIAssistant() {
     const prevStep = TOUR_STEPS[tourStep];
     setTourStep(idx);
     speak(step.message);
+    stopAutoScroll();
 
     const isSamePage = step.path === prevStep.path || step.path === location;
 
     if (!step.scrollId) {
       pendingScrollRef.current = null;
       navigate(step.path);
-      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        startAutoScroll(900);
+      }, 50);
     } else if (isSamePage) {
       scrollToSection(step.scrollId);
+      startAutoScroll(600);
     } else {
       pendingScrollRef.current = step.scrollId;
       navigate(step.path);
+      startAutoScroll(900);
     }
   }
 
   function dismissToCorner() {
     stopSpeech();
+    stopAutoScroll();
     setPhase("corner");
-    sessionStorage.setItem("aiAssistantSeen", "true");
   }
 
   function startTour() {
@@ -318,18 +345,22 @@ export default function AIAssistant() {
     setPhase("tour");
     pendingScrollRef.current = null;
     navigate(TOUR_STEPS[0].path);
-    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
-    sessionStorage.setItem("aiAssistantSeen", "true");
     speak(TOUR_STEPS[0].message);
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      startAutoScroll(900);
+    }, 50);
   }
 
   function openChat() {
     stopSpeech();
+    stopAutoScroll();
     setPhase("chat");
   }
 
   function closePanel() {
     stopSpeech();
+    stopAutoScroll();
     setPhase("corner");
   }
 
@@ -347,6 +378,8 @@ export default function AIAssistant() {
     if (tourStep < TOUR_STEPS.length - 1) {
       goToTourStep(tourStep + 1);
     } else {
+      stopSpeech();
+      stopAutoScroll();
       setPhase("corner");
     }
   }
