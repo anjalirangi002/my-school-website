@@ -42,7 +42,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "📖 About Us",
     message:
-      "Learn about our 15-year journey of academic excellence, holistic development and cultural values. Discover our mission, vision, achievements and CBSE affiliation details.",
+      "Ab hum aa gaye hain About Us page par. Yahan aap Sunrise School ki poori kahani janenge. 2010 mein Sunrise Education Society ne yeh school establish kiya — ek sapna jo aaj 15 saal baad ek thriving institution ban chuka hai. Hamaari Mission hai quality education dena, Vision hai rural youth ko globally empower karna, aur hamare Values hain — Integrity, Discipline, Compassion aur Curiosity. Aage scroll karein aur dekhein hamaari achievements — 100% board results, Best CBSE School Award, aur 1000 se zyada successful alumni. CBSE affiliation details bhi yahan clearly diye gaye hain.",
   },
 
   // ── ACADEMICS ─────────────────────────────────────────────────────────
@@ -51,7 +51,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "📚 Academics",
     message:
-      "A holistic CBSE learning approach — from Playway to Class 12. Explore our education structure, four streams (Medical, Non-Medical, Commerce, Arts) and our smart learning ecosystem.",
+      "Yeh hai hamaara Academics page. Sunrise mein Playway se lekar Class 12 tak ka ek seamless educational journey hai. Pre-Primary se start hokar Primary, Middle, Secondary aur Senior Secondary tak — har stage par focused learning. Class 11 aur 12 mein chaar streams hain — Medical yaani PCB, Non-Medical yaani PCM, Commerce, aur Arts. Aur hamaara Smart Learning Ecosystem — digital classrooms, advanced science labs, aur digital library — yeh sab milkar students ko future ke liye tayyar karta hai.",
   },
 
   // ── FACULTY ───────────────────────────────────────────────────────────
@@ -60,7 +60,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "👩‍🏫 Faculty",
     message:
-      "Meet our 32+ qualified and dedicated educators. Led by Principal Mr. Khushi Ram (M.A., B.Ed., 30+ years experience), our teachers are committed to nurturing every child's potential.",
+      "Yeh hai hamaara Faculty page — miliye hamare 32 se zyada dedicated teachers se. Sab B.Ed. ya M.Ed. qualified hain, average 7 saal ka experience hai. Hamare Principal hain Mr. Khushi Ram — M.A., B.Ed., 30 se zyada saal ka anubhav. Unka kehna hai — har bachcha top education ka haqdar hai. Neeche scroll karein aur department-wise poori teaching team dekhen.",
   },
 
   // ── STUDENT LIFE ──────────────────────────────────────────────────────
@@ -69,7 +69,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "🎭 Student Life",
     message:
-      "Life at Sunrise goes beyond books — sports, culture, science, art and lifelong friendships await every student! Discover events, clubs, societies and vibrant campus life.",
+      "Sunrise mein zindagi sirf books tak seemit nahi hai — yeh hai Student Life page. Yahan aap dekhenge hamare annual cultural functions, morning assemblies, sports events aur school excursions. Hamare 8 active clubs hain — Science, Literary, Music aur Dance, Eco Club, Sports, Computer, Art aur Craft, aur Debate Society. Har student ko apni talent dikhane ka mauka milta hai. Gallery mein real campus moments bhi hain — zaroor dekhein.",
   },
 
   // ── UPDATES ───────────────────────────────────────────────────────────
@@ -78,7 +78,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "📢 Updates",
     message:
-      "Our notice board keeps all parents and students informed. Browse notices by category — Admission, Exam, Event, Result, Holiday and more. Stay up to date with everything at Sunrise!",
+      "Yeh hai hamaara Updates page — school ka digital notice board. Yahan parents aur students ko sabhi important updates milti hain. Admission schedules, exam dates, events, results, holidays — sab kuch ek jagah. Category filter se aap apni zaroorat ki notice aasani se dhundh sakte hain. Hum chahte hain ki koi bhi important update miss na ho.",
   },
 
   // ── CONTACT ───────────────────────────────────────────────────────────
@@ -87,7 +87,7 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "📞 Contact Us",
     message:
-      "📍 Vill. Mago Majri, Khanouri Road, Kaithal, Haryana 136027\n📞 +91-9255528310 | +91-8397877909\n⏰ Mon–Sat, 8 AM–3 PM\n\n🎉 That's the end of your tour! Thank you for exploring Sunrise School!",
+      "Aur yeh hai hamaara Contact page — tour ka aakhri padav. Hamaara address hai Vill. Mago Majri, Khanouri Road, Kaithal, Haryana. Phone number hain +91-9255528310 aur +91-8397877909. School Monday se Saturday, subah 8 baje se dopahar 3 baje tak khula rehta hai. Admission ke liye seedha milne aa sakte hain ya WhatsApp kar sakte hain. Yeh tha aapka Sunrise School ka poora tour — bahut bahut shukriya!",
   },
 ];
 
