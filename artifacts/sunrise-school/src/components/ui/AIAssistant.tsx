@@ -18,81 +18,18 @@ const TOUR_STEPS: TourStep[] = [
   {
     path: "/",
     scrollId: null,
-    title: "🏫 Welcome to Sunrise!",
+    title: "🏫 Home",
     message:
-      "Welcome to Sunrise Senior Secondary School — CBSE affiliated (No. 531671), established in 2010 in Vill. Mago Majri, Kaithal, Haryana! Let me show you around.",
-  },
-  {
-    path: "/",
-    scrollId: "home-intro",
-    title: "🌟 Our Story",
-    message:
-      "Founded by the Sunrise Education Society, we blend modern teaching methods with deep-rooted cultural values to nurture confident and capable young minds.",
-  },
-  {
-    path: "/",
-    scrollId: "home-notices",
-    title: "📢 Latest Notices",
-    message:
-      "Stay updated with admission schedules, exam dates and important school announcements right here on the home page.",
-  },
-  {
-    path: "/",
-    scrollId: "home-principal",
-    title: "👨‍💼 Principal's Message",
-    message:
-      "Our Principal Mr. Khushi Ram (M.A., B.Ed.) with 30+ years of experience believes: \"Education is not just about results — it's about building character.\"",
-  },
-  {
-    path: "/",
-    scrollId: "home-trust",
-    title: "💪 Why Parents Trust Us",
-    message:
-      "100% board results, safe campus with 24/7 CCTV, smart classrooms, experienced faculty, school transport and strong discipline — 6 reasons parents choose Sunrise!",
-  },
-  {
-    path: "/",
-    scrollId: "home-campus",
-    title: "🏛️ Campus Highlights",
-    message:
-      "Smart classrooms, modern science labs, rich library, school transport, morning assembly ground and a spacious playground — all within our campus.",
-  },
-  {
-    path: "/",
-    scrollId: "home-testimonials",
-    title: "⭐ What Parents Say",
-    message:
-      "Real voices from our Sunrise family! Parents share why they trust us with their children's future. See what they have to say.",
+      "Welcome to Sunrise Senior Secondary School — CBSE affiliated (No. 531671), established in 2010 in Vill. Mago Majri, Kaithal, Haryana! Scroll down to explore the home page.",
   },
 
   // ── ABOUT ─────────────────────────────────────────────────────────────
   {
     path: "/about",
     scrollId: null,
-    title: "📖 About Sunrise",
+    title: "📖 About Us",
     message:
-      "Learn about our 15-year journey of academic excellence, holistic development and cultural values in Mago Majri, Kaithal.",
-  },
-  {
-    path: "/about",
-    scrollId: "about-values",
-    title: "🎯 Mission, Vision & Values",
-    message:
-      "Our Mission: quality education with character. Our Vision: empowering rural youth globally. Our Values: Integrity, Discipline, Compassion and Curiosity.",
-  },
-  {
-    path: "/about",
-    scrollId: "about-achievements",
-    title: "🏆 Our Achievements",
-    message:
-      "100% board results for 5 consecutive years, Best CBSE School Award (Kaithal 2023), state-level sports champions and 1000+ successful alumni!",
-  },
-  {
-    path: "/about",
-    scrollId: "about-affiliation",
-    title: "✅ CBSE Affiliation Details",
-    message:
-      "Board: CBSE, New Delhi • Affiliation No.: 531671 • School Code: 41650 • Type: Co-educational, Private Unaided • Classes: Playway to Grade 12 • Medium: English.",
+      "Learn about our 15-year journey of academic excellence, holistic development and cultural values. Discover our mission, vision, achievements and CBSE affiliation details.",
   },
 
   // ── ACADEMICS ─────────────────────────────────────────────────────────
@@ -101,58 +38,16 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "📚 Academics",
     message:
-      "A holistic CBSE learning approach — from Playway to Class 12, with critical thinking, digital classrooms and advanced labs that prepare students for the future.",
-  },
-  {
-    path: "/academic",
-    scrollId: "academic-structure",
-    title: "🎓 Education Structure",
-    message:
-      "A seamless journey: Pre-Primary (Playway to KG) → Primary (Class 1–5) → Middle (Class 6–8) → Secondary (Class 9–10) → Senior Secondary (Class 11–12).",
-  },
-  {
-    path: "/academic",
-    scrollId: "academic-streams",
-    title: "🔬 Streams Offered",
-    message:
-      "Class 11 & 12 students choose from 4 career streams: Medical (PCB), Non-Medical (PCM), Commerce, and Arts/Humanities — all with expert dedicated faculty!",
-  },
-  {
-    path: "/academic",
-    scrollId: "academic-smart",
-    title: "💡 Smart Learning Ecosystem",
-    message:
-      "Smart Classrooms with digital boards, Advanced Science Labs, a Digital Library and Expert Coaching — this is the Smart Learning Ecosystem at Sunrise!",
+      "A holistic CBSE learning approach — from Playway to Class 12. Explore our education structure, four streams (Medical, Non-Medical, Commerce, Arts) and our smart learning ecosystem.",
   },
 
   // ── FACULTY ───────────────────────────────────────────────────────────
   {
     path: "/faculty",
     scrollId: null,
-    title: "👩‍🏫 Our Faculty",
+    title: "👩‍🏫 Faculty",
     message:
-      "Meet our 32+ qualified and dedicated educators committed to nurturing every child's potential at Sunrise School.",
-  },
-  {
-    path: "/faculty",
-    scrollId: "faculty-principal",
-    title: "👨‍💼 The Principal",
-    message:
-      "Mr. Khushi Ram, M.A., B.Ed. — our visionary Principal who believes every child deserves top-tier education, regardless of their background.",
-  },
-  {
-    path: "/faculty",
-    scrollId: "faculty-stats",
-    title: "📊 Faculty at a Glance",
-    message:
-      "32+ total faculty • 100% qualified teachers • Multiple departments • 7+ years average experience — a team fully dedicated to your child's growth!",
-  },
-  {
-    path: "/faculty",
-    scrollId: "faculty-grid",
-    title: "🧑‍🏫 Meet the Team",
-    message:
-      "Browse all our teachers by department — Science, Mathematics, Languages, Social Studies, Commerce, Computer Science and more. Use the filter bar to explore!",
+      "Meet our 32+ qualified and dedicated educators. Led by Principal Mr. Khushi Ram (M.A., B.Ed., 30+ years experience), our teachers are committed to nurturing every child's potential.",
   },
 
   // ── STUDENT LIFE ──────────────────────────────────────────────────────
@@ -161,60 +56,25 @@ const TOUR_STEPS: TourStep[] = [
     scrollId: null,
     title: "🎭 Student Life",
     message:
-      "Life at Sunrise goes beyond books — sports, culture, science, art and lifelong friendships await every student!",
-  },
-  {
-    path: "/student-life",
-    scrollId: "studentlife-events",
-    title: "🎪 Events & Activities",
-    message:
-      "Annual Cultural Function, Morning Assembly, Sports & Athletics, Science Lab Sessions, Republic Day Parades and School Excursions — every day is a celebration!",
-  },
-  {
-    path: "/student-life",
-    scrollId: "studentlife-clubs",
-    title: "🌟 Clubs & Societies",
-    message:
-      "8 student clubs: Science, Literary, Music & Dance, Eco Club, Sports, Computer, Art & Craft, and Debate Society — there is something for every student to shine!",
-  },
-  {
-    path: "/student-life",
-    scrollId: "studentlife-gallery",
-    title: "📸 Campus Life Gallery",
-    message:
-      "Every day at Sunrise is a memory in the making — see our vibrant campus life through these real moments captured at school.",
+      "Life at Sunrise goes beyond books — sports, culture, science, art and lifelong friendships await every student! Discover events, clubs, societies and vibrant campus life.",
   },
 
   // ── UPDATES ───────────────────────────────────────────────────────────
   {
     path: "/updates",
     scrollId: null,
-    title: "📢 Latest Updates",
+    title: "📢 Updates",
     message:
-      "Our notice board keeps all parents and students informed about important school announcements throughout the year.",
-  },
-  {
-    path: "/updates",
-    scrollId: "updates-notices",
-    title: "📋 Notice Board",
-    message:
-      "Browse notices by category — Admission, Exam, Event, Result, Notice, Holiday. Filter and find exactly what you need!",
+      "Our notice board keeps all parents and students informed. Browse notices by category — Admission, Exam, Event, Result, Holiday and more. Stay up to date with everything at Sunrise!",
   },
 
   // ── CONTACT ───────────────────────────────────────────────────────────
   {
     path: "/contact",
     scrollId: null,
-    title: "📞 Contact & Admissions",
+    title: "📞 Contact Us",
     message:
-      "Reach out to us for admission queries, campus visits, or any questions about Sunrise School — we're here to help!",
-  },
-  {
-    path: "/contact",
-    scrollId: "contact-info",
-    title: "🗺️ Reach Us",
-    message:
-      "📍 Vill. Mago Majri (Mago Manas), Khanouri Road, Kaithal, Haryana 136027\n📞 +91-9255528310 | +91-8397877909\n⏰ Mon–Sat, 8 AM–3 PM\n\n🎉 That's the end of your tour! Thank you for exploring Sunrise School!",
+      "📍 Vill. Mago Majri, Khanouri Road, Kaithal, Haryana 136027\n📞 +91-9255528310 | +91-8397877909\n⏰ Mon–Sat, 8 AM–3 PM\n\n🎉 That's the end of your tour! Thank you for exploring Sunrise School!",
   },
 ];
 
@@ -540,8 +400,8 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[280px] sm:w-[310px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
-            style={{ maxHeight: "520px" }}
+            className="fixed bottom-56 right-5 z-[70] w-[240px] sm:w-[260px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            style={{ maxHeight: "620px" }}
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
@@ -625,7 +485,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[280px] sm:w-[310px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden"
+            className="fixed bottom-56 right-5 z-[70] w-[240px] sm:w-[260px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden"
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
