@@ -466,11 +466,20 @@ export default function AIAssistant() {
                   transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
-                  className="bg-white rounded-2xl shadow-2xl px-7 py-6 max-w-xs text-center -mt-2 border border-border"
+                  className="relative bg-white rounded-2xl shadow-2xl px-7 py-6 max-w-xs text-center -mt-2 border border-border"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 }}
                 >
+                  {/* Close button — top right */}
+                  <button
+                    onClick={dismissToCorner}
+                    className="absolute top-3 right-3 p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                    aria-label="Close"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+
                   <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Your Guide</p>
                   <h3 className="text-lg font-bold text-foreground mb-1.5">Hi! I'm Orbit 👋</h3>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
@@ -486,12 +495,12 @@ export default function AIAssistant() {
                       Start Tour
                     </motion.button>
                     <motion.button
-                      onClick={dismissToCorner}
+                      onClick={() => { stopWelcomeSpeech(); setPhase("chat"); }}
                       whileHover={{ scale: 1.06 }}
                       whileTap={{ scale: 0.95 }}
                       className="px-5 py-2 bg-muted text-muted-foreground text-sm font-semibold rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
                     >
-                      No Thanks
+                      Ask Anything
                     </motion.button>
                   </div>
                 </motion.div>
