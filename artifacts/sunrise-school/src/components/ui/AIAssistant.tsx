@@ -184,9 +184,14 @@ export default function AIAssistant() {
   const audioCtxRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<AudioBufferSourceNode | null>(null);
   const autoScrollRef = useRef<number | null>(null);
+  const autoScrollTimeoutRef = useRef<number | null>(null);
   const welcomeAudioRef = useRef<HTMLAudioElement | null>(null);
 
   const stopAutoScroll = useCallback(() => {
+    if (autoScrollTimeoutRef.current !== null) {
+      clearTimeout(autoScrollTimeoutRef.current);
+      autoScrollTimeoutRef.current = null;
+    }
     if (autoScrollRef.current !== null) {
       clearInterval(autoScrollRef.current);
       autoScrollRef.current = null;
@@ -195,7 +200,8 @@ export default function AIAssistant() {
 
   const startAutoScroll = useCallback((delayMs = 700) => {
     stopAutoScroll();
-    setTimeout(() => {
+    autoScrollTimeoutRef.current = window.setTimeout(() => {
+      autoScrollTimeoutRef.current = null;
       autoScrollRef.current = window.setInterval(() => {
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
         if (window.scrollY >= maxScroll) {
@@ -574,7 +580,7 @@ export default function AIAssistant() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-3 space-y-2.5 bg-muted/20" style={{ minHeight: 0 }}>
+            <div className="flex-1 overflow-y-auto overscroll-contain p-3 space-y-2.5 bg-muted/20" style={{ minHeight: 0 }}>
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
                   {msg.role === "assistant" && (
@@ -674,7 +680,7 @@ export default function AIAssistant() {
               </div>
 
               {/* Step content — scrollable */}
-              <div className="flex-1 overflow-y-auto min-h-0 mb-4">
+              <div className="flex-1 overflow-y-auto overscroll-contain min-h-0 mb-4">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={tourStep}
