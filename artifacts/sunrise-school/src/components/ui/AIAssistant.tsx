@@ -543,8 +543,8 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[240px] sm:w-[260px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
-            style={{ maxHeight: "620px" }}
+            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            style={{ maxHeight: "calc(100vh - 300px)", minHeight: "320px" }}
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
@@ -628,7 +628,8 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[240px] sm:w-[260px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden"
+            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden flex flex-col"
+            style={{ maxHeight: "calc(100vh - 300px)", minHeight: "280px" }}
           >
             {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3">
@@ -650,9 +651,9 @@ export default function AIAssistant() {
               </button>
             </div>
 
-            <div className="p-4">
+            <div className="flex flex-col flex-1 min-h-0 p-4">
               {/* Progress bar */}
-              <div className="flex gap-0.5 mb-4">
+              <div className="flex gap-0.5 mb-4 shrink-0">
                 {TOUR_STEPS.map((_, i) => (
                   <div
                     key={i}
@@ -663,27 +664,28 @@ export default function AIAssistant() {
                 ))}
               </div>
 
-              {/* Step content */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={tourStep}
-                  initial={{ opacity: 0, x: 16 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -16 }}
-                  transition={{ duration: 0.18 }}
-                  className="mb-4"
-                >
-                  <h4 className="font-bold text-foreground text-sm mb-2">
-                    {TOUR_STEPS[tourStep].title}
-                  </h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {TOUR_STEPS[tourStep].message}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
+              {/* Step content — scrollable */}
+              <div className="flex-1 overflow-y-auto min-h-0 mb-4">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={tourStep}
+                    initial={{ opacity: 0, x: 16 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -16 }}
+                    transition={{ duration: 0.18 }}
+                  >
+                    <h4 className="font-bold text-foreground text-sm mb-2">
+                      {TOUR_STEPS[tourStep].title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
+                      {TOUR_STEPS[tourStep].message}
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
 
               {/* Navigation */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2 shrink-0">
                 <button
                   onClick={prevTourStep}
                   disabled={tourStep === 0}
