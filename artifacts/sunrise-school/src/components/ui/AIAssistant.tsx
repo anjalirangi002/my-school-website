@@ -187,6 +187,7 @@ export default function AIAssistant() {
   const autoScrollRef = useRef<number | null>(null);
   const autoScrollTimeoutRef = useRef<number | null>(null);
   const welcomeAudioRef = useRef<HTMLAudioElement | null>(null);
+  const welcomeBufferRef = useRef<ArrayBuffer | null>(null);
 
   const stopAutoScroll = useCallback(() => {
     if (autoScrollTimeoutRef.current !== null) {
@@ -199,19 +200,31 @@ export default function AIAssistant() {
     }
   }, []);
 
-  const startAutoScroll = useCallback((delayMs = 700) => {
+  // Scroll synced to audio duration — starts immediately, finishes when speech ends
+  const startAutoScrollSynced = useCallback((audioDuration: number, delayMs = 0) => {
     stopAutoScroll();
-    autoScrollTimeoutRef.current = window.setTimeout(() => {
-      autoScrollTimeoutRef.current = null;
+    const TICK_MS = 20;
+    const startFn = () => {
+      const totalTicks = Math.max(1, (audioDuration * 1000) / TICK_MS);
+      let tick = 0;
       autoScrollRef.current = window.setInterval(() => {
         const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        if (window.scrollY >= maxScroll) {
-          stopAutoScroll();
-        } else {
-          window.scrollBy(0, 1);
-        }
-      }, 20);
-    }, delayMs);
+        if (window.scrollY >= maxScroll) { stopAutoScroll(); return; }
+        const remaining = maxScroll - window.scrollY;
+        const remainingTicks = Math.max(1, totalTicks - tick);
+        window.scrollBy(0, Math.max(0.4, remaining / remainingTicks));
+        tick++;
+        if (tick >= totalTicks) stopAutoScroll();
+      }, TICK_MS);
+    };
+    if (delayMs > 0) {
+      autoScrollTimeoutRef.current = window.setTimeout(() => {
+        autoScrollTimeoutRef.current = null;
+        startFn();
+      }, delayMs);
+    } else {
+      startFn();
+    }
   }, [stopAutoScroll]);
 
   const stopWelcomeSpeech = useCallback(() => {
@@ -229,10 +242,10 @@ export default function AIAssistant() {
     }
   }, []);
 
-  const speakWelcome = useCallback(async () => {
-    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
-    stopWelcomeSpeech();
-    const text = "Hi! I'm Orbit. Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.";
+  const WELCOME_TEXT = "Hi! I'm Orbit. Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.";
+
+  async function cartesiaFetch(transcript: string): Promise<ArrayBuffer | null> {
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return null;
     try {
       const res = await fetch("https://api.cartesia.ai/tts/bytes", {
         method: "POST",
@@ -243,69 +256,83 @@ export default function AIAssistant() {
         },
         body: JSON.stringify({
           model_id: CARTESIA_MODEL,
-          transcript: text,
+          transcript,
           voice: { mode: "id", id: CARTESIA_VOICE_ID },
           output_format: { container: "mp3", encoding: "mp3", sample_rate: 44100 },
         }),
       });
-      if (!res.ok) return;
-      const blob = await res.blob();
+      if (!res.ok) return null;
+      return await res.arrayBuffer();
+    } catch {
+      return null;
+    }
+  }
+
+  // Play welcome via <Audio> element (no AudioContext needed)
+  const speakWelcome = useCallback(async () => {
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
+    stopWelcomeSpeech();
+    let buffer = welcomeBufferRef.current;
+    if (!buffer) {
+      buffer = await cartesiaFetch(WELCOME_TEXT);
+      if (!buffer) return;
+      welcomeBufferRef.current = buffer;
+    }
+    try {
+      const blob = new Blob([buffer], { type: "audio/mpeg" });
       const url = URL.createObjectURL(blob);
       const audio = new Audio(url);
       welcomeAudioRef.current = audio;
       audio.onended = () => URL.revokeObjectURL(url);
       await audio.play();
     } catch {
-      // Silently ignore — browser may block autoplay before user gesture
+      // Autoplay may be blocked before user gesture
     }
   }, [stopWelcomeSpeech]);
 
-  const speak = useCallback(async (text: string) => {
+  // Play speech via AudioContext; calls onStart(duration) the moment audio begins
+  const speak = useCallback(async (text: string, onStart?: (duration: number) => void) => {
     if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
     stopSpeech();
     const clean = stripEmojis(text);
     if (!clean) return;
 
-    // Create / resume AudioContext — must happen synchronously in click handler
-    if (!audioCtxRef.current) {
-      audioCtxRef.current = new AudioContext();
-    }
+    if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
     const ctx = audioCtxRef.current;
     if (ctx.state === "suspended") await ctx.resume();
 
+    const buffer = await cartesiaFetch(clean);
+    if (!buffer) return;
+
     try {
-      const res = await fetch("https://api.cartesia.ai/tts/bytes", {
-        method: "POST",
-        headers: {
-          "X-API-Key": CARTESIA_API_KEY,
-          "Cartesia-Version": "2024-06-10",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model_id: CARTESIA_MODEL,
-          transcript: clean,
-          voice: { mode: "id", id: CARTESIA_VOICE_ID },
-          output_format: { container: "mp3", encoding: "mp3", sample_rate: 44100 },
-        }),
-      });
-      if (!res.ok) return;
-      const arrayBuffer = await res.arrayBuffer();
-      const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
+      const audioBuffer = await ctx.decodeAudioData(buffer);
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(ctx.destination);
       sourceNodeRef.current = source;
       source.start();
+      if (onStart) onStart(audioBuffer.duration);
       source.onended = () => { sourceNodeRef.current = null; };
     } catch {
-      // silently ignore TTS errors
+      // silently ignore decode errors
     }
   }, [stopSpeech]);
 
-  // Always show welcome popup on every page load, then speak welcome
+  // On mount: show popup AND pre-fetch welcome audio in background
   useEffect(() => {
     setPhase("center");
-    speakWelcome();
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
+    cartesiaFetch(WELCOME_TEXT).then(buf => {
+      if (!buf) return;
+      welcomeBufferRef.current = buf;
+      // Attempt autoplay — works if browser allows it
+      const blob = new Blob([buf], { type: "audio/mpeg" });
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      welcomeAudioRef.current = audio;
+      audio.onended = () => URL.revokeObjectURL(url);
+      audio.play().catch(() => {});
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -360,7 +387,6 @@ export default function AIAssistant() {
     const step = TOUR_STEPS[idx];
     const prevStep = TOUR_STEPS[tourStep];
     setTourStep(idx);
-    speak(step.message);
     stopAutoScroll();
 
     const isSamePage = step.path === prevStep.path || step.path === location;
@@ -368,18 +394,18 @@ export default function AIAssistant() {
     if (!step.scrollId) {
       pendingScrollRef.current = null;
       navigate(step.path);
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        startAutoScroll(900);
-      }, 50);
+      setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
     } else if (isSamePage) {
       scrollToSection(step.scrollId);
-      startAutoScroll(600);
     } else {
       pendingScrollRef.current = step.scrollId;
       navigate(step.path);
-      startAutoScroll(900);
     }
+
+    // Start scroll only when audio actually begins, synced to speech duration
+    speak(step.message, (duration) => {
+      startAutoScrollSynced(duration);
+    });
   }
 
   function dismissToCorner() {
@@ -395,11 +421,10 @@ export default function AIAssistant() {
     setPhase("tour");
     pendingScrollRef.current = null;
     navigate(TOUR_STEPS[0].path);
-    speak(TOUR_STEPS[0].message);
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      startAutoScroll(900);
-    }, 50);
+    setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
+    speak(TOUR_STEPS[0].message, (duration) => {
+      startAutoScrollSynced(duration);
+    });
   }
 
   function openChat() {
