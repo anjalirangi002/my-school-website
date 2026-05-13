@@ -3,8 +3,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
 import { X, Send, ChevronRight, ChevronLeft } from "lucide-react";
 
-const EL_API_KEY = import.meta.env.VITE_ELEVENLABS_API_KEY as string;
-const EL_VOICE_ID = import.meta.env.VITE_ELEVENLABS_VOICE_ID as string;
+const CARTESIA_API_KEY = import.meta.env.VITE_CARTESIA_API_KEY as string;
+const CARTESIA_VOICE_ID = import.meta.env.VITE_CARTESIA_VOICE_ID as string;
+const CARTESIA_MODEL = "sonic-2";
 
 function stripEmojis(text: string): string {
   return text
@@ -229,22 +230,24 @@ export default function AIAssistant() {
   }, []);
 
   const speakWelcome = useCallback(async () => {
-    if (!EL_API_KEY || !EL_VOICE_ID) return;
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
     stopWelcomeSpeech();
     const text = "Hi! I'm Orbit. Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.";
     try {
-      const res = await fetch(
-        `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`,
-        {
-          method: "POST",
-          headers: { "xi-api-key": EL_API_KEY, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            text,
-            model_id: "eleven_multilingual_v2",
-            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
-          }),
-        }
-      );
+      const res = await fetch("https://api.cartesia.ai/tts/bytes", {
+        method: "POST",
+        headers: {
+          "X-API-Key": CARTESIA_API_KEY,
+          "Cartesia-Version": "2024-06-10",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model_id: CARTESIA_MODEL,
+          transcript: text,
+          voice: { mode: "id", id: CARTESIA_VOICE_ID },
+          output_format: { container: "mp3", encoding: "mp3", sample_rate: 44100 },
+        }),
+      });
       if (!res.ok) return;
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
@@ -258,7 +261,7 @@ export default function AIAssistant() {
   }, [stopWelcomeSpeech]);
 
   const speak = useCallback(async (text: string) => {
-    if (!EL_API_KEY || !EL_VOICE_ID) return;
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
     stopSpeech();
     const clean = stripEmojis(text);
     if (!clean) return;
@@ -271,21 +274,20 @@ export default function AIAssistant() {
     if (ctx.state === "suspended") await ctx.resume();
 
     try {
-      const res = await fetch(
-        `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE_ID}`,
-        {
-          method: "POST",
-          headers: {
-            "xi-api-key": EL_API_KEY,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            text: clean,
-            model_id: "eleven_multilingual_v2",
-            voice_settings: { stability: 0.5, similarity_boost: 0.75 },
-          }),
-        }
-      );
+      const res = await fetch("https://api.cartesia.ai/tts/bytes", {
+        method: "POST",
+        headers: {
+          "X-API-Key": CARTESIA_API_KEY,
+          "Cartesia-Version": "2024-06-10",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model_id: CARTESIA_MODEL,
+          transcript: clean,
+          voice: { mode: "id", id: CARTESIA_VOICE_ID },
+          output_format: { container: "mp3", encoding: "mp3", sample_rate: 44100 },
+        }),
+      });
       if (!res.ok) return;
       const arrayBuffer = await res.arrayBuffer();
       const audioBuffer = await ctx.decodeAudioData(arrayBuffer);
