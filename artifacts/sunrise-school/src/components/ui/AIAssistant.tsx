@@ -557,13 +557,14 @@ export default function AIAssistant() {
               transition={{ type: "spring", stiffness: 280, damping: 22 }}
               className="fixed inset-0 z-[201] flex items-center justify-center pointer-events-none"
             >
-              <div className="flex flex-col items-center pointer-events-auto">
-                <motion.img
+              <div
+                className="flex flex-col items-center pointer-events-auto"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
                   src="/images/ai-bot.png"
                   alt="AI Assistant"
                   className="w-44 h-44 object-contain drop-shadow-2xl"
-                  animate={{ y: [0, -12, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div
                   className="relative bg-white rounded-2xl shadow-2xl px-7 py-6 max-w-xs text-center -mt-2 border border-border"
@@ -587,7 +588,8 @@ export default function AIAssistant() {
                   </p>
                   <div className="flex gap-3 justify-center">
                     <motion.button
-                      onClick={startTour}
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); startTour(); }}
                       whileHover={{ scale: 1.06 }}
                       whileTap={{ scale: 0.95 }}
                       className="px-5 py-2 bg-primary text-white text-sm font-semibold rounded-full hover:bg-primary/90 transition-colors shadow-sm"
@@ -595,7 +597,8 @@ export default function AIAssistant() {
                       Start Tour
                     </motion.button>
                     <motion.button
-                      onClick={() => { stopWelcomeSpeech(); setPhase("chat"); }}
+                      type="button"
+                      onClick={(e) => { e.stopPropagation(); stopWelcomeSpeech(); openChat(); }}
                       whileHover={{ scale: 1.06 }}
                       whileTap={{ scale: 0.95 }}
                       className="px-5 py-2 bg-muted text-muted-foreground text-sm font-semibold rounded-full hover:bg-primary/10 hover:text-primary transition-colors"
