@@ -7,6 +7,36 @@ const CARTESIA_API_KEY = import.meta.env.VITE_CARTESIA_API_KEY as string;
 const CARTESIA_VOICE_ID = import.meta.env.VITE_CARTESIA_VOICE_ID as string;
 const CARTESIA_MODEL = "sonic-2";
 
+const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY as string;
+const GROQ_MODEL = "llama-3.1-8b-instant";
+
+const GROQ_SYSTEM_PROMPT = `You are Orbit, a friendly AI assistant for Sunrise Senior Secondary School (CBSE affiliated, affiliation no. 531671, established 2010, located at Vill. Mago Majri, Khanouri Road, Kaithal, Haryana).
+
+Your ONLY job is to answer questions about this school. You must REFUSE to answer any question that is not related to Sunrise Senior Secondary School.
+
+Key facts you know:
+- School name: Sunrise Senior Secondary School
+- Type: CBSE affiliated senior secondary school
+- Affiliation No: 531671
+- Established: 2010, by Sunrise Education Society
+- Location: Vill. Mago Majri, Khanouri Road, Kaithal, Haryana
+- Principal: Mr. Khushi Ram (M.A., B.Ed., 30+ years experience)
+- Timings: Monday to Saturday, 8:00 AM – 3:00 PM
+- Contact: +91-9255528310, +91-8397877909
+- Classes: Playway, Nursery, KG (Pre-Primary), Class 1–8 (Primary & Middle), Class 9–10 (Secondary), Class 11–12 (Senior Secondary)
+- Class 11 & 12 streams: Medical (PCB), Non-Medical (PCM), Commerce, Arts
+- Faculty: 32+ qualified teachers, all B.Ed./M.Ed., average 7+ years experience
+- Results: 100% CBSE board results for 6 consecutive years (Class 10 & 12)
+- Facilities: Smart classrooms, Science labs (Physics, Chemistry, Biology, Computer Science), Library, Sports grounds, School transport, 24/7 CCTV security
+- Transport: School bus covers Mago Majri and surrounding areas in Kaithal
+- Admissions: Open for 2026–27, Playway to Class 11. Documents needed: Birth certificate, last report card, Aadhaar copy, TC (if transfer), 4 passport photos
+- Fee structure: Contact school directly for fee details
+- Clubs: Science, Literary, Music & Dance, Eco Club, Sports, Computer, Art & Craft, Debate Society
+
+If the user asks ANYTHING not related to this school (e.g. general knowledge, other schools, personal advice, current events, coding, jokes, etc.), politely say: "I can only answer questions about Sunrise Senior Secondary School. Please ask me about admissions, academics, facilities, timings, or other school-related topics."
+
+Keep responses concise, helpful, and friendly. Use simple language. You may reply in Hindi or English based on what the user writes.`;
+
 function stripEmojis(text: string): string {
   return text
     .replace(/[\u{1F300}-\u{1FFFF}]/gu, "")
@@ -178,6 +208,7 @@ export default function AIAssistant() {
     },
   ]);
   const [input, setInput] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
   const [tourStep, setTourStep] = useState(0);
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -439,14 +470,50 @@ export default function AIAssistant() {
     setPhase("corner");
   }
 
-  function sendMessage(text?: string) {
+  async function sendMessage(text?: string) {
     const q = (text ?? input).trim();
-    if (!q) return;
+    if (!q || isTyping) return;
     setInput("");
     setMessages((prev) => [...prev, { role: "user", text: q }]);
-    setTimeout(() => {
+    setIsTyping(true);
+
+    try {
+      if (GROQ_API_KEY) {
+        const history = messages.map((m) => ({
+          role: m.role,
+          content: m.text,
+        }));
+        const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${GROQ_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            model: GROQ_MODEL,
+            messages: [
+              { role: "system", content: GROQ_SYSTEM_PROMPT },
+              ...history,
+              { role: "user", content: q },
+            ],
+            max_tokens: 300,
+            temperature: 0.4,
+          }),
+        });
+        if (res.ok) {
+          const data = await res.json() as { choices: { message: { content: string } }[] };
+          const reply = data.choices?.[0]?.message?.content?.trim() ?? getAnswer(q);
+          setMessages((prev) => [...prev, { role: "assistant", text: reply }]);
+          return;
+        }
+      }
+      // Fallback to local answers if Groq unavailable
       setMessages((prev) => [...prev, { role: "assistant", text: getAnswer(q) }]);
-    }, 450);
+    } catch {
+      setMessages((prev) => [...prev, { role: "assistant", text: getAnswer(q) }]);
+    } finally {
+      setIsTyping(false);
+    }
   }
 
   function nextTourStep() {
@@ -624,6 +691,17 @@ export default function AIAssistant() {
                   </div>
                 </div>
               ))}
+              {/* Typing indicator */}
+              {isTyping && (
+                <div className="flex justify-start">
+                  <img src="/images/ai-bot.png" alt="" className="w-6 h-6 object-contain self-end mr-1.5 shrink-0" />
+                  <div className="bg-white text-foreground shadow-sm border border-border/60 rounded-2xl rounded-bl-sm px-3 py-2 flex gap-1 items-center">
+                    <span className="w-1.5 h-1.5 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "0ms" }} />
+                    <span className="w-1.5 h-1.5 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "150ms" }} />
+                    <span className="w-1.5 h-1.5 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: "300ms" }} />
+                  </div>
+                </div>
+              )}
               <div ref={messagesEndRef} />
             </div>
 
@@ -633,7 +711,8 @@ export default function AIAssistant() {
                 <button
                   key={q}
                   onClick={() => sendMessage(q)}
-                  className="shrink-0 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors whitespace-nowrap"
+                  disabled={isTyping}
+                  className="shrink-0 text-[10px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors whitespace-nowrap disabled:opacity-40"
                 >
                   {q}
                 </button>
@@ -646,12 +725,13 @@ export default function AIAssistant() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-                placeholder="Ask about Sunrise School..."
-                className="flex-1 text-xs px-3 py-2 rounded-full border border-border focus:outline-none focus:border-primary bg-muted/30"
+                placeholder={isTyping ? "Orbit is typing..." : "Ask about Sunrise School..."}
+                disabled={isTyping}
+                className="flex-1 text-xs px-3 py-2 rounded-full border border-border focus:outline-none focus:border-primary bg-muted/30 disabled:opacity-60"
               />
               <button
                 onClick={() => sendMessage()}
-                disabled={!input.trim()}
+                disabled={!input.trim() || isTyping}
                 className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center disabled:opacity-40 hover:bg-primary/90 transition-colors shrink-0"
               >
                 <Send className="w-3.5 h-3.5" />
