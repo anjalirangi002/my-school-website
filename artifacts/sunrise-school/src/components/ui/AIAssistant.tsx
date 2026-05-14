@@ -364,10 +364,10 @@ export default function AIAssistant() {
     stopSpeech();
     const raw = localBuffers.current[key];
     if (!raw) return;
-    if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
-    const ctx = audioCtxRef.current;
-    if (ctx.state === "suspended") await ctx.resume();
     try {
+      if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
+      const ctx = audioCtxRef.current;
+      if (ctx.state === "suspended") await ctx.resume();
       const audioBuffer = await ctx.decodeAudioData(raw.slice(0));
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
@@ -382,7 +382,7 @@ export default function AIAssistant() {
         if (cb) cb();
       };
     } catch {
-      // silently ignore decode errors
+      // silently ignore audio errors (context blocked, decode error, etc.)
     }
   }, [stopSpeech]);
 
@@ -392,15 +392,14 @@ export default function AIAssistant() {
     stopSpeech();
     const clean = stripEmojis(text);
     if (!clean) return;
-
-    if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
-    const ctx = audioCtxRef.current;
-    if (ctx.state === "suspended") await ctx.resume();
-
-    const buffer = await cartesiaFetch(clean);
-    if (!buffer) return;
-
     try {
+      if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
+      const ctx = audioCtxRef.current;
+      if (ctx.state === "suspended") await ctx.resume();
+
+      const buffer = await cartesiaFetch(clean);
+      if (!buffer) return;
+
       const audioBuffer = await ctx.decodeAudioData(buffer);
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
@@ -410,7 +409,7 @@ export default function AIAssistant() {
       if (onStart) onStart(audioBuffer.duration);
       source.onended = () => { sourceNodeRef.current = null; };
     } catch {
-      // silently ignore decode errors
+      // silently ignore audio errors
     }
   }, [stopSpeech]);
 
@@ -456,7 +455,7 @@ export default function AIAssistant() {
       if (el) {
         pendingScrollRef.current = null;
         const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
-        window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
+        window.scrollTo(0, top);
         return true;
       }
       return false;
@@ -472,13 +471,13 @@ export default function AIAssistant() {
 
   function scrollInstant(scrollId: string | null) {
     if (!scrollId) {
-      window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
+      window.scrollTo(0, 0);
       return;
     }
     const el = document.getElementById(scrollId);
     if (el) {
       const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
-      window.scrollTo({ top, behavior: "instant" as ScrollBehavior });
+      window.scrollTo(0, top);
     }
   }
 
@@ -499,7 +498,7 @@ export default function AIAssistant() {
         pendingScrollRef.current = step.scrollId;
       } else {
         pendingScrollRef.current = null;
-        setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }), 200);
+        setTimeout(() => window.scrollTo(0, 0), 200);
       }
       navigate(step.path);
     }
@@ -526,7 +525,7 @@ export default function AIAssistant() {
     setPhase("tour");
     pendingScrollRef.current = null;
     navigate(TOUR_STEPS[0].path);
-    setTimeout(() => window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior }), 150);
+    setTimeout(() => window.scrollTo(0, 0), 150);
     const firstStep = TOUR_STEPS[0];
     if (firstStep.audioKey) {
       speakLocal(firstStep.audioKey, () => {
