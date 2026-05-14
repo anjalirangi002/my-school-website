@@ -50,11 +50,15 @@ function stripEmojis(text: string): string {
 type Phase = "center" | "corner" | "chat" | "tour";
 type Message = { role: "assistant" | "user"; text: string };
 
+const LOCAL_AUDIO_KEYS = ["welcome", "home", "about", "academic", "faculty", "student-life", "updates", "contact"] as const;
+type LocalAudioKey = typeof LOCAL_AUDIO_KEYS[number];
+
 interface TourStep {
   path: string;
   scrollId: string | null;
   title: string;
   message: string;
+  audioKey: LocalAudioKey;
 }
 
 const TOUR_STEPS: TourStep[] = [
@@ -63,6 +67,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/",
     scrollId: null,
     title: "🏫 Home",
+    audioKey: "home",
     message:
       "Welcome to Sunrise Senior Secondary School! CBSE affiliated school hai hamaari, affiliation number 531671, jo 2010 mein Vill. Mago Majri, Kaithal, Haryana mein establish hua tha. Yahan jo aap dekh rahe hain — yeh hai hamaara Hero Section. Yeh school ka pehla impression hai — ek strong tagline, beautiful campus ki jhalkti image, aur seedha Admissions aur Tour ka option. Thoda scroll karein — yahan hai Our Story. Sunrise Education Society ke dwara founded, hamaara school modern teaching aur cultural values ka combination hai. 15 saal se hum rural youth ko quality education de rahe hain. Aage badhein — yahan aapko milega Latest Notices ka section. Admissions, exams, events — sab important updates yahan milte hain parents aur students ko. Ab dekhiye Principal's Message. Hamaare Principal hain Mr. Khushi Ram, M.A., B.Ed., 30 se zyada saal ka experience. Unka maanna hai — education sirf results nahi, character banana hai. Aur ab sabse important — Why Parents Trust Us. Chhe strong reasons: 100% board results, 24/7 CCTV security, smart classrooms, experienced faculty, school transport, aur strict discipline. Yahi woh reasons hain jo Sunrise ko alag banate hain. Aur last mein — What Parents Say. Real families, real experiences. Hamare parents khud share karte hain ki unhone Sunrise kyun choose kiya apne bacchon ke liye.",
   },
@@ -72,6 +77,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/about",
     scrollId: null,
     title: "📖 About Us",
+    audioKey: "about",
     message:
       "Ab hum aa gaye hain About Us page par. Yahan aap Sunrise School ki poori kahani janenge. 2010 mein Sunrise Education Society ne yeh school establish kiya — ek sapna jo aaj 15 saal baad ek thriving institution ban chuka hai. Hamaari Mission hai quality education dena, Vision hai rural youth ko globally empower karna, aur hamare Values hain — Integrity, Discipline, Compassion aur Curiosity. Aage scroll karein aur dekhein hamaari achievements — 100% board results, Best CBSE School Award, aur 1000 se zyada successful alumni. CBSE affiliation details bhi yahan clearly diye gaye hain.",
   },
@@ -81,6 +87,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/academic",
     scrollId: null,
     title: "📚 Academics",
+    audioKey: "academic",
     message:
       "Yeh hai hamaara Academics page. Sunrise mein Playway se lekar Class 12 tak ka ek seamless educational journey hai. Pre-Primary se start hokar Primary, Middle, Secondary aur Senior Secondary tak — har stage par focused learning. Class 11 aur 12 mein chaar streams hain — Medical yaani PCB, Non-Medical yaani PCM, Commerce, aur Arts. Aur hamaara Smart Learning Ecosystem — digital classrooms, advanced science labs, aur digital library — yeh sab milkar students ko future ke liye tayyar karta hai.",
   },
@@ -90,6 +97,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/faculty",
     scrollId: null,
     title: "👩‍🏫 Faculty",
+    audioKey: "faculty",
     message:
       "Yeh hai hamaara Faculty page — miliye hamare 32 se zyada dedicated teachers se. Sab B.Ed. ya M.Ed. qualified hain, average 7 saal ka experience hai. Hamare Principal hain Mr. Khushi Ram — M.A., B.Ed., 30 se zyada saal ka anubhav. Unka kehna hai — har bachcha top education ka haqdar hai. Neeche scroll karein aur department-wise poori teaching team dekhen.",
   },
@@ -99,6 +107,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/student-life",
     scrollId: null,
     title: "🎭 Student Life",
+    audioKey: "student-life",
     message:
       "Sunrise mein zindagi sirf books tak seemit nahi hai — yeh hai Student Life page. Yahan aap dekhenge hamare annual cultural functions, morning assemblies, sports events aur school excursions. Hamare 8 active clubs hain — Science, Literary, Music aur Dance, Eco Club, Sports, Computer, Art aur Craft, aur Debate Society. Har student ko apni talent dikhane ka mauka milta hai. Gallery mein real campus moments bhi hain — zaroor dekhein.",
   },
@@ -108,6 +117,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/updates",
     scrollId: null,
     title: "📢 Updates",
+    audioKey: "updates",
     message:
       "Yeh hai hamaara Updates page — school ka digital notice board. Yahan parents aur students ko sabhi important updates milti hain. Admission schedules, exam dates, events, results, holidays — sab kuch ek jagah. Category filter se aap apni zaroorat ki notice aasani se dhundh sakte hain. Hum chahte hain ki koi bhi important update miss na ho.",
   },
@@ -117,6 +127,7 @@ const TOUR_STEPS: TourStep[] = [
     path: "/contact",
     scrollId: null,
     title: "📞 Contact Us",
+    audioKey: "contact",
     message:
       "Aur yeh hai hamaara Contact page — tour ka aakhri padav. Hamaara address hai Vill. Mago Majri, Khanouri Road, Kaithal, Haryana. Phone number hain +91-9255528310 aur +91-8397877909. School Monday se Saturday, subah 8 baje se dopahar 3 baje tak khula rehta hai. Admission ke liye seedha milne aa sakte hain ya WhatsApp kar sakte hain. Yeh tha aapka Sunrise School ka poora tour — bahut bahut shukriya!",
   },
@@ -219,6 +230,7 @@ export default function AIAssistant() {
   const autoScrollTimeoutRef = useRef<number | null>(null);
   const welcomeAudioRef = useRef<HTMLAudioElement | null>(null);
   const welcomeBufferRef = useRef<ArrayBuffer | null>(null);
+  const localBuffers = useRef<Partial<Record<LocalAudioKey, ArrayBuffer>>>({});
 
   const stopAutoScroll = useCallback(() => {
     if (autoScrollTimeoutRef.current !== null) {
@@ -299,16 +311,11 @@ export default function AIAssistant() {
     }
   }
 
-  // Play welcome via <Audio> element (no AudioContext needed)
+  // Play welcome from pre-generated local file
   const speakWelcome = useCallback(async () => {
-    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
     stopWelcomeSpeech();
-    let buffer = welcomeBufferRef.current;
-    if (!buffer) {
-      buffer = await cartesiaFetch(WELCOME_TEXT);
-      if (!buffer) return;
-      welcomeBufferRef.current = buffer;
-    }
+    const buffer = localBuffers.current["welcome"] ?? welcomeBufferRef.current;
+    if (!buffer) return;
     try {
       const blob = new Blob([buffer], { type: "audio/mpeg" });
       const url = URL.createObjectURL(blob);
@@ -320,6 +327,28 @@ export default function AIAssistant() {
       // Autoplay may be blocked before user gesture
     }
   }, [stopWelcomeSpeech]);
+
+  // Play pre-generated local audio via AudioContext; calls onStart(duration) when audio begins
+  const speakLocal = useCallback(async (key: LocalAudioKey, onStart?: (duration: number) => void) => {
+    stopSpeech();
+    const raw = localBuffers.current[key];
+    if (!raw) return;
+    if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
+    const ctx = audioCtxRef.current;
+    if (ctx.state === "suspended") await ctx.resume();
+    try {
+      const audioBuffer = await ctx.decodeAudioData(raw.slice(0));
+      const source = ctx.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(ctx.destination);
+      sourceNodeRef.current = source;
+      source.start();
+      if (onStart) onStart(audioBuffer.duration);
+      source.onended = () => { sourceNodeRef.current = null; };
+    } catch {
+      // silently ignore decode errors
+    }
+  }, [stopSpeech]);
 
   // Play speech via AudioContext; calls onStart(duration) the moment audio begins
   const speak = useCallback(async (text: string, onStart?: (duration: number) => void) => {
@@ -349,20 +378,27 @@ export default function AIAssistant() {
     }
   }, [stopSpeech]);
 
-  // On mount: show popup AND pre-fetch welcome audio in background
+  // On mount: show popup + preload ALL local audio files in parallel
   useEffect(() => {
     setPhase("center");
-    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
-    cartesiaFetch(WELCOME_TEXT).then(buf => {
-      if (!buf) return;
-      welcomeBufferRef.current = buf;
-      // Attempt autoplay — works if browser allows it
-      const blob = new Blob([buf], { type: "audio/mpeg" });
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      welcomeAudioRef.current = audio;
-      audio.onended = () => URL.revokeObjectURL(url);
-      audio.play().catch(() => {});
+    // Preload all pre-generated MP3s into memory buffers
+    LOCAL_AUDIO_KEYS.forEach((key) => {
+      fetch(`/audio/${key}.mp3`)
+        .then((r) => (r.ok ? r.arrayBuffer() : null))
+        .then((buf) => {
+          if (!buf) return;
+          localBuffers.current[key] = buf;
+          // Auto-play welcome as soon as it loads
+          if (key === "welcome") {
+            const blob = new Blob([buf], { type: "audio/mpeg" });
+            const url = URL.createObjectURL(blob);
+            const audio = new Audio(url);
+            welcomeAudioRef.current = audio;
+            audio.onended = () => URL.revokeObjectURL(url);
+            audio.play().catch(() => {});
+          }
+        })
+        .catch(() => {});
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -434,7 +470,7 @@ export default function AIAssistant() {
     }
 
     // Start scroll only when audio actually begins, synced to speech duration
-    speak(step.message, (duration) => {
+    speakLocal(step.audioKey, (duration) => {
       startAutoScrollSynced(duration);
     });
   }
@@ -453,7 +489,7 @@ export default function AIAssistant() {
     pendingScrollRef.current = null;
     navigate(TOUR_STEPS[0].path);
     setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 50);
-    speak(TOUR_STEPS[0].message, (duration) => {
+    speakLocal(TOUR_STEPS[0].audioKey, (duration) => {
       startAutoScrollSynced(duration);
     });
   }
