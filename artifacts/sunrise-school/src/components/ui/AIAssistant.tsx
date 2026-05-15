@@ -4,7 +4,7 @@ import { useLocation } from "wouter";
 import { X, Send, ChevronRight, ChevronLeft } from "lucide-react";
 
 const CARTESIA_API_KEY = import.meta.env.VITE_CARTESIA_API_KEY as string;
-const CARTESIA_VOICE_ID = import.meta.env.VITE_CARTESIA_VOICE_ID as string;
+const CARTESIA_VOICE_ID = ((import.meta.env.VITE_CARTESIA_VOICE_ID as string) ?? "").trim().replace(/^-\s*/, "");
 const CARTESIA_MODEL = "sonic-2";
 
 const GROQ_API_KEY = import.meta.env.VITE_GROQ_API_KEY as string;
@@ -363,7 +363,11 @@ export default function AIAssistant() {
   const speakLocal = useCallback(async (key: LocalAudioKey, onEnded?: () => void) => {
     stopSpeech();
     const raw = localBuffers.current[key];
-    if (!raw) return;
+    if (!raw) {
+      // Buffer not loaded yet — call onEnded so tour still advances
+      if (onEnded) setTimeout(onEnded, 3000);
+      return;
+    }
     try {
       if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
       const ctx = audioCtxRef.current;
@@ -375,6 +379,8 @@ export default function AIAssistant() {
       sourceNodeRef.current = source;
       speechOnEndedRef.current = onEnded ?? null;
       source.start();
+      // Auto-scroll the page in sync with the audio duration
+      startAutoScrollSynced(audioBuffer.duration, 500);
       source.onended = () => {
         sourceNodeRef.current = null;
         const cb = speechOnEndedRef.current;
@@ -382,34 +388,51 @@ export default function AIAssistant() {
         if (cb) cb();
       };
     } catch {
-      // silently ignore audio errors (context blocked, decode error, etc.)
+      // silently ignore audio errors — still advance tour
+      if (onEnded) setTimeout(onEnded, 3000);
     }
-  }, [stopSpeech]);
+  }, [stopSpeech, startAutoScrollSynced]);
 
-  // Play speech via AudioContext; calls onStart(duration) the moment audio begins
-  const speak = useCallback(async (text: string, onStart?: (duration: number) => void) => {
-    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return;
+  // Play speech via AudioContext; calls onStart(duration) the moment audio begins, onEnded when done
+  const speak = useCallback(async (text: string, onStart?: (duration: number) => void, onEnded?: () => void) => {
+    if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) {
+      if (onEnded) setTimeout(onEnded, 3000);
+      return;
+    }
     stopSpeech();
     const clean = stripEmojis(text);
-    if (!clean) return;
+    if (!clean) {
+      if (onEnded) setTimeout(onEnded, 1000);
+      return;
+    }
     try {
       if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
       const ctx = audioCtxRef.current;
       if (ctx.state === "suspended") await ctx.resume();
 
       const buffer = await cartesiaFetch(clean);
-      if (!buffer) return;
+      if (!buffer) {
+        if (onEnded) setTimeout(onEnded, 3000);
+        return;
+      }
 
       const audioBuffer = await ctx.decodeAudioData(buffer);
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
       source.connect(ctx.destination);
       sourceNodeRef.current = source;
+      speechOnEndedRef.current = onEnded ?? null;
       source.start();
       if (onStart) onStart(audioBuffer.duration);
-      source.onended = () => { sourceNodeRef.current = null; };
+      source.onended = () => {
+        sourceNodeRef.current = null;
+        const cb = speechOnEndedRef.current;
+        speechOnEndedRef.current = null;
+        if (cb) cb();
+      };
     } catch {
       // silently ignore audio errors
+      if (onEnded) setTimeout(onEnded, 3000);
     }
   }, [stopSpeech]);
 
@@ -424,8 +447,18 @@ export default function AIAssistant() {
     });
 
     // Welcome plays on FIRST user interaction (browser autoplay policy requires this)
-    const playWelcomeOnce = () => {
-      const buf = localBuffers.current["welcome"];
+    const playWelcomeOnce = async () => {
+      // Fetch buffer directly if not yet loaded (handles race condition)
+      let buf = localBuffers.current["welcome"];
+      if (!buf) {
+        try {
+          const r = await fetch("/audio/welcome.mp3");
+          if (r.ok) {
+            buf = await r.arrayBuffer();
+            localBuffers.current["welcome"] = buf;
+          }
+        } catch { /* ignore */ }
+      }
       if (!buf) return;
       const blob = new Blob([buf], { type: "audio/mpeg" });
       const url = URL.createObjectURL(blob);
@@ -503,11 +536,20 @@ export default function AIAssistant() {
       navigate(step.path);
     }
 
+    const advance = () => {
+      const nextIdx = tourStepRef.current + 1;
+      if (nextIdx < TOUR_STEPS.length) goToTourStep(nextIdx);
+    };
+
     if (step.audioKey) {
-      speakLocal(step.audioKey, () => {
-        const nextIdx = tourStepRef.current + 1;
-        if (nextIdx < TOUR_STEPS.length) goToTourStep(nextIdx);
-      });
+      speakLocal(step.audioKey, advance);
+    } else {
+      // No pre-generated audio — use runtime Cartesia TTS
+      speak(
+        step.message,
+        (duration) => startAutoScrollSynced(duration, 500),
+        advance
+      );
     }
   }
 
