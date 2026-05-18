@@ -50,7 +50,16 @@ function stripEmojis(text: string): string {
 type Phase = "center" | "corner" | "chat" | "tour";
 type Message = { role: "assistant" | "user"; text: string };
 
-const LOCAL_AUDIO_KEYS = ["welcome", "hero", "home-intro", "home-notices", "home", "about", "academic", "faculty", "student-life", "updates", "contact"] as const;
+const LOCAL_AUDIO_KEYS = [
+  "welcome", "hero", "home-intro", "home-notices", "home",
+  "home-principal", "home-trust", "home-campus", "home-testimonials",
+  "about", "about-values", "about-achievements", "principal-message", "about-affiliation",
+  "academic", "academic-structure", "academic-streams", "academic-smart",
+  "faculty", "faculty-principal", "faculty-stats", "faculty-grid",
+  "student-life", "studentlife-events", "studentlife-clubs", "studentlife-gallery",
+  "updates", "updates-notices",
+  "contact", "contact-info",
+] as const;
 type LocalAudioKey = typeof LOCAL_AUDIO_KEYS[number];
 
 interface TourStep {
@@ -76,19 +85,19 @@ const TOUR_STEPS: TourStep[] = [
     message: "Yahan aap dekh sakte hain school ki latest notices aur important announcements. Sab kuch ek jagah — up to date rehiye.",
   },
   {
-    path: "/", scrollId: "home-principal", title: "👨‍💼 Principal's Message", audioKey: null,
+    path: "/", scrollId: "home-principal", title: "👨‍💼 Principal's Message", audioKey: "home-principal",
     message: "Principal Mr. Khushi Ram — M.A., B.Ed., 30 se zyada saal ka anubhav. Unka kehna hai — character banana hi asli taleem hai.",
   },
   {
-    path: "/", scrollId: "home-trust", title: "🤝 Why Trust Us", audioKey: null,
+    path: "/", scrollId: "home-trust", title: "🤝 Why Trust Us", audioKey: "home-trust",
     message: "100% board results, 24 ghante CCTV, smart classrooms, experienced faculty, aur school transport — yahi hai Sunrise ka fark.",
   },
   {
-    path: "/", scrollId: "home-campus", title: "🏛️ Our Campus", audioKey: null,
+    path: "/", scrollId: "home-campus", title: "🏛️ Our Campus", audioKey: "home-campus",
     message: "Hamaara campus — khule maidan, science labs, library, aur ek safe environment jahan bacche khulkar seekhte aur badhte hain.",
   },
   {
-    path: "/", scrollId: "home-testimonials", title: "💬 What Parents Say", audioKey: null,
+    path: "/", scrollId: "home-testimonials", title: "💬 What Parents Say", audioKey: "home-testimonials",
     message: "Real families, real experiences. Sunte hain kya kehte hain Sunrise ke parents apne bachon ki padhai aur growth ke baare mein.",
   },
 
@@ -98,19 +107,19 @@ const TOUR_STEPS: TourStep[] = [
     message: "About Us page par aapka swagat hai. Yahan milegi Sunrise School ki poori kahani — foundation se lekar aaj tak ki har udaan.",
   },
   {
-    path: "/about", scrollId: "about-values", title: "🎯 Mission & Values", audioKey: null,
+    path: "/about", scrollId: "about-values", title: "🎯 Mission & Values", audioKey: "about-values",
     message: "Hamaara mission — integrity, discipline, compassion aur curiosity. Yeh hi woh values hain jo ek Sunrise student ko alag banati hain.",
   },
   {
-    path: "/about", scrollId: "about-achievements", title: "🏆 Achievements", audioKey: null,
+    path: "/about", scrollId: "about-achievements", title: "🏆 Achievements", audioKey: "about-achievements",
     message: "6 saal lagaataar 100% CBSE board results. Awards, recognitions, aur students ki safalata — yeh hai Sunrise ki asli pehchaan.",
   },
   {
-    path: "/about", scrollId: "principal-message", title: "👨‍💼 Principal's Message", audioKey: null,
+    path: "/about", scrollId: "principal-message", title: "👨‍💼 Principal's Message", audioKey: "principal-message",
     message: "Principal Mr. Khushi Ram ka sandesh — 30 saal ke anubhav se nikli ek baat — education sirf exams nahi, zindagi ki taiyaari hai.",
   },
   {
-    path: "/about", scrollId: "about-affiliation", title: "📜 CBSE Affiliation", audioKey: null,
+    path: "/about", scrollId: "about-affiliation", title: "📜 CBSE Affiliation", audioKey: "about-affiliation",
     message: "Hum CBSE affiliated hain — affiliation number 531671. National standard ka hissa banna hamare students ko ek global edge deta hai.",
   },
 
@@ -120,15 +129,15 @@ const TOUR_STEPS: TourStep[] = [
     message: "Academics page par aapka swagat hai. Playway se lekar Class 12 tak — ek structured, modern CBSE curriculum jo har bacche ke sapne poore karta hai.",
   },
   {
-    path: "/academic", scrollId: "academic-structure", title: "🏗️ Academic Structure", audioKey: null,
+    path: "/academic", scrollId: "academic-structure", title: "🏗️ Academic Structure", audioKey: "academic-structure",
     message: "Pre-Primary, Primary, Middle aur Senior Secondary — har level par specialized teaching approach aur dedicated faculty ka full support.",
   },
   {
-    path: "/academic", scrollId: "academic-streams", title: "🔬 Streams", audioKey: null,
+    path: "/academic", scrollId: "academic-streams", title: "🔬 Streams", audioKey: "academic-streams",
     message: "Class 11 aur 12 mein 4 streams — Medical PCB, Non-Medical PCM, Commerce, aur Arts. Har student ka interest aur sapna yahan welcome hai.",
   },
   {
-    path: "/academic", scrollId: "academic-smart", title: "💡 Smart Learning", audioKey: null,
+    path: "/academic", scrollId: "academic-smart", title: "💡 Smart Learning", audioKey: "academic-smart",
     message: "Smart classrooms, interactive boards, aur modern science labs — technology aur education ka perfect combination sirf Sunrise mein milta hai.",
   },
 
@@ -138,15 +147,15 @@ const TOUR_STEPS: TourStep[] = [
     message: "Faculty page par aapka swagat hai. Miliye 32 se zyada dedicated teachers se jo har student ki success ke liye din raat committed hain.",
   },
   {
-    path: "/faculty", scrollId: "faculty-principal", title: "👨‍💼 Principal", audioKey: null,
+    path: "/faculty", scrollId: "faculty-principal", title: "👨‍💼 Principal", audioKey: "faculty-principal",
     message: "Principal Mr. Khushi Ram — school ke captain. 30 saal ka anubhav aur ek vision — har baccha apni best version mein jiye.",
   },
   {
-    path: "/faculty", scrollId: "faculty-stats", title: "📊 Our Numbers", audioKey: null,
+    path: "/faculty", scrollId: "faculty-stats", title: "📊 Our Numbers", audioKey: "faculty-stats",
     message: "32 plus teachers, sabhi B.Ed ya M.Ed qualified, average 7 saal se zyada teaching experience. Quality education — guaranteed.",
   },
   {
-    path: "/faculty", scrollId: "faculty-grid", title: "🌟 Meet the Faculty", audioKey: null,
+    path: "/faculty", scrollId: "faculty-grid", title: "🌟 Meet the Faculty", audioKey: "faculty-grid",
     message: "Yeh hain hamare dedicated teachers — Science, Commerce, Arts, Physical Education — har department mein subject specialists.",
   },
 
@@ -156,15 +165,15 @@ const TOUR_STEPS: TourStep[] = [
     message: "Student Life page par aapka swagat hai. Sunrise mein zindagi sirf books tak seemit nahi — yahan har student apni talent mein shine karta hai.",
   },
   {
-    path: "/student-life", scrollId: "studentlife-events", title: "🎉 Events & Activities", audioKey: null,
+    path: "/student-life", scrollId: "studentlife-events", title: "🎉 Events & Activities", audioKey: "studentlife-events",
     message: "Annual functions, sports meets, Republic Day, Independence Day — events ka yeh calendar students mein confidence aur team spirit bharta hai.",
   },
   {
-    path: "/student-life", scrollId: "studentlife-clubs", title: "🎨 Clubs", audioKey: null,
+    path: "/student-life", scrollId: "studentlife-clubs", title: "🎨 Clubs", audioKey: "studentlife-clubs",
     message: "Science Club, Music, Dance, Eco Club, Debate Society — 8 se zyada clubs mein bachche apni hidden talents discover karte hain.",
   },
   {
-    path: "/student-life", scrollId: "studentlife-gallery", title: "📸 Gallery", audioKey: null,
+    path: "/student-life", scrollId: "studentlife-gallery", title: "📸 Gallery", audioKey: "studentlife-gallery",
     message: "In tasveeeron mein hai Sunrise ki asli pehchaan — khushi, mehnat, aur ek aise school ki kahani jo apne students ko sach mein pyar karta hai.",
   },
 
@@ -174,7 +183,7 @@ const TOUR_STEPS: TourStep[] = [
     message: "Updates page — school ka digital notice board. Yahan milte hain sab latest announcements, exam schedules aur school news.",
   },
   {
-    path: "/updates", scrollId: "updates-notices", title: "📋 Notice Board", audioKey: null,
+    path: "/updates", scrollId: "updates-notices", title: "📋 Notice Board", audioKey: "updates-notices",
     message: "Yeh hain hamare latest notices — admission updates, exam dates, school events. Sab kuch yahan regularly updated rehta hai.",
   },
 
@@ -184,7 +193,7 @@ const TOUR_STEPS: TourStep[] = [
     message: "Contact page — tour ka aakhri padav. Humse miliye, baat kariye, aur apne bachon ke ujjwal future ki shuruaat Sunrise se kariye.",
   },
   {
-    path: "/contact", scrollId: "contact-info", title: "📍 Get in Touch", audioKey: null,
+    path: "/contact", scrollId: "contact-info", title: "📍 Get in Touch", audioKey: "contact-info",
     message: "Phone: +91 9255528310. Mon–Sat, 8 AM to 3 PM. Village Mago Majri, Kaithal, Haryana. Humara darwaza hamesha khula hai — aapka swagat hai!",
   },
 ];

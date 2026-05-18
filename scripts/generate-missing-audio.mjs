@@ -4,7 +4,7 @@ import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const API_KEY = "sk_car_EmuEiTrS49bw7M2NTcQF89";
+const API_KEY = "sk_car_2gigQqPrWjBmAALw5JZ5gt";
 const VOICE_ID = "791d5162-d5eb-40f0-8189-f19db44611d8";
 const MODEL = "sonic-2";
 const OUT_DIR = join(__dirname, "../artifacts/sunrise-school/public/audio");
