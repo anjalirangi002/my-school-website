@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "wouter";
-import { X, Send, ChevronRight, ChevronLeft } from "lucide-react";
+import { X, Send, ChevronRight, ChevronLeft, Pause, Play } from "lucide-react";
 
 const CARTESIA_API_KEY = import.meta.env.VITE_CARTESIA_API_KEY as string;
 const CARTESIA_VOICE_ID = ((import.meta.env.VITE_CARTESIA_VOICE_ID as string) ?? "").trim().replace(/^-\s*/, "");
@@ -246,6 +246,7 @@ export default function AIAssistant() {
   const [isTyping, setIsTyping] = useState(false);
   const [tourStep, setTourStep] = useState(0);
   const [typedText, setTypedText] = useState("");
+  const [isPaused, setIsPaused] = useState(false);
 
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -602,7 +603,22 @@ export default function AIAssistant() {
     }
   }
 
+  function pauseTour() {
+    setIsPaused(true);
+    stopSpeech();
+    if (typeIntervalRef.current !== null) {
+      clearInterval(typeIntervalRef.current);
+      typeIntervalRef.current = null;
+    }
+  }
+
+  function resumeTour() {
+    setIsPaused(false);
+    goToTourStep(tourStepRef.current);
+  }
+
   function nextTourStep() {
+    setIsPaused(false);
     if (tourStep < TOUR_STEPS.length - 1) {
       goToTourStep(tourStep + 1);
     } else {
@@ -612,6 +628,7 @@ export default function AIAssistant() {
   }
 
   function prevTourStep() {
+    setIsPaused(false);
     if (tourStep > 0) goToTourStep(tourStep - 1);
   }
 
@@ -888,6 +905,17 @@ export default function AIAssistant() {
                 className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border text-xs font-semibold text-muted-foreground hover:bg-muted/40 disabled:opacity-30 transition-colors"
               >
                 <ChevronLeft className="w-3.5 h-3.5" /> Prev
+              </button>
+              <button
+                onClick={isPaused ? resumeTour : pauseTour}
+                title={isPaused ? "Resume Tour" : "Pause Tour"}
+                className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors border ${
+                  isPaused
+                    ? "bg-primary text-white border-primary hover:bg-primary/90"
+                    : "border-border text-muted-foreground hover:bg-muted/40"
+                }`}
+              >
+                {isPaused ? <Play className="w-3.5 h-3.5" /> : <Pause className="w-3.5 h-3.5" />}
               </button>
               <button
                 onClick={nextTourStep}
