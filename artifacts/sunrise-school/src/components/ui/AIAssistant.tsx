@@ -62,102 +62,130 @@ interface TourStep {
 }
 
 const TOUR_STEPS: TourStep[] = [
-  // ── HOME — section by section ──────────────────────────────────────────
+  // ── HOME ──────────────────────────────────────────────────────────────────
   {
-    path: "/",
-    scrollId: null,
-    title: "🏫 Welcome",
-    audioKey: "hero",
-    message: "Welcome to Sunrise Senior Secondary School! CBSE affiliated, established 2010, Vill. Mago Majri, Kaithal, Haryana.",
+    path: "/", scrollId: null, title: "🏫 Welcome", audioKey: "hero",
+    message: "Welcome to Sunrise Senior Secondary School! CBSE affiliated, established 2010, Village Mago Majri, Kaithal, Haryana. Aapka swagat hai Sunrise mein!",
   },
   {
-    path: "/",
-    scrollId: "home-intro",
-    title: "🌱 Our Story",
-    audioKey: "home-intro",
-    message: "Rooted in Values, Growing Towards Excellence — Sunrise Education Society ka vision aur mission.",
+    path: "/", scrollId: "home-intro", title: "🌱 Our Story", audioKey: "home-intro",
+    message: "Rooted in Values, Growing Towards Excellence. Sunrise Education Society ne 2010 mein ek sapna dekha — quality education sabke liye, rural Haryana tak.",
   },
   {
-    path: "/",
-    scrollId: "home-notices",
-    title: "📢 Notices",
-    audioKey: "home-notices",
-    message: "Latest Notices — sab important updates ek jagah.",
+    path: "/", scrollId: "home-notices", title: "📢 Latest Notices", audioKey: "home-notices",
+    message: "Yahan aap dekh sakte hain school ki latest notices aur important announcements. Sab kuch ek jagah — up to date rehiye.",
   },
   {
-    path: "/",
-    scrollId: "home-principal",
-    title: "👨‍💼 Principal",
-    audioKey: null,
-    message: "Principal Mr. Khushi Ram — M.A., B.Ed., 30+ years experience. Character banana hi asli taleem hai.",
+    path: "/", scrollId: "home-principal", title: "👨‍💼 Principal's Message", audioKey: null,
+    message: "Principal Mr. Khushi Ram — M.A., B.Ed., 30 se zyada saal ka anubhav. Unka kehna hai — character banana hi asli taleem hai.",
   },
   {
-    path: "/",
-    scrollId: "home-trust",
-    title: "🤝 Why Trust Us",
-    audioKey: null,
-    message: "100% board results, 24/7 CCTV, smart classrooms, experienced faculty, transport — yahi hai Sunrise ka fark.",
+    path: "/", scrollId: "home-trust", title: "🤝 Why Trust Us", audioKey: null,
+    message: "100% board results, 24 ghante CCTV, smart classrooms, experienced faculty, aur school transport — yahi hai Sunrise ka fark.",
   },
   {
-    path: "/",
-    scrollId: "home-testimonials",
-    title: "💬 Parents Say",
-    audioKey: null,
-    message: "Real families share their Sunrise experience.",
+    path: "/", scrollId: "home-campus", title: "🏛️ Our Campus", audioKey: null,
+    message: "Hamaara campus — khule maidan, science labs, library, aur ek safe environment jahan bacche khulkar seekhte aur badhte hain.",
+  },
+  {
+    path: "/", scrollId: "home-testimonials", title: "💬 What Parents Say", audioKey: null,
+    message: "Real families, real experiences. Sunte hain kya kehte hain Sunrise ke parents apne bachon ki padhai aur growth ke baare mein.",
   },
 
-  // ── ABOUT ─────────────────────────────────────────────────────────────
+  // ── ABOUT ─────────────────────────────────────────────────────────────────
   {
-    path: "/about",
-    scrollId: null,
-    title: "📖 About Us",
-    audioKey: "about",
-    message: "Ab hum aa gaye hain About Us page par. Yahan aap Sunrise School ki poori kahani janenge.",
+    path: "/about", scrollId: null, title: "📖 About Us", audioKey: "about",
+    message: "About Us page par aapka swagat hai. Yahan milegi Sunrise School ki poori kahani — foundation se lekar aaj tak ki har udaan.",
+  },
+  {
+    path: "/about", scrollId: "about-values", title: "🎯 Mission & Values", audioKey: null,
+    message: "Hamaara mission — integrity, discipline, compassion aur curiosity. Yeh hi woh values hain jo ek Sunrise student ko alag banati hain.",
+  },
+  {
+    path: "/about", scrollId: "about-achievements", title: "🏆 Achievements", audioKey: null,
+    message: "6 saal lagaataar 100% CBSE board results. Awards, recognitions, aur students ki safalata — yeh hai Sunrise ki asli pehchaan.",
+  },
+  {
+    path: "/about", scrollId: "principal-message", title: "👨‍💼 Principal's Message", audioKey: null,
+    message: "Principal Mr. Khushi Ram ka sandesh — 30 saal ke anubhav se nikli ek baat — education sirf exams nahi, zindagi ki taiyaari hai.",
+  },
+  {
+    path: "/about", scrollId: "about-affiliation", title: "📜 CBSE Affiliation", audioKey: null,
+    message: "Hum CBSE affiliated hain — affiliation number 531671. National standard ka hissa banna hamare students ko ek global edge deta hai.",
   },
 
-  // ── ACADEMICS ─────────────────────────────────────────────────────────
+  // ── ACADEMICS ─────────────────────────────────────────────────────────────
   {
-    path: "/academic",
-    scrollId: null,
-    title: "📚 Academics",
-    audioKey: "academic",
-    message: "Yeh hai hamaara Academics page. Playway se lekar Class 12 tak — ek seamless journey.",
+    path: "/academic", scrollId: null, title: "📚 Academics", audioKey: "academic",
+    message: "Academics page par aapka swagat hai. Playway se lekar Class 12 tak — ek structured, modern CBSE curriculum jo har bacche ke sapne poore karta hai.",
+  },
+  {
+    path: "/academic", scrollId: "academic-structure", title: "🏗️ Academic Structure", audioKey: null,
+    message: "Pre-Primary, Primary, Middle aur Senior Secondary — har level par specialized teaching approach aur dedicated faculty ka full support.",
+  },
+  {
+    path: "/academic", scrollId: "academic-streams", title: "🔬 Streams", audioKey: null,
+    message: "Class 11 aur 12 mein 4 streams — Medical PCB, Non-Medical PCM, Commerce, aur Arts. Har student ka interest aur sapna yahan welcome hai.",
+  },
+  {
+    path: "/academic", scrollId: "academic-smart", title: "💡 Smart Learning", audioKey: null,
+    message: "Smart classrooms, interactive boards, aur modern science labs — technology aur education ka perfect combination sirf Sunrise mein milta hai.",
   },
 
-  // ── FACULTY ───────────────────────────────────────────────────────────
+  // ── FACULTY ───────────────────────────────────────────────────────────────
   {
-    path: "/faculty",
-    scrollId: null,
-    title: "👩‍🏫 Faculty",
-    audioKey: "faculty",
-    message: "Miliye hamare 32 se zyada dedicated teachers se.",
+    path: "/faculty", scrollId: null, title: "👩‍🏫 Faculty", audioKey: "faculty",
+    message: "Faculty page par aapka swagat hai. Miliye 32 se zyada dedicated teachers se jo har student ki success ke liye din raat committed hain.",
+  },
+  {
+    path: "/faculty", scrollId: "faculty-principal", title: "👨‍💼 Principal", audioKey: null,
+    message: "Principal Mr. Khushi Ram — school ke captain. 30 saal ka anubhav aur ek vision — har baccha apni best version mein jiye.",
+  },
+  {
+    path: "/faculty", scrollId: "faculty-stats", title: "📊 Our Numbers", audioKey: null,
+    message: "32 plus teachers, sabhi B.Ed ya M.Ed qualified, average 7 saal se zyada teaching experience. Quality education — guaranteed.",
+  },
+  {
+    path: "/faculty", scrollId: "faculty-grid", title: "🌟 Meet the Faculty", audioKey: null,
+    message: "Yeh hain hamare dedicated teachers — Science, Commerce, Arts, Physical Education — har department mein subject specialists.",
   },
 
-  // ── STUDENT LIFE ──────────────────────────────────────────────────────
+  // ── STUDENT LIFE ──────────────────────────────────────────────────────────
   {
-    path: "/student-life",
-    scrollId: null,
-    title: "🎭 Student Life",
-    audioKey: "student-life",
-    message: "Sunrise mein zindagi sirf books tak seemit nahi.",
+    path: "/student-life", scrollId: null, title: "🎭 Student Life", audioKey: "student-life",
+    message: "Student Life page par aapka swagat hai. Sunrise mein zindagi sirf books tak seemit nahi — yahan har student apni talent mein shine karta hai.",
+  },
+  {
+    path: "/student-life", scrollId: "studentlife-events", title: "🎉 Events & Activities", audioKey: null,
+    message: "Annual functions, sports meets, Republic Day, Independence Day — events ka yeh calendar students mein confidence aur team spirit bharta hai.",
+  },
+  {
+    path: "/student-life", scrollId: "studentlife-clubs", title: "🎨 Clubs", audioKey: null,
+    message: "Science Club, Music, Dance, Eco Club, Debate Society — 8 se zyada clubs mein bachche apni hidden talents discover karte hain.",
+  },
+  {
+    path: "/student-life", scrollId: "studentlife-gallery", title: "📸 Gallery", audioKey: null,
+    message: "In tasveeeron mein hai Sunrise ki asli pehchaan — khushi, mehnat, aur ek aise school ki kahani jo apne students ko sach mein pyar karta hai.",
   },
 
-  // ── UPDATES ───────────────────────────────────────────────────────────
+  // ── UPDATES ───────────────────────────────────────────────────────────────
   {
-    path: "/updates",
-    scrollId: null,
-    title: "📢 Updates",
-    audioKey: "updates",
-    message: "Yeh hai hamaara Updates page — school ka digital notice board.",
+    path: "/updates", scrollId: null, title: "📢 Updates", audioKey: "updates",
+    message: "Updates page — school ka digital notice board. Yahan milte hain sab latest announcements, exam schedules aur school news.",
+  },
+  {
+    path: "/updates", scrollId: "updates-notices", title: "📋 Notice Board", audioKey: null,
+    message: "Yeh hain hamare latest notices — admission updates, exam dates, school events. Sab kuch yahan regularly updated rehta hai.",
   },
 
-  // ── CONTACT ───────────────────────────────────────────────────────────
+  // ── CONTACT ───────────────────────────────────────────────────────────────
   {
-    path: "/contact",
-    scrollId: null,
-    title: "📞 Contact Us",
-    audioKey: "contact",
-    message: "Aur yeh hai hamaara Contact page — tour ka aakhri padav.",
+    path: "/contact", scrollId: null, title: "📞 Contact Us", audioKey: "contact",
+    message: "Contact page — tour ka aakhri padav. Humse miliye, baat kariye, aur apne bachon ke ujjwal future ki shuruaat Sunrise se kariye.",
+  },
+  {
+    path: "/contact", scrollId: "contact-info", title: "📍 Get in Touch", audioKey: null,
+    message: "Phone: +91 9255528310. Mon–Sat, 8 AM to 3 PM. Village Mago Majri, Kaithal, Haryana. Humara darwaza hamesha khula hai — aapka swagat hai!",
   },
 ];
 
@@ -172,134 +200,116 @@ const QUICK_QUESTIONS = [
 
 function getAnswer(q: string): string {
   const lower = q.toLowerCase();
-
-  if (/hello|hi\b|hey|namaste|namaskar/.test(lower)) {
+  if (/hello|hi\b|hey|namaste|namaskar/.test(lower))
     return "Namaste! 🙏 I'm Orbit, your Sunrise School guide. Ask me anything about admissions, academics, facilities, timings, or contact details!";
-  }
-  if (/thank/.test(lower)) {
+  if (/thank/.test(lower))
     return "You're welcome! 😊 Feel free to ask anything else. I'm always here to help!";
-  }
-  if (/admission|apply|enroll|seat|form/.test(lower)) {
+  if (/admission|apply|enroll|seat|form/.test(lower))
     return "📋 Admissions for 2026-27 are OPEN!\nWe accept from Playway to Class 11.\n\nRequired documents:\n• Birth certificate\n• Last report card\n• Aadhaar copy\n• TC (if transfer)\n• 4 passport photos\n\nVisit school Mon–Sat, 8 AM–3 PM or WhatsApp: +91 92555 28310";
-  }
-  if (/fee|cost|charge|tuition|tution/.test(lower)) {
+  if (/fee|cost|charge|tuition|tution/.test(lower))
     return "For the fee structure, please contact our admission office directly.\n📞 WhatsApp: +91 92555 28310\n⏰ Mon–Sat, 8:00 AM – 3:00 PM 😊";
-  }
-  if (/address|location|where|village|kaithal|mago|majri/.test(lower)) {
+  if (/address|location|where|village|kaithal|mago|majri/.test(lower))
     return "📍 Vill. Mago Majri, Kaithal, Haryana.\n\nOur school bus also covers nearby villages! Contact us for route details.";
-  }
-  if (/contact|phone|number|whatsapp|call|reach/.test(lower)) {
+  if (/contact|phone|number|whatsapp|call|reach/.test(lower))
     return "📞 WhatsApp: +91 92555 28310\n⏰ Mon–Sat, 8:00 AM – 3:00 PM\n📍 Vill. Mago Majri, Kaithal, Haryana";
-  }
-  if (/cbse|board|affiliation/.test(lower)) {
+  if (/cbse|board|affiliation/.test(lower))
     return "✅ Yes! We are CBSE-affiliated.\nAffiliation No. 531671\n\n🏆 100% board results for 6 consecutive years in Class 10 & 12!";
-  }
-  if (/result|pass|percentage|score/.test(lower)) {
+  if (/result|pass|percentage|score/.test(lower))
     return "🏆 100% CBSE board results for 6 consecutive years (2020–2025) in Class 10 & 12!\n\nOur students have excelled across Medical, Non-Medical, Commerce & Arts.";
-  }
-  if (/principal|khushi|director|head/.test(lower)) {
+  if (/principal|khushi|director|head/.test(lower))
     return "👨‍💼 Our Principal: Mr. Khushi Ram\n• Qualification: M.A., B.Ed.\n• Experience: 30+ years in education\n• Leading Sunrise School since 2010";
-  }
-  if (/stream|science|commerce|arts|medical|non.medical|pcm|pcb/.test(lower)) {
+  if (/stream|science|commerce|arts|medical|non.medical|pcm|pcb/.test(lower))
     return "📚 Class 11 & 12 streams:\n• 🔬 Medical (PCB)\n• ⚙️ Non-Medical (PCM)\n• 💼 Commerce\n• 🎨 Arts\n\nAll streams have experienced, dedicated teachers!";
-  }
-  if (/timing|time|hour|open|schedule/.test(lower)) {
+  if (/timing|time|hour|open|schedule/.test(lower))
     return "⏰ School Timings:\n📅 Monday to Saturday\n🕗 8:00 AM – 3:00 PM\n\nAdmission office operates during the same hours.";
-  }
-  if (/transport|bus|vehicle|route|pickup/.test(lower)) {
+  if (/transport|bus|vehicle|route|pickup/.test(lower))
     return "🚌 Yes! We have a dedicated school bus fleet covering Mago Majri and surrounding areas in Kaithal.\n\nFor route details: +91 92555 28310";
-  }
-  if (/teacher|faculty|staff/.test(lower)) {
+  if (/teacher|faculty|staff/.test(lower))
     return "👩‍🏫 32+ qualified teachers!\n• All hold B.Ed./M.Ed. degrees\n• 7+ years avg. experience\n• Department-wise dedicated faculty\n• Led by Principal Mr. Khushi Ram";
-  }
-  if (/facilit|lab|library|classroom|sport|infrastructure/.test(lower)) {
+  if (/facilit|lab|library|classroom|sport|infrastructure/.test(lower))
     return "🏫 Campus Facilities:\n• 🖥️ Smart Classrooms\n• 🔬 Science Labs (Physics, Chemistry, Bio, CS)\n• 📚 Rich Library\n• 🏃 Sports Grounds\n• 🚌 School Transport\n• 📹 24/7 CCTV Security";
-  }
-  if (/establish|founded|year|since|old|history|2010/.test(lower)) {
+  if (/establish|founded|year|since|old|history|2010/.test(lower))
     return "📅 Sunrise Senior Secondary School was established in 2010.\n\n15+ years of academic excellence in Kaithal, Haryana! 🎉";
-  }
-  if (/class|grade|standard|playway|nursery|kg/.test(lower)) {
+  if (/class|grade|standard|playway|nursery|kg/.test(lower))
     return "📚 Classes offered:\n• Playway, Nursery, KG (Pre-Primary)\n• Class 1–8 (Primary & Middle)\n• Class 9–10 (Secondary)\n• Class 11–12 (Senior Secondary) — 4 streams\n\nAdmissions open for all levels!";
-  }
-  if (/holiday|vacation|summer|winter|break/.test(lower)) {
+  if (/holiday|vacation|summer|winter|break/.test(lower))
     return "School follows the CBSE / Haryana government holiday calendar. For the exact schedule contact us at +91 92555 28310.";
-  }
-
   return "🤔 I'm not sure about that, but I'd love to help!\n\nTry asking about:\n• Admissions\n• Classes offered\n• Facilities\n• School timings\n• Transport\n• Contact details\n\nOr reach us: +91 92555 28310";
-}
-
-function scrollToSection(id: string, delay = 120) {
-  setTimeout(() => {
-    const el = document.getElementById(id);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
-      window.scrollTo({ top, behavior: "smooth" });
-    }
-  }, delay);
 }
 
 export default function AIAssistant() {
   const [phase, setPhase] = useState<Phase | null>(null);
   const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      text: "Namaste! 🙏 I'm Orbit, your Sunrise School guide!\n\nAsk me anything about the school, or tap a quick question below.",
-    },
+    { role: "assistant", text: "Namaste! 🙏 I'm Orbit, your Sunrise School guide!\n\nAsk me anything about the school, or tap a quick question below." },
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [tourStep, setTourStep] = useState(0);
+  const [typedText, setTypedText] = useState("");
+
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const tourTextRef = useRef<HTMLDivElement>(null);
   const pendingScrollRef = useRef<string | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const sourceNodeRef = useRef<AudioBufferSourceNode | null>(null);
-  const autoScrollRef = useRef<number | null>(null);
-  const autoScrollTimeoutRef = useRef<number | null>(null);
   const welcomeAudioRef = useRef<HTMLAudioElement | null>(null);
-  const welcomeBufferRef = useRef<ArrayBuffer | null>(null);
   const localBuffers = useRef<Partial<Record<LocalAudioKey, ArrayBuffer>>>({});
   const tourStepRef = useRef(0);
   const speechOnEndedRef = useRef<(() => void) | null>(null);
+  const typeIntervalRef = useRef<number | null>(null);
 
-  const stopAutoScroll = useCallback(() => {
-    if (autoScrollTimeoutRef.current !== null) {
-      clearTimeout(autoScrollTimeoutRef.current);
-      autoScrollTimeoutRef.current = null;
+  // ── Typewriter ─────────────────────────────────────────────────────────────
+  const startTypewriter = useCallback((text: string) => {
+    if (typeIntervalRef.current !== null) {
+      clearInterval(typeIntervalRef.current);
+      typeIntervalRef.current = null;
     }
-    if (autoScrollRef.current !== null) {
-      clearInterval(autoScrollRef.current);
-      autoScrollRef.current = null;
+    setTypedText("");
+    if (!text) return;
+    const chars = text.length;
+    // Aim for ~4 seconds to type any message, min 20ms max 70ms per char
+    const intervalMs = Math.max(20, Math.min(70, 4000 / chars));
+    let idx = 0;
+    typeIntervalRef.current = window.setInterval(() => {
+      idx++;
+      setTypedText(text.slice(0, idx));
+      if (idx >= chars) {
+        clearInterval(typeIntervalRef.current!);
+        typeIntervalRef.current = null;
+      }
+    }, intervalMs);
+  }, []);
+
+  // Auto-scroll tour text box as new characters appear
+  useEffect(() => {
+    if (tourTextRef.current) {
+      tourTextRef.current.scrollTop = tourTextRef.current.scrollHeight;
+    }
+  }, [typedText]);
+
+  // ── Smooth section scroll ──────────────────────────────────────────────────
+  const smoothScrollToSection = useCallback((scrollId: string | null) => {
+    const doScroll = () => {
+      if (!scrollId) {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return true;
+      }
+      const el = document.getElementById(scrollId);
+      if (el) {
+        const top = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - 80);
+        window.scrollTo({ top, behavior: "smooth" });
+        return true;
+      }
+      return false;
+    };
+    if (!doScroll()) {
+      setTimeout(doScroll, 350);
+      setTimeout(doScroll, 750);
     }
   }, []);
 
-  // Scroll synced to audio duration — starts immediately, finishes when speech ends
-  const startAutoScrollSynced = useCallback((audioDuration: number, delayMs = 0) => {
-    stopAutoScroll();
-    const TICK_MS = 20;
-    const startFn = () => {
-      const totalTicks = Math.max(1, (audioDuration * 1000) / TICK_MS);
-      let tick = 0;
-      autoScrollRef.current = window.setInterval(() => {
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        if (window.scrollY >= maxScroll) { stopAutoScroll(); return; }
-        const remaining = maxScroll - window.scrollY;
-        const remainingTicks = Math.max(1, totalTicks - tick);
-        window.scrollBy(0, Math.max(0.4, remaining / remainingTicks));
-        tick++;
-        if (tick >= totalTicks) stopAutoScroll();
-      }, TICK_MS);
-    };
-    if (delayMs > 0) {
-      autoScrollTimeoutRef.current = window.setTimeout(() => {
-        autoScrollTimeoutRef.current = null;
-        startFn();
-      }, delayMs);
-    } else {
-      startFn();
-    }
-  }, [stopAutoScroll]);
-
+  // ── Stop helpers ───────────────────────────────────────────────────────────
   const stopWelcomeSpeech = useCallback(() => {
     if (welcomeAudioRef.current) {
       welcomeAudioRef.current.pause();
@@ -309,15 +319,14 @@ export default function AIAssistant() {
   }, []);
 
   const stopSpeech = useCallback(() => {
-    speechOnEndedRef.current = null; // cancel any pending auto-advance
+    speechOnEndedRef.current = null;
     if (sourceNodeRef.current) {
       try { sourceNodeRef.current.stop(); } catch { /* already stopped */ }
       sourceNodeRef.current = null;
     }
   }, []);
 
-  const WELCOME_TEXT = "Hi! I'm Orbit. Welcome to Sunrise School! Take a guided tour through every section, or ask me anything about the school.";
-
+  // ── Cartesia TTS ───────────────────────────────────────────────────────────
   async function cartesiaFetch(transcript: string): Promise<ArrayBuffer | null> {
     if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) return null;
     try {
@@ -342,30 +351,12 @@ export default function AIAssistant() {
     }
   }
 
-  // Play welcome from pre-generated local file
-  const speakWelcome = useCallback(async () => {
-    stopWelcomeSpeech();
-    const buffer = localBuffers.current["welcome"] ?? welcomeBufferRef.current;
-    if (!buffer) return;
-    try {
-      const blob = new Blob([buffer], { type: "audio/mpeg" });
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      welcomeAudioRef.current = audio;
-      audio.onended = () => URL.revokeObjectURL(url);
-      await audio.play();
-    } catch {
-      // Autoplay may be blocked before user gesture
-    }
-  }, [stopWelcomeSpeech]);
-
-  // Play pre-generated local audio; calls onEnded when audio finishes naturally
+  // Play a pre-generated local audio file
   const speakLocal = useCallback(async (key: LocalAudioKey, onEnded?: () => void) => {
     stopSpeech();
     const raw = localBuffers.current[key];
     if (!raw) {
-      // Buffer not loaded yet — call onEnded so tour still advances
-      if (onEnded) setTimeout(onEnded, 3000);
+      if (onEnded) setTimeout(onEnded, 4500);
       return;
     }
     try {
@@ -379,8 +370,6 @@ export default function AIAssistant() {
       sourceNodeRef.current = source;
       speechOnEndedRef.current = onEnded ?? null;
       source.start();
-      // Auto-scroll the page in sync with the audio duration
-      startAutoScrollSynced(audioBuffer.duration, 500);
       source.onended = () => {
         sourceNodeRef.current = null;
         const cb = speechOnEndedRef.current;
@@ -388,34 +377,25 @@ export default function AIAssistant() {
         if (cb) cb();
       };
     } catch {
-      // silently ignore audio errors — still advance tour
-      if (onEnded) setTimeout(onEnded, 3000);
+      if (onEnded) setTimeout(onEnded, 4500);
     }
-  }, [stopSpeech, startAutoScrollSynced]);
+  }, [stopSpeech]);
 
-  // Play speech via AudioContext; calls onStart(duration) the moment audio begins, onEnded when done
-  const speak = useCallback(async (text: string, onStart?: (duration: number) => void, onEnded?: () => void) => {
+  // Speak via Cartesia runtime TTS
+  const speak = useCallback(async (text: string, onEnded?: () => void) => {
     if (!CARTESIA_API_KEY || !CARTESIA_VOICE_ID) {
-      if (onEnded) setTimeout(onEnded, 3000);
+      if (onEnded) setTimeout(onEnded, 4500);
       return;
     }
     stopSpeech();
     const clean = stripEmojis(text);
-    if (!clean) {
-      if (onEnded) setTimeout(onEnded, 1000);
-      return;
-    }
+    if (!clean) { if (onEnded) setTimeout(onEnded, 1500); return; }
     try {
       if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
       const ctx = audioCtxRef.current;
       if (ctx.state === "suspended") await ctx.resume();
-
       const buffer = await cartesiaFetch(clean);
-      if (!buffer) {
-        if (onEnded) setTimeout(onEnded, 3000);
-        return;
-      }
-
+      if (!buffer) { if (onEnded) setTimeout(onEnded, 4500); return; }
       const audioBuffer = await ctx.decodeAudioData(buffer);
       const source = ctx.createBufferSource();
       source.buffer = audioBuffer;
@@ -423,7 +403,6 @@ export default function AIAssistant() {
       sourceNodeRef.current = source;
       speechOnEndedRef.current = onEnded ?? null;
       source.start();
-      if (onStart) onStart(audioBuffer.duration);
       source.onended = () => {
         sourceNodeRef.current = null;
         const cb = speechOnEndedRef.current;
@@ -431,14 +410,15 @@ export default function AIAssistant() {
         if (cb) cb();
       };
     } catch {
-      // silently ignore audio errors
-      if (onEnded) setTimeout(onEnded, 3000);
+      if (onEnded) setTimeout(onEnded, 4500);
     }
   }, [stopSpeech]);
 
-  // On mount: show popup + preload ALL local audio files in parallel
+  // ── Mount: preload audio + welcome ─────────────────────────────────────────
   useEffect(() => {
     setPhase("center");
+
+    // Preload all local audio files in parallel
     LOCAL_AUDIO_KEYS.forEach((key) => {
       fetch(`/audio/${key}.mp3`)
         .then((r) => (r.ok ? r.arrayBuffer() : null))
@@ -446,17 +426,16 @@ export default function AIAssistant() {
         .catch(() => {});
     });
 
-    // Welcome plays on FIRST user interaction (browser autoplay policy requires this)
+    // Welcome audio: play on first user interaction (browser autoplay policy)
+    let played = false;
     const playWelcomeOnce = async () => {
-      // Fetch buffer directly if not yet loaded (handles race condition)
+      if (played) return;
+      played = true;
       let buf = localBuffers.current["welcome"];
       if (!buf) {
         try {
           const r = await fetch("/audio/welcome.mp3");
-          if (r.ok) {
-            buf = await r.arrayBuffer();
-            localBuffers.current["welcome"] = buf;
-          }
+          if (r.ok) { buf = await r.arrayBuffer(); localBuffers.current["welcome"] = buf; }
         } catch { /* ignore */ }
       }
       if (!buf) return;
@@ -468,95 +447,88 @@ export default function AIAssistant() {
       audio.play().catch(() => {});
     };
     document.addEventListener("pointerdown", playWelcomeOnce, { once: true });
-    return () => document.removeEventListener("pointerdown", playWelcomeOnce);
+    return () => {
+      document.removeEventListener("pointerdown", playWelcomeOnce);
+      if (typeIntervalRef.current !== null) clearInterval(typeIntervalRef.current);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
 
   // Auto-scroll chat messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // After a page navigation, apply any pending scroll target (instant for tour)
+  // After page navigation, scroll to pending section target
   useEffect(() => {
-    const scrollId = pendingScrollRef.current;
-    if (!scrollId) return;
+    if (!pendingScrollRef.current) return;
+    const target = pendingScrollRef.current;
 
-    const tryScroll = (id: string) => {
-      const el = document.getElementById(id);
+    const tryScroll = () => {
+      const el = document.getElementById(target);
       if (el) {
         pendingScrollRef.current = null;
-        const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
-        window.scrollTo(0, top);
+        const top = Math.max(0, el.getBoundingClientRect().top + window.pageYOffset - 80);
+        window.scrollTo({ top, behavior: "smooth" });
         return true;
       }
       return false;
     };
 
-    const t1 = setTimeout(() => { if (pendingScrollRef.current) tryScroll(pendingScrollRef.current); }, 200);
-    const t2 = setTimeout(() => { if (pendingScrollRef.current) tryScroll(pendingScrollRef.current); }, 500);
-    const t3 = setTimeout(() => { if (pendingScrollRef.current) tryScroll(pendingScrollRef.current); }, 900);
-
+    const t1 = setTimeout(tryScroll, 250);
+    const t2 = setTimeout(() => { if (pendingScrollRef.current) tryScroll(); }, 600);
+    const t3 = setTimeout(() => { if (pendingScrollRef.current) tryScroll(); }, 1000);
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-  function scrollInstant(scrollId: string | null) {
-    if (!scrollId) {
-      window.scrollTo(0, 0);
-      return;
-    }
-    const el = document.getElementById(scrollId);
-    if (el) {
-      const top = el.getBoundingClientRect().top + window.pageYOffset - 88;
-      window.scrollTo(0, top);
-    }
-  }
-
+  // ── Tour navigation ────────────────────────────────────────────────────────
   function goToTourStep(idx: number) {
     const step = TOUR_STEPS[idx];
+    if (!step) return;
     const prevPath = TOUR_STEPS[tourStepRef.current]?.path ?? location;
     tourStepRef.current = idx;
     setTourStep(idx);
     stopSpeech();
-    stopAutoScroll();
+
+    // Start typewriter immediately — text types in while audio loads/plays
+    startTypewriter(step.message);
 
     const isSamePage = step.path === prevPath || step.path === location;
 
     if (isSamePage) {
-      scrollInstant(step.scrollId);
+      smoothScrollToSection(step.scrollId);
     } else {
       if (step.scrollId) {
         pendingScrollRef.current = step.scrollId;
       } else {
         pendingScrollRef.current = null;
-        setTimeout(() => window.scrollTo(0, 0), 200);
+        setTimeout(() => window.scrollTo({ top: 0, behavior: "smooth" }), 200);
       }
       navigate(step.path);
     }
 
     const advance = () => {
       const nextIdx = tourStepRef.current + 1;
-      if (nextIdx < TOUR_STEPS.length) goToTourStep(nextIdx);
+      if (nextIdx < TOUR_STEPS.length) {
+        goToTourStep(nextIdx);
+      } else {
+        stopSpeech();
+        setPhase("corner");
+      }
     };
 
     if (step.audioKey) {
       speakLocal(step.audioKey, advance);
     } else {
-      // No pre-generated audio — use runtime Cartesia TTS
-      speak(
-        step.message,
-        (duration) => startAutoScrollSynced(duration, 500),
-        advance
-      );
+      speak(step.message, advance);
     }
   }
 
   function dismissToCorner() {
     stopWelcomeSpeech();
     stopSpeech();
-    stopAutoScroll();
+    if (typeIntervalRef.current !== null) { clearInterval(typeIntervalRef.current); typeIntervalRef.current = null; }
     setPhase("corner");
   }
 
@@ -566,26 +538,33 @@ export default function AIAssistant() {
     setTourStep(0);
     setPhase("tour");
     pendingScrollRef.current = null;
-    navigate(TOUR_STEPS[0].path);
-    setTimeout(() => window.scrollTo(0, 0), 150);
+
     const firstStep = TOUR_STEPS[0];
+    startTypewriter(firstStep.message);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    navigate(firstStep.path);
+
+    const advance = () => {
+      const nextIdx = tourStepRef.current + 1;
+      if (nextIdx < TOUR_STEPS.length) goToTourStep(nextIdx);
+    };
+
     if (firstStep.audioKey) {
-      speakLocal(firstStep.audioKey, () => {
-        const nextIdx = tourStepRef.current + 1;
-        if (nextIdx < TOUR_STEPS.length) goToTourStep(nextIdx);
-      });
+      speakLocal(firstStep.audioKey, advance);
+    } else {
+      speak(firstStep.message, advance);
     }
   }
 
   function openChat() {
     stopSpeech();
-    stopAutoScroll();
+    if (typeIntervalRef.current !== null) { clearInterval(typeIntervalRef.current); typeIntervalRef.current = null; }
     setPhase("chat");
   }
 
   function closePanel() {
     stopSpeech();
-    stopAutoScroll();
+    if (typeIntervalRef.current !== null) { clearInterval(typeIntervalRef.current); typeIntervalRef.current = null; }
     setPhase("corner");
   }
 
@@ -595,26 +574,15 @@ export default function AIAssistant() {
     setInput("");
     setMessages((prev) => [...prev, { role: "user", text: q }]);
     setIsTyping(true);
-
     try {
       if (GROQ_API_KEY) {
-        const history = messages.map((m) => ({
-          role: m.role,
-          content: m.text,
-        }));
+        const history = messages.map((m) => ({ role: m.role, content: m.text }));
         const res = await fetch("https://api.groq.com/openai/v1/chat/completions", {
           method: "POST",
-          headers: {
-            "Authorization": `Bearer ${GROQ_API_KEY}`,
-            "Content-Type": "application/json",
-          },
+          headers: { "Authorization": `Bearer ${GROQ_API_KEY}`, "Content-Type": "application/json" },
           body: JSON.stringify({
             model: GROQ_MODEL,
-            messages: [
-              { role: "system", content: GROQ_SYSTEM_PROMPT },
-              ...history,
-              { role: "user", content: q },
-            ],
+            messages: [{ role: "system", content: GROQ_SYSTEM_PROMPT }, ...history, { role: "user", content: q }],
             max_tokens: 300,
             temperature: 0.4,
           }),
@@ -626,7 +594,6 @@ export default function AIAssistant() {
           return;
         }
       }
-      // Fallback to local answers if Groq unavailable
       setMessages((prev) => [...prev, { role: "assistant", text: getAnswer(q) }]);
     } catch {
       setMessages((prev) => [...prev, { role: "assistant", text: getAnswer(q) }]);
@@ -640,22 +607,22 @@ export default function AIAssistant() {
       goToTourStep(tourStep + 1);
     } else {
       stopSpeech();
-      stopAutoScroll();
       setPhase("corner");
     }
   }
 
   function prevTourStep() {
-    if (tourStep > 0) {
-      goToTourStep(tourStep - 1);
-    }
+    if (tourStep > 0) goToTourStep(tourStep - 1);
   }
 
   if (phase === null) return null;
 
+  const currentStep = TOUR_STEPS[tourStep];
+  const isTourDone = tourStep >= TOUR_STEPS.length - 1;
+
   return (
     <>
-      {/* ── CENTER WELCOME POPUP ── */}
+      {/* ── CENTER WELCOME POPUP ──────────────────────────────────────────── */}
       <AnimatePresence>
         {phase === "center" && (
           <>
@@ -676,22 +643,14 @@ export default function AIAssistant() {
               transition={{ type: "spring", stiffness: 280, damping: 22 }}
               className="fixed inset-0 z-[201] flex items-center justify-center pointer-events-none"
             >
-              <div
-                className="flex flex-col items-center pointer-events-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <img
-                  src="/images/ai-bot.png"
-                  alt="AI Assistant"
-                  className="w-44 h-44 object-contain drop-shadow-2xl"
-                />
+              <div className="flex flex-col items-center pointer-events-auto" onClick={(e) => e.stopPropagation()}>
+                <img src="/images/ai-bot.png" alt="AI Assistant" className="w-44 h-44 object-contain drop-shadow-2xl" />
                 <motion.div
                   className="relative bg-white rounded-2xl shadow-2xl px-7 py-6 max-w-xs text-center -mt-2 border border-border"
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.25 }}
                 >
-                  {/* Close button — top right */}
                   <button
                     onClick={dismissToCorner}
                     className="absolute top-3 right-3 p-1 rounded-full text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
@@ -699,7 +658,6 @@ export default function AIAssistant() {
                   >
                     <X className="w-4 h-4" />
                   </button>
-
                   <p className="text-xs font-bold text-primary uppercase tracking-widest mb-1">Your Guide</p>
                   <h3 className="text-lg font-bold text-foreground mb-1.5">Hi! I'm Orbit 👋</h3>
                   <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
@@ -732,7 +690,7 @@ export default function AIAssistant() {
         )}
       </AnimatePresence>
 
-      {/* ── CORNER ROBOT ── */}
+      {/* ── CORNER ROBOT ─────────────────────────────────────────────────── */}
       <AnimatePresence>
         {phase !== "center" && (
           <motion.button
@@ -765,7 +723,7 @@ export default function AIAssistant() {
         )}
       </AnimatePresence>
 
-      {/* ── CHAT WINDOW ── */}
+      {/* ── CHAT WINDOW ──────────────────────────────────────────────────── */}
       <AnimatePresence>
         {phase === "chat" && (
           <motion.div
@@ -777,7 +735,6 @@ export default function AIAssistant() {
             className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
             style={{ maxHeight: "calc(100vh - 300px)", minHeight: "320px" }}
           >
-            {/* Header */}
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
               <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
               <div className="flex-1">
@@ -785,7 +742,7 @@ export default function AIAssistant() {
                 <p className="text-white/70 text-xs mt-0.5">Sunrise School Guide • Online</p>
               </div>
               <button
-                onClick={() => { startTour(); }}
+                onClick={() => startTour()}
                 className="text-white/70 hover:text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-white/20 transition-colors mr-1"
               >
                 Tour
@@ -795,7 +752,6 @@ export default function AIAssistant() {
               </button>
             </div>
 
-            {/* Messages */}
             <div className="flex-1 overflow-y-auto overscroll-contain p-3 space-y-2.5 bg-muted/20" style={{ minHeight: 0 }}>
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
@@ -813,7 +769,6 @@ export default function AIAssistant() {
                   </div>
                 </div>
               ))}
-              {/* Typing indicator */}
               {isTyping && (
                 <div className="flex justify-start">
                   <img src="/images/ai-bot.png" alt="" className="w-6 h-6 object-contain self-end mr-1.5 shrink-0" />
@@ -827,7 +782,6 @@ export default function AIAssistant() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick questions */}
             <div className="px-2.5 py-2 flex gap-1.5 overflow-x-auto border-t border-border bg-white shrink-0">
               {QUICK_QUESTIONS.map((q) => (
                 <button
@@ -841,7 +795,6 @@ export default function AIAssistant() {
               ))}
             </div>
 
-            {/* Input */}
             <div className="p-2.5 border-t border-border bg-white flex gap-2 items-center shrink-0">
               <input
                 value={input}
@@ -863,7 +816,7 @@ export default function AIAssistant() {
         )}
       </AnimatePresence>
 
-      {/* ── TOUR PANEL ── */}
+      {/* ── TOUR PANEL ───────────────────────────────────────────────────── */}
       <AnimatePresence>
         {phase === "tour" && (
           <motion.div
@@ -872,82 +825,76 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border overflow-hidden flex flex-col"
-            style={{ maxHeight: "calc(100vh - 300px)", minHeight: "280px" }}
+            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            style={{ height: "300px" }}
           >
             {/* Header */}
-            <div className="bg-primary px-4 py-3 flex items-center gap-3">
-              <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
-              <div className="flex-1">
+            <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
+              <motion.img
+                src="/images/ai-bot.png"
+                alt="Orbit"
+                className="w-9 h-9 object-contain"
+                animate={{ rotate: [0, -5, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="flex-1 min-w-0">
                 <p className="text-white font-bold text-sm leading-none">School Tour</p>
-                <p className="text-white/70 text-xs mt-0.5">
-                  Step {tourStep + 1} of {TOUR_STEPS.length}
+                <p className="text-white/70 text-xs mt-0.5 truncate">
+                  {currentStep?.title ?? ""} · {tourStep + 1}/{TOUR_STEPS.length}
                 </p>
               </div>
               <button
                 onClick={() => { closePanel(); setPhase("chat"); }}
-                className="text-white/70 hover:text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-white/20 transition-colors mr-1"
+                className="text-white/70 hover:text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-white/20 transition-colors mr-1 shrink-0"
               >
                 Chat
               </button>
-              <button onClick={closePanel} className="text-white/80 hover:text-white transition-colors">
+              <button onClick={closePanel} className="text-white/80 hover:text-white transition-colors shrink-0">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex flex-col flex-1 min-h-0 p-4">
-              {/* Progress bar */}
-              <div className="flex gap-0.5 mb-4 shrink-0">
-                {TOUR_STEPS.map((_, i) => (
-                  <div
-                    key={i}
-                    className={`h-1 flex-1 rounded-full transition-all duration-400 ${
-                      i < tourStep ? "bg-primary/40" : i === tourStep ? "bg-primary" : "bg-muted"
-                    }`}
-                  />
-                ))}
-              </div>
+            {/* Progress bar */}
+            <div className="flex gap-0.5 px-3 pt-3 shrink-0">
+              {TOUR_STEPS.map((_, i) => (
+                <div
+                  key={i}
+                  className={`h-1 flex-1 rounded-full transition-all duration-500 ${
+                    i < tourStep ? "bg-primary/40" : i === tourStep ? "bg-primary" : "bg-muted"
+                  }`}
+                />
+              ))}
+            </div>
 
-              {/* Step content — scrollable */}
-              <div className="flex-1 overflow-y-auto overscroll-contain min-h-0 mb-4">
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={tourStep}
-                    initial={{ opacity: 0, x: 16 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -16 }}
-                    transition={{ duration: 0.18 }}
-                  >
-                    <h4 className="font-bold text-foreground text-sm mb-2">
-                      {TOUR_STEPS[tourStep].title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed whitespace-pre-line">
-                      {TOUR_STEPS[tourStep].message}
-                    </p>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
+            {/* Typewriter text area — fixed height, scrollable */}
+            <div
+              ref={tourTextRef}
+              className="flex-1 overflow-y-auto overscroll-contain px-4 py-3 min-h-0"
+              style={{ scrollBehavior: "smooth" }}
+            >
+              <p className="text-sm text-foreground leading-relaxed whitespace-pre-wrap">
+                {typedText}
+                {typeIntervalRef.current !== null && (
+                  <span className="inline-block w-0.5 h-4 bg-primary ml-0.5 align-middle animate-pulse" />
+                )}
+              </p>
+            </div>
 
-              {/* Navigation */}
-              <div className="flex items-center gap-2 shrink-0">
-                <button
-                  onClick={prevTourStep}
-                  disabled={tourStep === 0}
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold border border-border text-muted-foreground hover:bg-muted disabled:opacity-30 transition-colors"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5" /> Back
-                </button>
-                <button
-                  onClick={nextTourStep}
-                  className="flex-1 flex items-center justify-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-primary text-white hover:bg-primary/90 transition-colors"
-                >
-                  {tourStep === TOUR_STEPS.length - 1 ? (
-                    "Finish Tour 🎉"
-                  ) : (
-                    <>Next <ChevronRight className="w-3.5 h-3.5" /></>
-                  )}
-                </button>
-              </div>
+            {/* Navigation buttons */}
+            <div className="px-4 pb-4 flex gap-2 shrink-0">
+              <button
+                onClick={prevTourStep}
+                disabled={tourStep === 0}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border text-xs font-semibold text-muted-foreground hover:bg-muted/40 disabled:opacity-30 transition-colors"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" /> Prev
+              </button>
+              <button
+                onClick={nextTourStep}
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-semibold transition-colors bg-primary text-white hover:bg-primary/90"
+              >
+                {isTourDone ? "Finish" : "Next"} <ChevronRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </motion.div>
         )}
