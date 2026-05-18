@@ -880,17 +880,24 @@ export default function AIAssistant() {
               </button>
             </div>
 
-            {/* Progress bar */}
-            <div className="flex gap-0.5 px-3 pt-3 shrink-0">
-              {TOUR_STEPS.map((_, i) => (
-                <div
-                  key={i}
-                  className={`h-1 flex-1 rounded-full transition-all duration-500 ${
-                    i < tourStep ? "bg-primary/40" : i === tourStep ? "bg-primary" : "bg-muted"
-                  }`}
-                />
-              ))}
-            </div>
+            {/* Progress bar — 7 pages */}
+            {(() => {
+              const pages = ["/", "/about", "/academic", "/faculty", "/student-life", "/updates", "/contact"];
+              const currentPage = currentStep?.path ?? "/";
+              const currentPageIdx = pages.indexOf(currentPage);
+              return (
+                <div className="flex gap-1 px-3 pt-3 shrink-0">
+                  {pages.map((_, i) => (
+                    <div
+                      key={i}
+                      className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
+                        i < currentPageIdx ? "bg-primary/40" : i === currentPageIdx ? "bg-primary" : "bg-muted"
+                      }`}
+                    />
+                  ))}
+                </div>
+              );
+            })()}
 
             {/* Typewriter text area — fixed height, scrollable */}
             <div
