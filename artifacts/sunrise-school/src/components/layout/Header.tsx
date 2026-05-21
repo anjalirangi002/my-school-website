@@ -91,12 +91,13 @@ function BrandLogo() {
         alt="Sunrise Senior Secondary School official crest"
         className="w-11 h-11 md:w-12 md:h-12 lg:w-14 lg:h-14 object-contain shrink-0 group-hover:scale-105 transition-transform"
       />
-      <div className="hidden sm:flex flex-col min-w-0 leading-tight">
-        <span className="font-bold text-sm md:text-base lg:text-sm xl:text-[15px] 2xl:text-lg text-foreground truncate">
-          <span className="lg:hidden 2xl:inline">Sunrise Senior Secondary School</span>
+      <div className="flex flex-col min-w-0 leading-tight">
+        <span className="font-bold text-xs sm:text-sm md:text-base lg:text-sm xl:text-[15px] 2xl:text-lg text-foreground truncate">
+          <span className="sm:hidden">Sunrise School</span>
+          <span className="hidden sm:inline lg:hidden 2xl:inline">Sunrise Senior Secondary School</span>
           <span className="hidden lg:inline 2xl:hidden">Sunrise Sr. Sec. School</span>
         </span>
-        <span className="text-[9px] md:text-[10px] lg:text-[10px] xl:text-xs font-medium text-muted-foreground uppercase tracking-wider truncate mt-0.5">
+        <span className="hidden sm:block text-[9px] md:text-[10px] lg:text-[10px] xl:text-xs font-medium text-muted-foreground uppercase tracking-wider truncate mt-0.5">
           <span className="lg:hidden 2xl:inline">CBSE Affiliated • No. 531671 • Est. 2010</span>
           <span className="hidden lg:inline 2xl:hidden">CBSE • No. 531671 • Est. 2010</span>
         </span>

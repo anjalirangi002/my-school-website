@@ -725,13 +725,13 @@ export default function AIAssistant() {
             animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
             onClick={phase === "corner" ? openChat : closePanel}
-            className="fixed bottom-24 right-5 z-[60] focus:outline-none"
+            className="fixed bottom-20 sm:bottom-24 right-2 sm:right-5 z-[60] focus:outline-none"
             aria-label="Open assistant"
           >
             <motion.img
               src="/images/ai-bot.png"
               alt="AI Assistant"
-              className="w-28 h-28 object-contain drop-shadow-xl"
+              className="w-20 h-20 sm:w-28 sm:h-28 object-contain drop-shadow-xl"
               animate={{ y: [0, -7, 0] }}
               transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
               whileHover={{ scale: 1.15 }}
@@ -758,8 +758,8 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
-            style={{ maxHeight: "calc(100vh - 300px)", minHeight: "320px" }}
+            className="fixed bottom-48 sm:bottom-56 right-2 sm:right-5 z-[70] w-[200px] sm:w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            style={{ maxHeight: "calc(100vh - 220px)", minHeight: "280px" }}
           >
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
               <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
@@ -851,7 +851,7 @@ export default function AIAssistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
-            className="fixed bottom-56 right-5 z-[70] w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
+            className="fixed bottom-48 sm:bottom-56 right-2 sm:right-5 z-[70] w-[200px] sm:w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
             style={{ height: "300px" }}
           >
             {/* Header */}
