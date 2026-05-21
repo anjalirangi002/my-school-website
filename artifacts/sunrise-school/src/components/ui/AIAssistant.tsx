@@ -256,6 +256,13 @@ export default function AIAssistant() {
   const [tourStep, setTourStep] = useState(0);
   const [typedText, setTypedText] = useState("");
   const [isPaused, setIsPaused] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   const [location, navigate] = useLocation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -759,7 +766,7 @@ export default function AIAssistant() {
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 320, damping: 26 }}
             className="fixed bottom-48 sm:bottom-56 right-2 sm:right-5 z-[70] w-[200px] sm:w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
-            style={{ maxHeight: "calc(100vh - 220px)", minHeight: "280px" }}
+            style={isMobile ? { height: "300px" } : { maxHeight: "calc(100vh - 300px)", minHeight: "320px" }}
           >
             <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
               <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
