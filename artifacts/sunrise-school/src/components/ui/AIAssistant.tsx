@@ -768,20 +768,20 @@ export default function AIAssistant() {
             className="fixed bottom-48 sm:bottom-56 right-2 sm:right-5 z-[70] w-[200px] sm:w-[280px] bg-white rounded-2xl shadow-2xl border border-border flex flex-col overflow-hidden"
             style={isMobile ? { height: "300px" } : { maxHeight: "calc(100vh - 300px)", minHeight: "320px" }}
           >
-            <div className="bg-primary px-4 py-3 flex items-center gap-3 shrink-0">
-              <img src="/images/ai-bot.png" alt="Orbit" className="w-9 h-9 object-contain" />
-              <div className="flex-1">
-                <p className="text-white font-bold text-sm leading-none">Orbit</p>
-                <p className="text-white/70 text-xs mt-0.5">Sunrise School Guide • Online</p>
+            <div className="bg-primary px-2.5 py-1.5 sm:px-4 sm:py-3 flex items-center gap-1.5 sm:gap-3 shrink-0">
+              <img src="/images/ai-bot.png" alt="Orbit" className="w-6 h-6 sm:w-9 sm:h-9 object-contain" />
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-xs sm:text-sm leading-none">Orbit</p>
+                <p className="text-white/70 text-[10px] sm:text-xs mt-0.5 hidden sm:block">Sunrise School Guide • Online</p>
               </div>
               <button
                 onClick={() => startTour()}
-                className="text-white/70 hover:text-white text-xs font-semibold px-2 py-1 rounded-full hover:bg-white/20 transition-colors mr-1"
+                className="text-white/70 hover:text-white text-[10px] sm:text-xs font-semibold px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-white/20 transition-colors mr-0.5 sm:mr-1 shrink-0"
               >
                 Tour
               </button>
-              <button onClick={closePanel} className="text-white/80 hover:text-white transition-colors">
-                <X className="w-5 h-5" />
+              <button onClick={closePanel} className="text-white/80 hover:text-white transition-colors shrink-0">
+                <X className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
